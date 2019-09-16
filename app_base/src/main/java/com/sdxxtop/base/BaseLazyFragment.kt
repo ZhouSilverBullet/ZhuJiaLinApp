@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.sdxxtop.base.lifecycle.FragmentLifecycleImpl
+import me.yokeyword.fragmentation.SupportFragment
 
 /**
  * Email: sdxxtop@163.com
@@ -20,7 +21,7 @@ import com.sdxxtop.base.lifecycle.FragmentLifecycleImpl
  * 剩下的再次来到的时候，要用户手动加载
  *
  */
-abstract class BaseLazyFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment(), IVMView<VM> {
+abstract class BaseLazyFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM> {
     companion object {
         const val TAG = "BaseFragment"
     }

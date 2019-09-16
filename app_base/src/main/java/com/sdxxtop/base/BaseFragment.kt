@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import me.yokeyword.fragmentation.SupportFragment
 
 /**
  * Email: sdxxtop@163.com
@@ -16,7 +17,7 @@ import androidx.lifecycle.ViewModelProviders
  * Version: 1.0
  * Description:
  */
-abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment(), IVMView<VM> {
+abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM> {
     companion object {
         const val TAG = "BaseFragment"
     }

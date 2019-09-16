@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.sdxxtop.base.lifecycle.FragmentLifecycleImpl
+import me.yokeyword.fragmentation.SupportFragment
 
 /**
  * Email: sdxxtop@163.com
@@ -15,7 +16,7 @@ import com.sdxxtop.base.lifecycle.FragmentLifecycleImpl
  * Version: 1.0
  * Description:
  */
-abstract class BaseNormalFragment<DB : ViewDataBinding> : Fragment(), IView {
+abstract class BaseNormalFragment<DB : ViewDataBinding> : SupportFragment(), IView {
     companion object {
         const val TAG = "BaseFragment"
     }

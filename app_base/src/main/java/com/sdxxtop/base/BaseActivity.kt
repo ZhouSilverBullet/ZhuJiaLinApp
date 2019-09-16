@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.sdxxtop.base.lifecycle.ActivityLifecycleImpl
 import com.sdxxtop.base.navigationstatus.INavigationColorStatus
+import me.yokeyword.fragmentation.SupportActivity
 
 /**
  * Email: sdxxtop@163.com
@@ -19,7 +20,7 @@ import com.sdxxtop.base.navigationstatus.INavigationColorStatus
  * Version: 1.0
  * Description:
  */
-abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : AppCompatActivity(), IVMView<VM>, INavigationColorStatus {
+abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActivity(), IVMView<VM>, INavigationColorStatus {
     companion object {
         const val TAG = "BaseActivity"
     }
