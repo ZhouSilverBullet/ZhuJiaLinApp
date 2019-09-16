@@ -24,16 +24,34 @@
         <item name="android:background">@drawable/abc_btn_colored_material</item>
     </style>
 
+    <style name="app_button_style_30" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/abc_btn_colored_material_30</item>
+    </style>
+
     <style name="app_text_style" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/tv_color</item>
     </style>
 
     <style name="app_edit_style" parent="Widget.AppCompat.EditText">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/tv_color</item>
         <item name="android:textColorHint">@color/color_666666</item>
         <item name="colorControlNormal">@color/color_CCCCCC</item>
         <item name="colorControlActivated">@color/main_color</item>
+    </style>
+
+
+    <style name="overAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#001aff</item>
+    </style>
+
+    <style name="errorAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/actionsheet_red</item>
     </style>
 </resources>

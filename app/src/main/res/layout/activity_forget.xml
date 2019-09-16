@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sdxxtop.zjlguardian.ui.login.viewmodel.ForgetViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.login.ForgetActivity">
+
+        <com.sdxxtop.ui.TitleView
+            app:titleValue="修改密码"
+            app:leftLayoutIsShow="true"
+            app:leftLayoutIconIsGray="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp"
+                android:text="数字岸堤"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:hintAnimationEnabled="true"
+            app:errorEnabled="true"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="请输入手机号"
+                android:drawableStart="@drawable/cellphone"
+                android:drawablePadding="10dp"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <FrameLayout
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:hintAnimationEnabled="true"
+                app:errorEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="请输入6位验证码"
+                    android:drawableStart="@drawable/cellphone"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                style="@style/app_button_style_30"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="发送短信验证码" />
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:hintAnimationEnabled="true"
+            app:errorEnabled="true"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/main_color"
+            app:counterMaxLength="6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="请输入新密码"
+                android:inputType="textPassword"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:hintAnimationEnabled="true"
+                app:errorEnabled="true"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/main_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="请再次输入新密码"
+                    android:inputType="textPassword"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:textSize="12sp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:text="密码位数为6-16位，最少包括字母、数字" />
+        </FrameLayout>
+
+
+        <Button
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="提交"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+    </LinearLayout>
+</layout>

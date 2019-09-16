@@ -2,7 +2,7 @@ package com.sdxxtop.zjlguardian.ui.login.viewmodel
 
 import android.view.View
 import com.sdxxtop.base.BaseViewModel
-import com.sdxxtop.common.utils.UIUtils
+import com.sdxxtop.zjlguardian.ui.login.ForgetActivity
 
 /**
  * Email: zhousaito@163.com
@@ -12,7 +12,6 @@ import com.sdxxtop.common.utils.UIUtils
  */
 class LoginViewModel : BaseViewModel() {
     fun onForgetPassword(v: View) {
-//        UIUtils.showToast("nihao")
-
+        startActivity(v.context, ForgetActivity::class.java)
     }
 }

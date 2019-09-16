@@ -2,13 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="45dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_back"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
+        android:background="@drawable/ll_seletor"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_centerVertical="true"
+        android:gravity="center"
+        tools:visibility="visible"
         android:visibility="gone">
 
         <ImageView

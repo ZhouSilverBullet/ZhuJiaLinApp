@@ -15,10 +15,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:resizeableActivity="true"
         android:supportsRtl="true"
-        tools:replace="android:theme"
         android:theme="@style/NoTitleTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.login.LoginActivity"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:theme">
+        <activity android:name=".ui.login.ForgetActivity"></activity>
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.servicecontract.ServiceContractActivity" />
         <activity android:name=".ui.MainActivity">
 

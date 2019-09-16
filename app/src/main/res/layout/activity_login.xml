@@ -16,7 +16,6 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
-        android:background="@color/white"
         tools:context=".ui.login.LoginActivity">
 
         <com.sdxxtop.ui.TitleView
