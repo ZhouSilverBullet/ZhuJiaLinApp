@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.sdxxtop.trackerlibrary">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application>
+        <activity
+            android:name=".test.TrackerTestActivity"
+            android:theme="@style/TestThmeme"></activity>
+    </application>
+
+</manifest>

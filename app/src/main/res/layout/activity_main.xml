@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+
+        <Button
+            android:id="@+id/up_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="updateApk"
+            android:text="点击更新" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="skipLogin"
+            android:text="点击登录" />
+
+        <Button
+            android:id="@+id/btn_open_amap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="openAMap"
+            android:text="打开高德地图" />
+
+        <Button
+            android:id="@+id/btn_open_logger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="openCrash"
+            android:text="打开日志系统" />
+
+        <Button
+            android:id="@+id/btn_open_timer"
+            android:onClick="openSelectPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时间选择器" />
+
+        <Button
+            android:id="@+id/btn_open_select_pic"
+            android:onClick="openSelectPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开图片选择" />
+
+        <Button
+            android:id="@+id/btn_open_tracker"
+            android:onClick="openTracker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开统计" />
+    </LinearLayout>
+</layout>

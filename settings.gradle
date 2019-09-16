@@ -1,0 +1,3 @@
+include ':app', ':app_base', ':app_common', ':app_network', ':app_ui', ':app_webview', ':app_crash',':app_tracker',
+        ':github_picture_library', ':github_picture_library_ucrop', ':github_chart', ':github_pickers',
+        ':sdk_amap', ':sdk_baiduface', ':sdk_alipush', ':sdk_umenganalytics'

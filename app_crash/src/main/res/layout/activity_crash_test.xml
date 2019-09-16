@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".test.CrashTestActivity">
+
+    <Button
+        android:onClick="saveCrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击存储奔溃日志" />
+
+    <Button
+        android:onClick="readCrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击上传奔溃日志" />
+
+    <Button
+        android:onClick="deleteCrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击删除溃日志" />
+</LinearLayout>

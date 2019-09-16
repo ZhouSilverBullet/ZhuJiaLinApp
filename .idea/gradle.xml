@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app_base" />
+            <option value="$PROJECT_DIR$/app_common" />
+            <option value="$PROJECT_DIR$/app_crash" />
+            <option value="$PROJECT_DIR$/app_network" />
+            <option value="$PROJECT_DIR$/app_tracker" />
+            <option value="$PROJECT_DIR$/app_ui" />
+            <option value="$PROJECT_DIR$/app_webview" />
+            <option value="$PROJECT_DIR$/github_chart" />
+            <option value="$PROJECT_DIR$/github_pickers" />
+            <option value="$PROJECT_DIR$/github_picture_library" />
+            <option value="$PROJECT_DIR$/github_picture_library_ucrop" />
+            <option value="$PROJECT_DIR$/sdk_alipush" />
+            <option value="$PROJECT_DIR$/sdk_amap" />
+            <option value="$PROJECT_DIR$/sdk_baiduface" />
+            <option value="$PROJECT_DIR$/sdk_umenganalytics" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
