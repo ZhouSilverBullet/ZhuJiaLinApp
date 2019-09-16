@@ -94,6 +94,7 @@
             android:text="忘记密码？" />
 
         <Button
+            android:onClick="@{vm::onLoginClick}"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:text="登录"

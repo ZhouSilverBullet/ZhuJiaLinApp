@@ -53,6 +53,8 @@ dependencies {
     api "com.github.GrenderG:Toasty:$rootProject.Toasty"
     api "com.orhanobut:logger:$rootProject.orhanobut_logger"
 
+    api 'com.github.AnJiaoDe:StatusNavigationTransparent:V1.1.2'
+
     api project(path: ':github_picture_library')
 
     testImplementation 'junit:junit:4.12'

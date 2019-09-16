@@ -4,11 +4,13 @@ import android.graphics.Color
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
+import com.cy.translucentparent.StatusNavUtils
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.ui.DotView
+import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityMainTabBinding
 import com.sdxxtop.zjlguardian.ui.contact.fragment.ContactFragment
 import com.sdxxtop.zjlguardian.ui.gridmanagement.fragment.GridManageFragment
@@ -22,7 +24,7 @@ import java.util.*
 class MainTabActivity : BaseActivity<ActivityMainTabBinding, MainTabViewModel>() {
     override fun vmClazz() = MainTabViewModel::class.java
 
-    override fun layoutId() = com.sdxxtop.zjlguardian.R.layout.activity_main_tab
+    override fun layoutId() = R.layout.activity_main_tab
 
     override fun bindVM() {
 
@@ -33,6 +35,7 @@ class MainTabActivity : BaseActivity<ActivityMainTabBinding, MainTabViewModel>()
     }
 
     override fun initView() {
+        StatusNavUtils.setStatusBarColor(this, 0x00000000)
         initUnReadMessageViews()
     }
 
@@ -41,15 +44,19 @@ class MainTabActivity : BaseActivity<ActivityMainTabBinding, MainTabViewModel>()
             when (it.itemId) {
                 com.sdxxtop.zjlguardian.R.id.item_main -> {
                     switchFragment(0)
+                    StatusNavUtils.setStatusBarColor(this, 0x00000000)
                 }
                 com.sdxxtop.zjlguardian.R.id.item_small_video -> {
                     switchFragment(1)
+                    StatusNavUtils.setStatusBarColor(this, 0x0CBEB5)
                 }
                 com.sdxxtop.zjlguardian.R.id.item_video -> {
                     switchFragment(2)
+                    StatusNavUtils.setStatusBarColor(this, 0x0CBEB5)
                 }
                 com.sdxxtop.zjlguardian.R.id.item_mine -> {
                     switchFragment(3)
+                    StatusNavUtils.setStatusBarColor(this, 0x0CBEB5)
                 }
                 else -> {
                 }
@@ -123,7 +130,7 @@ class MainTabActivity : BaseActivity<ActivityMainTabBinding, MainTabViewModel>()
             }
         }
         if (menuView != null) {
-            val dp8 = UIUtils.dip2px( 8)
+            val dp8 = UIUtils.dip2px(8)
             dotViews = arrayOfNulls<DotView>(menuView.childCount)
             for (i in 0 until menuView.childCount) {
                 val params = FrameLayout.LayoutParams(if (i == menuView.childCount - 1) dp8 else dp8 * 2, 0)

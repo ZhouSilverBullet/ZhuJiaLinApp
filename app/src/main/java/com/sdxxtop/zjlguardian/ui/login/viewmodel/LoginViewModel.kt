@@ -2,6 +2,7 @@ package com.sdxxtop.zjlguardian.ui.login.viewmodel
 
 import android.view.View
 import com.sdxxtop.base.BaseViewModel
+import com.sdxxtop.zjlguardian.ui.home.MainTabActivity
 import com.sdxxtop.zjlguardian.ui.login.ForgetActivity
 
 /**
@@ -13,5 +14,9 @@ import com.sdxxtop.zjlguardian.ui.login.ForgetActivity
 class LoginViewModel : BaseViewModel() {
     fun onForgetPassword(v: View) {
         startActivity(v.context, ForgetActivity::class.java)
+    }
+
+    fun onLoginClick(v: View) {
+        startActivity(v.context, MainTabActivity::class.java)
     }
 }

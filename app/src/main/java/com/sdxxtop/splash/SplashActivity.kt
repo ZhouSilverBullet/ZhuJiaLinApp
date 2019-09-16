@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
             window.attributes = lp
         }
 
-        startActivity(Intent(this@SplashActivity, MainTabActivity::class.java))
+        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
 //        Handler().postDelayed({
 //            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
 //        }, 1000)

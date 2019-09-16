@@ -49,6 +49,9 @@
 
     <color name="black">#000000</color>
 
+    <color name="mine_bg">#EFEFF4</color>
+    <color name="color_B2B2B2">#B2B2B2</color>
+
     <array name="tab_colors">
         <item>#34B26D</item>
         <item>#34B26D</item>
