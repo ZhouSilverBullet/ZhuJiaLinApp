@@ -8,6 +8,7 @@ import android.os.Handler
 import android.view.WindowManager
 import com.sdxxtop.zjlguardian.ui.MainActivity
 import com.sdxxtop.zjlguardian.R
+import com.sdxxtop.zjlguardian.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -26,8 +27,14 @@ class SplashActivity : AppCompatActivity() {
             window.attributes = lp
         }
 
-        Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        }, 1000)
+        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+//        Handler().postDelayed({
+//            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+//        }, 1000)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        finish()
     }
 }

@@ -54,10 +54,6 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : AppCompatAct
         loadData()
     }
 
-    override fun bindVM() {
-
-    }
-
     override fun initEvent() {
     }
 

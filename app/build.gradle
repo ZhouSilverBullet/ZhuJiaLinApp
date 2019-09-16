@@ -55,11 +55,12 @@ android {
     //--------------资源配置----------------
     sourceSets {
         main {
-            res.srcDirs = [
-                    'src/main/res/layout/dialog',
-                    'src/main/res/layout',
-                    'src/main/res'
-            ]
+            jniLibs.srcDirs = ['libs']
+//            res.srcDirs = [
+//                    'src/main/res/layout/dialog',
+//                    'src/main/res/layout',
+//                    'src/main/res'
+//            ]
         }
     }
 

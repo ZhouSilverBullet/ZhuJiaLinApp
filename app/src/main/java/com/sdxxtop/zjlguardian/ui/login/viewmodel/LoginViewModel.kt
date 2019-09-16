@@ -1,6 +1,8 @@
 package com.sdxxtop.zjlguardian.ui.login.viewmodel
 
+import android.view.View
 import com.sdxxtop.base.BaseViewModel
+import com.sdxxtop.common.utils.UIUtils
 
 /**
  * Email: zhousaito@163.com
@@ -9,4 +11,8 @@ import com.sdxxtop.base.BaseViewModel
  * Description:
  */
 class LoginViewModel : BaseViewModel() {
+    fun onForgetPassword(v: View) {
+//        UIUtils.showToast("nihao")
+
+    }
 }

@@ -16,35 +16,91 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
+        android:background="@color/white"
         tools:context=".ui.login.LoginActivity">
+
+        <com.sdxxtop.ui.TitleView
+            app:titleValue="登录"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp"
+                android:text="数字岸堤"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             app:hintAnimationEnabled="true"
             app:errorEnabled="true"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入账号"
+                android:drawableStart="@drawable/cellphone"
+                android:drawablePadding="10dp"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
             app:hintAnimationEnabled="true"
             app:errorEnabled="true"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/main_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入密码"
                 android:inputType="textPassword"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:onClick="@{vm::onForgetPassword}"
+            android:layout_marginRight="40dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码？" />
+
+        <Button
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="登录"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
     </LinearLayout>
 
 

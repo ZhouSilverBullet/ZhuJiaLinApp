@@ -3,6 +3,8 @@
     <color name="white">#ffffff</color>
     <color name="half_white">#36F8F3F3</color>
     <color name="main_color">#0CBEB5</color>
+    <color name="main_press_color">#55F7EE</color>
+    <color name="main_gray_color">#e8e8e8</color>
 
     <color name="color_f85959">#f85959</color>
     <color name="color_e8e8e8">#e8e8e8</color>
@@ -11,6 +13,7 @@
     <color name="color_303030">#303030</color>
     <color name="color_E4E4E4">#E4E4E4</color>
     <color name="color_E0E0E0">#E0E0E0</color>
+    <color name="color_CCCCCC">#CCCCCC</color>
     <color name="color_EEEEEE">#EEEEEE</color>
     <color name="color_F4F4F4">#F4F4F4</color>
     <color name="color_dddddd">#DDDDDD</color>

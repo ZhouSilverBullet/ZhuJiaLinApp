@@ -1,26 +1,17 @@
 package com.sdxxtop.zjlguardian.ui
 
-import android.app.ActivityManager
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.util.Executors
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import com.luck.picture.lib.permissions.RxPermissions
 import com.sdxxtop.base.lifecycle.ActivityLifecycleImpl
 import com.sdxxtop.common.dialog.download.DownloadDialog
-import com.sdxxtop.crash.test.CrashTestActivity
+//import com.sdxxtop.crash.test.CrashTestActivity
 import com.sdxxtop.mapsdk.MapTestActivity
 import com.sdxxtop.trackerlibrary.test.TrackerTestActivity
 import com.sdxxtop.ui.timerselect.BottomDialogView
@@ -61,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openCrash(v: View) {
-        startActivity(Intent(this, CrashTestActivity::class.java))
+//        startActivity(Intent(this, CrashTestActivity::class.java))
     }
 
     val bottomDialogView by lazy {

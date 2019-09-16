@@ -6,10 +6,34 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="buttonStyle">@style/app_button_style</item>
+        <item name="android:textViewStyle">@style/app_text_style</item>
+        <item name="editTextStyle">@style/app_edit_style</item>
     </style>
 
     <style name="NoTitleTheme" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="app_button_style" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/abc_btn_colored_material</item>
+    </style>
+
+    <style name="app_text_style" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/tv_color</item>
+    </style>
+
+    <style name="app_edit_style" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/tv_color</item>
+        <item name="android:textColorHint">@color/color_666666</item>
+        <item name="colorControlNormal">@color/color_CCCCCC</item>
+        <item name="colorControlActivated">@color/main_color</item>
     </style>
 </resources>

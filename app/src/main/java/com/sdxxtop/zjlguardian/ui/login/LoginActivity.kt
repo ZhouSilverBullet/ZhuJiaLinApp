@@ -15,6 +15,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     }
 
+    override fun bindVM() {
+        mBinding.vm = mViewModel
+    }
+
     override fun initView() {
 
     }
