@@ -17,6 +17,7 @@
         android:layout_height="match_parent">
 
         <com.sdxxtop.ui.TitleView
+            android:id="@+id/stv_title"
             app:titleValue="个人中心"
             app:titleColor="@color/white"
             app:bgColor="@color/colorPrimary"

@@ -51,9 +51,6 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragm
         initData()
     }
 
-    override fun bindVM() {
-    }
-
     override fun initEvent() {
     }
 
