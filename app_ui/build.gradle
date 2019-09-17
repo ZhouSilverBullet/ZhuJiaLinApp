@@ -42,6 +42,9 @@ dependencies {
 
     api "de.hdodenhof:circleimageview:$rootProject.circleimageview"
 
+    api 'com.youth.banner:banner:1.4.10'
+    api 'com.kingja.loadsir:loadsir:1.3.6'
+
     implementation project(path: ':app_common')
     implementation project(path: ':github_pickers')
 

@@ -2,7 +2,6 @@ package com.sdxxtop.zjlguardian
 
 import android.content.Context
 import android.util.Log
-import com.baidu.idl.face.FaceSession
 import com.billy.cc.core.component.CCUtil.getCurProcessName
 import com.sdxxtop.base.BaseApplication
 import com.sdxxtop.common.CommonSession
@@ -15,6 +14,8 @@ import com.sdxxtop.trackerlibrary.Tracker
 import com.sdxxtop.trackerlibrary.TrackerConfiguration
 import java.util.ArrayList
 import kotlin.properties.Delegates
+import com.kingja.loadsir.core.LoadSir
+import com.sdxxtop.ui.loadsir.*
 
 
 /**
@@ -55,6 +56,15 @@ class App : BaseApplication() {
 
         if (isAppProcess(getCurProcessName())) {
             initTracker()
+
+            LoadSir.beginBuilder()
+                    .addCallback(ErrorCallback())
+                    .addCallback(EmptyCallback())
+                    .addCallback(LoadingCallback())
+                    .addCallback(TimeoutCallback())
+                    .addCallback(CustomCallback())
+                    .setDefaultCallback(LoadingCallback::class.java)
+                    .commit()
         }
     }
 

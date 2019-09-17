@@ -9,6 +9,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.kingja.loadsir.callback.Callback
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
+import com.sdxxtop.base.load.IPreLoad
 import me.yokeyword.fragmentation.SupportFragment
 
 /**
@@ -17,12 +21,13 @@ import me.yokeyword.fragmentation.SupportFragment
  * Version: 1.0
  * Description:
  */
-abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM> {
+abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM>, IPreLoad {
     companion object {
         const val TAG = "BaseFragment"
     }
 
     lateinit var mBinding: DB
+    lateinit var mLoadService: LoadService<Any>
 
     val mViewModel: VM by lazy {
         ViewModelProviders.of(this@BaseFragment)[vmClazz()]
@@ -35,8 +40,10 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragm
                               savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate<DB>(inflater, layoutId(), container, false)
         mBinding.lifecycleOwner = this
-
-        return mBinding.root
+        mLoadService = LoadSir.getDefault().register(mBinding.root) {
+            preLoad()
+        }
+        return mLoadService.loadLayout
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +56,9 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragm
         initObserve()
         initEvent()
         initData()
+    }
+
+    override fun preLoad() {
     }
 
     override fun initEvent() {

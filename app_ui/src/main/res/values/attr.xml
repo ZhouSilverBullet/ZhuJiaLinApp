@@ -6,6 +6,7 @@
         <attr name="bgColor" format="color"/>
         <attr name="rightTextValue" format="string"/>
         <attr name="rightTextColor" format="color"/>
+        <attr name="rightImgSrc" format="reference"/>
         <attr name="leftLayoutIsShow" format="boolean"/>
         <attr name="leftLayoutIconIsGray" format="boolean"/>
     </declare-styleable>
@@ -66,5 +67,10 @@
         <!--<attr name="tv_task_prefix" format="string"/>-->
         <!--<attr name="iv_icon" format="reference"/>-->
     <!--</declare-styleable>-->
+
+
+    <declare-styleable name="auto3d">
+        <attr name="textSize" format="dimension|reference" />
+    </declare-styleable>
 
 </resources>

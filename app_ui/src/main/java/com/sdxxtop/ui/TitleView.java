@@ -3,6 +3,7 @@ package com.sdxxtop.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.sdxxtop.common.utils.UIUtils;
 
 public class TitleView extends RelativeLayout {
 
+    private Drawable rightImgSrc;
     private boolean layoutIconIsGray;
     private int rightTextColor;
     private String rightTextValue;
@@ -27,6 +29,7 @@ public class TitleView extends RelativeLayout {
     private TextView tvRight;
     private LinearLayout linearBack;
     private boolean layoutIsShow;
+    private ImageView ivRight;
 
     public TitleView(Context context) {
         this(context, null);
@@ -45,6 +48,7 @@ public class TitleView extends RelativeLayout {
         bgColor = a.getColor(R.styleable.TitleView_bgColor, getResources().getColor(R.color.white));
         rightTextValue = a.getString(R.styleable.TitleView_rightTextValue);
         rightTextColor = a.getColor(R.styleable.TitleView_rightTextColor, getResources().getColor(R.color.white));
+        rightImgSrc = a.getDrawable(R.styleable.TitleView_rightImgSrc);
         layoutIsShow = a.getBoolean(R.styleable.TitleView_leftLayoutIsShow, false);
         layoutIconIsGray = a.getBoolean(R.styleable.TitleView_leftLayoutIconIsGray, false);
         a.recycle();
@@ -80,6 +84,12 @@ public class TitleView extends RelativeLayout {
                     }
                 }
             });
+        }
+
+        ivRight = findViewById(R.id.iv_right);
+        if (rightImgSrc != null) {
+            ivRight.setVisibility(VISIBLE);
+            ivRight.setImageDrawable(rightImgSrc);
         }
     }
 

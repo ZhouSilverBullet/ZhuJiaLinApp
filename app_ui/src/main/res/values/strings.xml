@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ui</string>
+    <string name="fine_no_data">没有找到数据</string>
+    <string name="click_me_to_retry">点击我重试</string>
 </resources>

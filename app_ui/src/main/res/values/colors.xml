@@ -52,6 +52,8 @@
     <color name="mine_bg">#EFEFF4</color>
     <color name="color_B2B2B2">#B2B2B2</color>
     <color name="color_EFEFF4">#EFEFF4</color>
+    <color name="color_FF0CBEB5">#0CBEB5</color>
+    <color name="color_FF1ED8AF">#1ED8AF</color>
 
     <array name="tab_colors">
         <item>#34B26D</item>

@@ -62,6 +62,7 @@ dependencies {
     api project(path: ':app_common')
     api project(path: ':app_network')
     api project(path: ':sdk_umenganalytics')
+    api project(path: ':app_ui')
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary"
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.sdxxtop.base.BaseFragment
 import com.sdxxtop.base.ext.searchGone
 import com.sdxxtop.base.ext.searchShow
+import com.sdxxtop.base.ext.topViewPadding
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.databinding.FragmentContactBinding
 import com.sdxxtop.zjlguardian.ui.contact.viewmodel.ContactViewModel
@@ -36,7 +37,7 @@ class ContactFragment : BaseFragment<FragmentContactBinding, ContactViewModel>()
     }
 
     override fun initView() {
-
+        topViewPadding(mBinding.stvTitle)
     }
 
     override fun initEvent() {
@@ -54,6 +55,7 @@ class ContactFragment : BaseFragment<FragmentContactBinding, ContactViewModel>()
     }
 
     override fun loadData() {
+        mLoadService.showSuccess()
     }
 
     override fun onBackPressedSupport(): Boolean {

@@ -17,6 +17,7 @@
         tools:context=".ui.home.fragment.TestFragment">
 
         <com.sdxxtop.ui.TitleView
+            android:id="@+id/stv_title"
             app:titleValue="通讯录"
             app:titleColor="@color/white"
             app:bgColor="@color/colorPrimary"

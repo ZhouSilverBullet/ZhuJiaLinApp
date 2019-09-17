@@ -46,4 +46,16 @@
         android:paddingRight="12dp"
         android:textColor="@color/black"
         android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:src="@drawable/next_step3"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="12dp" />
 </RelativeLayout>
