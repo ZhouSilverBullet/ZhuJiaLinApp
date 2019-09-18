@@ -20,6 +20,7 @@
             app:titleValue="修改密码"
             app:leftLayoutIsShow="true"
             app:leftLayoutIconIsGray="true"
+            app:bgColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -33,7 +34,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/login_icon" />
 
             <TextView
                 android:textStyle="bold"
@@ -79,7 +80,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="请输入6位验证码"
-                    android:drawableStart="@drawable/cellphone"
+                    android:drawableStart="@drawable/messge_code"
                     android:drawablePadding="10dp"
                     android:inputType="number"
                     android:layout_width="match_parent"

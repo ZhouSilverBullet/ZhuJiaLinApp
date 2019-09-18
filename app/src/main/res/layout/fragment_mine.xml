@@ -106,6 +106,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
+
+                <Button
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="退出登录"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

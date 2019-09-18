@@ -16,13 +16,13 @@
         android:orientation="vertical"
         tools:context=".ui.home.fragment.TestFragment">
 
-        <com.sdxxtop.ui.TitleView
-            android:id="@+id/stv_title"
-            app:titleValue="通讯录"
-            app:titleColor="@color/white"
-            app:bgColor="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+<!--        <com.sdxxtop.ui.TitleView-->
+<!--            android:id="@+id/stv_title"-->
+<!--            app:titleValue="通讯录"-->
+<!--            app:titleColor="@color/white"-->
+<!--            app:bgColor="@color/colorPrimary"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
 
         <FrameLayout
             android:layout_width="match_parent"

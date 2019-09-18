@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 
 import com.sdxxtop.common.utils.UIUtils;
@@ -45,7 +46,7 @@ public class TitleView extends RelativeLayout {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TitleView, defStyleAttr, 0);
         titleValue = a.getString(R.styleable.TitleView_titleValue);
         titleColor = a.getColor(R.styleable.TitleView_titleColor, getResources().getColor(R.color.color_303030));
-        bgColor = a.getColor(R.styleable.TitleView_bgColor, getResources().getColor(R.color.white));
+        bgColor = a.getColor(R.styleable.TitleView_bgColor, getResources().getColor(R.color.colorPrimary));
         rightTextValue = a.getString(R.styleable.TitleView_rightTextValue);
         rightTextColor = a.getColor(R.styleable.TitleView_rightTextColor, getResources().getColor(R.color.white));
         rightImgSrc = a.getDrawable(R.styleable.TitleView_rightImgSrc);
@@ -99,6 +100,14 @@ public class TitleView extends RelativeLayout {
 
     public void setTitleValue(String titleValue) {
         tvTitle.setText(titleValue);
+    }
+
+    public void setTitleColor(@ColorRes int titleColor) {
+        tvTitle.setTextColor(getResources().getColor(titleColor));
+    }
+
+    public void setBgColor(@ColorRes int bgColor) {
+        setBackgroundColor(getResources().getColor(bgColor));
     }
 
     /**

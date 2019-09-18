@@ -20,6 +20,7 @@
 
         <com.sdxxtop.ui.TitleView
             app:titleValue="登录"
+            app:bgColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -33,7 +34,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/login_icon" />
 
             <TextView
                 android:textStyle="bold"
