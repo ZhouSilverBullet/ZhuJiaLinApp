@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,7 +31,7 @@ public class TitleView extends RelativeLayout {
     private TextView tvRight;
     private LinearLayout linearBack;
     private boolean layoutIsShow;
-    private ImageView ivRight;
+    private ImageButton ivRight;
 
     public TitleView(Context context) {
         this(context, null);
@@ -96,6 +97,10 @@ public class TitleView extends RelativeLayout {
 
     public TextView getTvRight() {
         return tvRight;
+    }
+
+    public ImageButton getIvRight() {
+        return ivRight;
     }
 
     public void setTitleValue(String titleValue) {

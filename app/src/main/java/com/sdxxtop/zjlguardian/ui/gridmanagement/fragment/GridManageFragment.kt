@@ -96,6 +96,12 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
     override fun initData() {
     }
 
+    override fun initEvent() {
+        mBinding.stvTitle.ivRight.setOnClickListener {
+
+        }
+    }
+
     override fun loadData() {
         mLoadService.showSuccess()
     }

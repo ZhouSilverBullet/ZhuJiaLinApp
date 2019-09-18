@@ -9,7 +9,7 @@ public interface HttpConstantValue {
     //NetUtil处理得到
     String STR_SPLICE_SYMBOL = "&";
     String STR_EQUAL_OPERATION = "=";
-    String APP_KEY = "70R84GQ2G90577ED60C4DC56A9EF3DB5";
+    String APP_KEY = "60487FE91A0577ED60C4DC56A9EF3DB5";
 
 
     String PATH_DATA = NetworkSession.getContext().getCacheDir().getAbsolutePath() + File.separator + "data";

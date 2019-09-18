@@ -34,22 +34,22 @@
                             android:bottom="1dp" />
                     </shape>
                 </item>
-                <item>
-                    <shape android:shape="rectangle">
-                        <corners android:radius="@dimen/dp_6" />
-                        <!--                        <solid android:color="?android:attr/colorAccent"/>-->
-                        <gradient
-                            android:type="linear"
-                            android:useLevel="true"
-                            android:startColor="#ff00dfe7"
-                            android:endColor="#ff00ccc2"
-                            android:angle="135" />
-                        <padding
-                            android:left="1dp"
-                            android:top="1dp"
-                            android:right="1dp"
-                            android:bottom="1dp" />
-                    </shape>
+                <item android:drawable="@drawable/btn_selfhandle_bg">
+<!--                    <shape android:shape="rectangle">-->
+<!--                        <corners android:radius="@dimen/dp_6" />-->
+<!--                        &lt;!&ndash;                        <solid android:color="?android:attr/colorAccent"/>&ndash;&gt;-->
+<!--                        <gradient-->
+<!--                            android:type="linear"-->
+<!--                            android:useLevel="true"-->
+<!--                            android:startColor="#ff00dfe7"-->
+<!--                            android:endColor="#ff00ccc2"-->
+<!--                            android:angle="135" />-->
+<!--                        <padding-->
+<!--                            android:left="1dp"-->
+<!--                            android:top="1dp"-->
+<!--                            android:right="1dp"-->
+<!--                            android:bottom="1dp" />-->
+<!--                    </shape>-->
                 </item>
             </selector>
         </item>

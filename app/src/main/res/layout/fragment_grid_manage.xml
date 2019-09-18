@@ -28,7 +28,7 @@
             android:id="@+id/stv_title"
             app:titleValue="数字岸堤"
             app:bgColor="@color/translate"
-            app:rightImgSrc="@drawable/next_step3"
+            app:rightImgSrc="@drawable/home_message"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
