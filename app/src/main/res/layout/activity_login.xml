@@ -21,6 +21,7 @@
         <com.sdxxtop.ui.TitleView
             app:titleValue="登录"
             app:bgColor="@color/white"
+            app:titleColor="@color/color_333333"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

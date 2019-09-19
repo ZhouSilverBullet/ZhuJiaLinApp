@@ -18,12 +18,13 @@
         android:theme="@style/NoTitleTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
-        <activity android:name=".ui.contact.ContactSearchActivity"></activity>
+        <activity android:name=".ui.event_report.EventReportActivity"></activity>
+        <activity android:name=".ui.contact.ContactSearchActivity" />
         <activity
             android:name=".ui.home.MainTabActivity"
             android:windowSoftInputMode="stateVisible" />
-        <activity android:name=".ui.login.ForgetActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.login.ForgetActivity" android:theme="@style/NoTitleWhiteTheme"/>
+        <activity android:name=".ui.login.LoginActivity" android:theme="@style/NoTitleWhiteTheme"/>
         <activity android:name=".ui.servicecontract.ServiceContractActivity" />
         <activity android:name=".ui.MainActivity">
 

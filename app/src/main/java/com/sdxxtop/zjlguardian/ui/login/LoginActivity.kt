@@ -22,4 +22,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun initView() {
 
     }
+
+    override fun isDarkStatusIcon(): Boolean {
+        return true
+    }
 }

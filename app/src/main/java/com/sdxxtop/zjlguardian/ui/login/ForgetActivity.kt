@@ -22,4 +22,7 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>() {
 
     }
 
+    override fun isDarkStatusIcon(): Boolean {
+        return true
+    }
 }

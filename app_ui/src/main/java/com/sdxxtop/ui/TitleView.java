@@ -2,6 +2,7 @@ package com.sdxxtop.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -20,6 +21,7 @@ import com.sdxxtop.common.utils.UIUtils;
 
 public class TitleView extends RelativeLayout {
 
+    private ColorStateList rightTextDrawableColor;
     private Drawable rightImgSrc;
     private boolean layoutIconIsGray;
     private int rightTextColor;
@@ -46,10 +48,11 @@ public class TitleView extends RelativeLayout {
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TitleView, defStyleAttr, 0);
         titleValue = a.getString(R.styleable.TitleView_titleValue);
-        titleColor = a.getColor(R.styleable.TitleView_titleColor, getResources().getColor(R.color.color_303030));
+        titleColor = a.getColor(R.styleable.TitleView_titleColor, getResources().getColor(R.color.white));
         bgColor = a.getColor(R.styleable.TitleView_bgColor, getResources().getColor(R.color.colorPrimary));
         rightTextValue = a.getString(R.styleable.TitleView_rightTextValue);
         rightTextColor = a.getColor(R.styleable.TitleView_rightTextColor, getResources().getColor(R.color.white));
+        rightTextDrawableColor = a.getColorStateList(R.styleable.TitleView_rightTextColor);
         rightImgSrc = a.getDrawable(R.styleable.TitleView_rightImgSrc);
         layoutIsShow = a.getBoolean(R.styleable.TitleView_leftLayoutIsShow, false);
         layoutIconIsGray = a.getBoolean(R.styleable.TitleView_leftLayoutIconIsGray, false);
@@ -68,7 +71,12 @@ public class TitleView extends RelativeLayout {
         tvTitle.setTextColor(titleColor);
         tvRight = findViewById(R.id.tview_right);
         tvRight.setText(rightTextValue);
-        tvRight.setTextColor(rightTextColor);
+        if (rightTextDrawableColor != null) {
+            tvRight.setTextColor(rightTextDrawableColor);
+        } else {
+            tvRight.setTextColor(rightTextColor);
+        }
+
         if (layoutIsShow || layoutIconIsGray) {
 
             if (layoutIconIsGray) {
@@ -93,6 +101,8 @@ public class TitleView extends RelativeLayout {
             ivRight.setVisibility(VISIBLE);
             ivRight.setImageDrawable(rightImgSrc);
         }
+
+
     }
 
     public TextView getTvRight() {

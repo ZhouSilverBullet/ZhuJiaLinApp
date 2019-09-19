@@ -2,10 +2,8 @@ package com.sdxxtop.base
 
 import android.os.Build
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import android.view.Window
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
@@ -20,7 +18,7 @@ import me.yokeyword.fragmentation.SupportActivity
  * Version: 1.0
  * Description:
  */
-abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActivity(), IVMView<VM>, INavigationColorStatus {
+abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActivity(), IVMView<VM>, INavigationColorStatus, View.OnClickListener {
     companion object {
         const val TAG = "BaseActivity"
     }
@@ -46,7 +44,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActiv
         bindVM()
         mBinding.executePendingBindings()
 
-        setDarkStatusIcon(window, true)
+        setDarkStatusIcon(window, isDarkStatusIcon())
 
         initView()
         initObserve()
@@ -67,6 +65,9 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActiv
     override fun loadData() {
     }
 
+    override fun onClick(v: View) {
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mBinding.unbind()
@@ -83,6 +84,10 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActiv
             }
             decorView.systemUiVisibility = vis
         }
+    }
+
+    open fun isDarkStatusIcon(): Boolean {
+        return false
     }
 
 //    inline fun <reified vm : ViewModel> bindViewModel(): vm {

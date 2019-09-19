@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.sdxxtop.base.load.IPreLoad
@@ -21,7 +19,7 @@ import me.yokeyword.fragmentation.SupportFragment
  * Version: 1.0
  * Description:
  */
-abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM>, IPreLoad {
+abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM>, IPreLoad, View.OnClickListener {
     companion object {
         const val TAG = "BaseFragment"
     }
@@ -70,6 +68,9 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragm
     override fun onResume() {
         super.onResume()
         loadData()
+    }
+
+    override fun onClick(v: View) {
     }
 
     override fun onDestroy() {

@@ -2,7 +2,9 @@ package com.sdxxtop.zjlguardian.ui.gridmanagement.fragment
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
+import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +16,10 @@ import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.ui.autotext.AutoTextViewManager
 import com.sdxxtop.ui.autotext.IAutoValue
 import com.sdxxtop.ui.loadsir.ErrorCallback
+import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentGridManageBinding
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportActivity
+import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportViewModel
 import com.sdxxtop.zjlguardian.ui.gridmanagement.adapter.GridManageAdapter
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GridManagerData
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_CELL
@@ -32,6 +37,7 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
     override fun bindVM() {
         mBinding.vm = mViewModel
+        mBinding.click = this
     }
 
     override fun vmClazz() = GridManageViewModel::class.java
@@ -137,4 +143,11 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
     }
 
+    override fun onClick(v: View) {
+        when (v) {
+            mBinding.btnReport -> {
+                startActivity(Intent(activity, EventReportActivity::class.java))
+            }
+        }
+    }
 }

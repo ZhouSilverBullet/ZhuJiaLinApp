@@ -4,6 +4,17 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="buttonStyle">@style/app_button_style</item>
+        <item name="android:textViewStyle">@style/app_text_style</item>
+        <item name="editTextStyle">@style/app_edit_style</item>
+    </style>
+
+    <style name="AppWhiteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
 
@@ -13,6 +24,11 @@
     </style>
 
     <style name="NoTitleTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="NoTitleWhiteTheme" parent="AppWhiteTheme">
         <item name="windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:id="@+id/ll_back"
-        android:background="@drawable/ll_seletor"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_centerVertical="true"
@@ -44,6 +44,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:paddingRight="12dp"
+        android:clickable="true"
         android:textColor="@color/black"
         android:textSize="15sp" />
 

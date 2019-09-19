@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 
 public class TextContentView extends LinearLayout {
 
+    private String contentViewHintValue;
     private boolean isRightImgShow;
     private String contentViewValue;
     private String endValue;
@@ -43,6 +44,7 @@ public class TextContentView extends LinearLayout {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TextContentView, defStyleAttr, 0);
         textViewValue = a.getString(R.styleable.TextContentView_tcv_text_view);
         contentViewValue = a.getString(R.styleable.TextContentView_tcv_content_text);
+        contentViewHintValue = a.getString(R.styleable.TextContentView_tcv_content_hint_text);
         endValue = a.getString(R.styleable.TextContentView_tcv_end_text_view);
         isShow = a.getBoolean(R.styleable.TextContentView_tcv_line_is_show, true);
         isRightImgShow = a.getBoolean(R.styleable.TextContentView_tcv_text_img_is_show, false);
@@ -59,6 +61,10 @@ public class TextContentView extends LinearLayout {
         endText = (TextView) findViewById(R.id.text_and_edit_end_text);
         tvRightImage = findViewById(R.id.tv_right_image);
         editLine = findViewById(R.id.text_and_edit_line);
+
+        if (!TextUtils.isEmpty(contentViewHintValue)) {
+            tvContent.setHint(contentViewHintValue);
+        }
 
         if (!TextUtils.isEmpty(contentViewValue)) {
             tvContent.setText(contentViewValue);
