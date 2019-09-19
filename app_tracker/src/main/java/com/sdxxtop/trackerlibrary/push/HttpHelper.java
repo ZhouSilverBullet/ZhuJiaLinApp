@@ -3,11 +3,10 @@ package com.sdxxtop.trackerlibrary.push;
 import android.util.Log;
 
 import com.sdxxtop.trackerlibrary.Tracker;
-import com.sdxxtop.trackerlibrary.bean.EventBean;
 import com.sdxxtop.trackerlibrary.db.control.DaoManager;
 import com.sdxxtop.trackerlibrary.db.entity.TrackerPathEntry;
 import com.sdxxtop.trackerlibrary.http.BaseResponse;
-import com.sdxxtop.trackerlibrary.http.Params;
+import com.sdxxtop.trackerlibrary.http.TrackParams;
 import com.sdxxtop.trackerlibrary.http.RetrofitClient;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class HttpHelper {
 
 
     public static void pushTrackerEntry(List<TrackerPathEntry> list, boolean test) {
-        Params params = new Params();
+        TrackParams params = new TrackParams();
         params.put("at", 1 /*1.andorid 2.ios*/);
         params.put("dt", Tracker.GSON.toJson(list));
 

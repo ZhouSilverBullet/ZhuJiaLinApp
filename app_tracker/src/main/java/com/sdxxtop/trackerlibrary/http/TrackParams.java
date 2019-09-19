@@ -8,10 +8,10 @@ import java.util.HashMap;
  * Created by Administrator on 2018/5/7.
  */
 
-public class Params {
+public class TrackParams {
     protected HashMap<String, String> map;
 
-    public Params() {
+    public TrackParams() {
         map = new HashMap<>();
         defaultValue();
     }
