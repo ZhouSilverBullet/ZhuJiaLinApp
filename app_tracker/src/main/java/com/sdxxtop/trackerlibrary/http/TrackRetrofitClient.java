@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Version: 1.0
  * Description:
  */
-public class RetrofitClient {
+public class TrackRetrofitClient {
     private static Retrofit retrofit;
 
 

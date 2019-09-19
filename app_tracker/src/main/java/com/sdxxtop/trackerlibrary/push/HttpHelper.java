@@ -7,7 +7,7 @@ import com.sdxxtop.trackerlibrary.db.control.DaoManager;
 import com.sdxxtop.trackerlibrary.db.entity.TrackerPathEntry;
 import com.sdxxtop.trackerlibrary.http.BaseResponse;
 import com.sdxxtop.trackerlibrary.http.TrackParams;
-import com.sdxxtop.trackerlibrary.http.RetrofitClient;
+import com.sdxxtop.trackerlibrary.http.TrackRetrofitClient;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class HttpHelper {
         params.put("at", 1 /*1.andorid 2.ios*/);
         params.put("dt", Tracker.GSON.toJson(list));
 
-        RetrofitClient.getTrackApiService().postEventData(Tracker.getInstance().getUploadUrl(), params.getData()).enqueue(new Callback<BaseResponse>() {
+        TrackRetrofitClient.getTrackApiService().postEventData(Tracker.getInstance().getUploadUrl(), params.getData()).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.body() != null) {
