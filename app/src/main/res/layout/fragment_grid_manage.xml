@@ -92,7 +92,9 @@
                 android:layout_height="64dp" />
 
             <Button
+                android:id="@+id/btn_self_handle"
                 android:text="自行处理"
+                android:onClick="@{click::onClick}"
                 android:textSize="@dimen/sp_16"
                 android:background="@drawable/btn_selfhandle_gradient_6"
                 android:layout_weight="1"

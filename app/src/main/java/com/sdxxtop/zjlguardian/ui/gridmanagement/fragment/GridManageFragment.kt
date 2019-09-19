@@ -26,6 +26,7 @@ import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_CELL
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_EMPTY_LINE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_MORE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.viewmodel.GridManageViewModel
+import com.sdxxtop.zjlguardian.ui.self_handle.SelfHandleActivity
 import com.youth.banner.loader.ImageLoader
 
 
@@ -42,7 +43,7 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
     override fun vmClazz() = GridManageViewModel::class.java
 
-    override fun layoutId() = com.sdxxtop.zjlguardian.R.layout.fragment_grid_manage
+    override fun layoutId() = R.layout.fragment_grid_manage
 
     override fun initObserve() {
     }
@@ -50,10 +51,10 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
     override fun initView() {
         mBinding.bView.setImageLoader(GlideImageLoader())
         val arrayList = ArrayList<Int>()
-        arrayList.add(com.sdxxtop.zjlguardian.R.drawable.test0)
-        arrayList.add(com.sdxxtop.zjlguardian.R.drawable.test1)
-        arrayList.add(com.sdxxtop.zjlguardian.R.drawable.test2)
-        arrayList.add(com.sdxxtop.zjlguardian.R.drawable.test3)
+        arrayList.add(R.drawable.test0)
+        arrayList.add(R.drawable.test1)
+        arrayList.add(R.drawable.test2)
+        arrayList.add(R.drawable.test3)
 
         mBinding.bView.setImages(arrayList)
         mBinding.bView.start()
@@ -147,6 +148,9 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
         when (v) {
             mBinding.btnReport -> {
                 startActivity(Intent(activity, EventReportActivity::class.java))
+            }
+            mBinding.btnSelfHandle -> {
+                startActivity(Intent(activity, SelfHandleActivity::class.java))
             }
         }
     }

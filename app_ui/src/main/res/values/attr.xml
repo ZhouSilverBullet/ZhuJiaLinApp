@@ -78,4 +78,7 @@
         <attr name="netv_et_height" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="TopBanner" >
+        <attr name="tb_height" format="dimension" />
+    </declare-styleable>
 </resources>
