@@ -30,9 +30,13 @@ public interface HttpConstantValue {
     String PART_ID = "part_id";
     String MOBILE = "mobile";
 
+    String PLATFORM_ID = "1";
+
     /**
      *
      * 我认为图片地址不应该存本地
      */
     String USER_IMG = "user_img";
+
+
 }

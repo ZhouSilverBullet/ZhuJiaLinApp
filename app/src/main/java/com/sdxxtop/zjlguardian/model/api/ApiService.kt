@@ -2,6 +2,7 @@ package com.sdxxtop.zjlguardian.model.api
 
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.zjlguardian.model.data.InitData
+import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -15,10 +16,16 @@ import retrofit2.http.POST
 
 interface ApiService {
     companion object {
-        const val BASE_URL = "http://envir.sdxxtop.com/api/"
+        const val BASE_URL = "http://yinanapi.sdxxtop.com/api/"
     }
 
     @FormUrlEncoded
     @POST("app/init")
     suspend fun postAppInit(@Field("data") data: String): BaseResponse<InitData>
+
+    @FormUrlEncoded
+    @POST("login/normal")
+    suspend fun postLoginNormal(@Field("data") data: String): BaseResponse<NormalLogin>
+
+
 }

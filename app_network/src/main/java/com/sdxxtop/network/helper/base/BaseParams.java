@@ -1,9 +1,12 @@
-package com.sdxxtop.network.helper;
+package com.sdxxtop.network.helper.base;
 
 import android.content.Context;
 import android.text.TextUtils;
 
 import com.sdxxtop.network.NetworkSession;
+import com.sdxxtop.network.helper.HttpConstantValue;
+import com.sdxxtop.network.helper.IDefaultValue;
+import com.sdxxtop.network.helper.NetUtil;
 import com.sdxxtop.network.utils.DeviceUtil;
 import com.sdxxtop.network.utils.SpUtil;
 import com.sdxxtop.network.utils.StringUtil;
@@ -14,20 +17,14 @@ import java.util.HashMap;
  * Created by Administrator on 2018/5/7.
  */
 
-public class Params {
+public abstract class BaseParams implements IDefaultValue {
     protected Context context;
-    protected HashMap<String, String> map;
+    private HashMap<String, String> map;
 
-    public Params() {
+    public BaseParams() {
         map = new HashMap<>();
         context = NetworkSession.getContext();
         defaultValue();
-    }
-
-    private void defaultValue() {
-        put("ui", SpUtil.getInt(HttpConstantValue.USER_ID, 0));
-        put("pi", SpUtil.getInt(HttpConstantValue.PART_ID, 0));
-        put("plid", "1");
     }
 
     public String getUserId() {

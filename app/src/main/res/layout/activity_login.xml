@@ -58,6 +58,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入账号"
+                android:text="@={vm.phone}"
                 android:drawableStart="@drawable/cellphone"
                 android:drawablePadding="10dp"
                 android:inputType="number"
@@ -79,6 +80,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入密码"
+                android:text="@={vm.password}"
                 android:inputType="textPassword"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/password"

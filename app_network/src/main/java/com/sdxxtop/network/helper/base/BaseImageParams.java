@@ -1,5 +1,6 @@
-package com.sdxxtop.network.helper;
+package com.sdxxtop.network.helper.base;
 
+import com.sdxxtop.network.helper.HttpConstantValue;
 import com.sdxxtop.network.utils.PictureUtil;
 
 import java.io.File;
@@ -31,10 +32,10 @@ import okhttp3.RequestBody;
  * @POST("main/img") Call<BaseModel> postMainImg(@PartMap HashMap<String, RequestBody> map);
  */
 
-public class ImageParams extends Params {
+public abstract class BaseImageParams extends BaseParams {
     private LinkedHashMap<String, RequestBody> imgMap;
 
-    public ImageParams() {
+    public BaseImageParams() {
         super();
         imgMap = new LinkedHashMap<>();
     }
@@ -83,7 +84,7 @@ public class ImageParams extends Params {
     /**
      * 图文上传的  文
      */
-    public void putData() {
+    private void putData() {
         imgMap.put("data", RequestBody.create(MediaType.parse("text/plain"), getData()));
     }
 

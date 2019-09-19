@@ -2,7 +2,7 @@ package com.sdxxtop.zjlguardian.ui
 
 import androidx.lifecycle.MediatorLiveData
 import com.sdxxtop.base.BaseViewModel
-import com.sdxxtop.network.helper.Params
+import com.sdxxtop.network.helper.DefaultParams
 import com.sdxxtop.zjlguardian.App
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.data.InitData
@@ -19,7 +19,7 @@ class MainViewModel : BaseViewModel() {
 
     fun loadData() {
         loadOnUI({
-            val param = Params()
+            val param = DefaultParams()
             param.put("ui", "50172")
             param.put("pi", "1")
             //这里实际上返回了结果
