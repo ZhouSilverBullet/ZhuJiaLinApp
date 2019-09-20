@@ -50,7 +50,16 @@ public class UserSession implements IUserData {
     }
 
     @Override
+    public void savePassword(String password) {
+        SpUtil.putString(HttpConstantValue.PASSWORD, password);
+        userInfo.password = password;
+    }
+
+    @Override
     public void removeAutoLoginInfo() {
+        userInfo.autoToken = "";
+        userInfo.expireTime = 0;
+
         SpUtil.putString(HttpConstantValue.AUTO_TOKEN, "");
         SpUtil.putInt(HttpConstantValue.EXPIRE_TIME, 0);
     }
@@ -115,6 +124,14 @@ public class UserSession implements IUserData {
         return userName;
     }
 
+    public String getPassword() {
+        String password = userInfo.password;
+        if (TextUtils.isEmpty(password)) {
+            return SpUtil.getString(HttpConstantValue.PASSWORD);
+        }
+        return password;
+    }
+
     private class UserInfo {
         String autoToken;
         int expireTime;
@@ -124,6 +141,8 @@ public class UserSession implements IUserData {
 
         String userName;
         String partName;
+
+        String password;
     }
 
 }

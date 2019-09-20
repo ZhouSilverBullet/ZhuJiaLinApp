@@ -27,6 +27,8 @@ public interface IUserData {
      */
     void saveMineInfo(String userName, String partName);
 
+    void savePassword(String password);
+
     /**
      * 删除自动登录信息
      */

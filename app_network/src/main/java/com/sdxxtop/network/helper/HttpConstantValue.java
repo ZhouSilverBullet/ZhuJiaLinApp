@@ -32,6 +32,8 @@ public interface HttpConstantValue {
     String PART_NAME = "part_name";
     String MOBILE = "mobile";
 
+    String PASSWORD = "password";
+
     String PLATFORM_ID = "1";
 
     /**

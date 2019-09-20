@@ -73,7 +73,8 @@ class LoginViewModel : BaseViewModel() {
                         it.user_info.id,
                         it.user_info.mobile, 0)
 
-                userSession.saveMineInfo(it.user_info.username,it.user_info.part_name)
+                userSession.saveMineInfo(it.user_info.username, it.user_info.part_name)
+                userSession.savePassword(password.get())
             }
 
             mSkipLogin.value = it.modpw

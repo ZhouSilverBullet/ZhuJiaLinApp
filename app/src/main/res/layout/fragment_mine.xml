@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="vm"
@@ -112,6 +115,8 @@
 
 
                 <Button
+                    android:id="@+id/btn_logout"
+                    android:onClick="@{click::onClick}"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:text="退出登录"

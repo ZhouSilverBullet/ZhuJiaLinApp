@@ -1,13 +1,17 @@
 package com.sdxxtop.zjlguardian.ui.mine.fragment
 
 
+import android.content.Intent
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.sdxxtop.base.BaseFragment
 import com.sdxxtop.base.BaseNormalFragment
 import com.sdxxtop.base.ext.topViewPadding
+import com.sdxxtop.common.dialog.IosAlertDialog
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentMineBinding
 import com.sdxxtop.zjlguardian.model.db.UserSession
+import com.sdxxtop.zjlguardian.ui.login.LoginActivity
 import com.sdxxtop.zjlguardian.ui.mine.viewmodel.MineViewModel
 
 /**
@@ -18,6 +22,7 @@ class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
 
     override fun bindVM() {
         mBinding.vm = mViewModel
+        mBinding.click = this
     }
 
     override fun layoutId() = R.layout.fragment_mine
@@ -41,4 +46,27 @@ class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
         mLoadService.showSuccess()
     }
 
+    override fun onClick(v: View) {
+        when (v) {
+            mBinding.btnLogout -> {
+                logout()
+            }
+            else -> {
+            }
+        }
+    }
+
+    private fun logout() {
+        IosAlertDialog(activity).builder()
+                .setTitle("提示")
+                .setMsg("确定退出本账号吗？")
+                .setNegativeButton("") {
+
+                }.setPositiveButton("退出") {
+                    UserSession.getInstance().logout()
+                    startActivity(Intent(activity, LoginActivity::class.java))
+                    activity?.finishAffinity()
+                }
+                .show()
+    }
 }

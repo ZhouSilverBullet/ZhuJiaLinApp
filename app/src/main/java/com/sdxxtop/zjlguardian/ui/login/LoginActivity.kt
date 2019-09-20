@@ -9,9 +9,11 @@ import com.sdxxtop.zjlguardian.App
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityLoginBinding
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
+import com.sdxxtop.zjlguardian.model.db.UserSession
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
 import com.sdxxtop.zjlguardian.ui.home.MainTabActivity
 import com.sdxxtop.zjlguardian.ui.login.data.ForgetInfo
+import com.sdxxtop.zjlguardian.ui.login.data.UserInfo
 import com.sdxxtop.zjlguardian.ui.login.viewmodel.LoginViewModel
 import es.dmoral.toasty.Toasty
 
@@ -40,7 +42,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     override fun initView() {
-
+        mViewModel.phone.set(UserSession.getInstance().mobile)
+        mViewModel.password.set(UserSession.getInstance().password)
     }
 
     override fun isDarkStatusIcon(): Boolean {
