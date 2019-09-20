@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import com.sdxxtop.base.BaseFragment
+import com.sdxxtop.base.BaseViewModel
 import com.sdxxtop.base.R
 import com.sdxxtop.base.databinding.FragmentBaseTitleBinding
 import com.sdxxtop.ui.TitleView
@@ -18,7 +19,7 @@ import com.sdxxtop.ui.TitleView
  * Version: 1.0
  * Description:
  */
-abstract class BaseTitleFragment<DB : ViewDataBinding, VM : ViewModel> : BaseFragment<DB, VM>(), ITitleView {
+abstract class BaseTitleFragment<DB : ViewDataBinding, VM : BaseViewModel> : BaseFragment<DB, VM>(), ITitleView {
     companion object {
         const val TAG = "BaseTitleFragment"
     }

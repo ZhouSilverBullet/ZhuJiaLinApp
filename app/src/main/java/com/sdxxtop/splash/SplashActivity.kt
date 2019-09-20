@@ -4,14 +4,20 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.WindowManager
-import com.sdxxtop.zjlguardian.ui.MainActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.sdxxtop.splash.viewmodel.AutoLoginViewModel
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.ui.home.MainTabActivity
 import com.sdxxtop.zjlguardian.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
+
+    val mViewModel: AutoLoginViewModel by lazy {
+        ViewModelProviders.of(this@SplashActivity)[AutoLoginViewModel::class.java]
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +34,16 @@ class SplashActivity : AppCompatActivity() {
             window.attributes = lp
         }
 
-        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-//        Handler().postDelayed({
-//            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-//        }, 1000)
+        mViewModel.mAutoLoginSucc.observe(this, Observer {
+            if (it) {
+                startActivity(Intent(this@SplashActivity, MainTabActivity::class.java))
+            } else {
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            }
+        })
+
+        mViewModel.postAutoLogin()
+
     }
 
     override fun onStop() {

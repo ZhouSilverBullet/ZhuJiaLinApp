@@ -24,8 +24,20 @@ interface ApiService {
     suspend fun postAppInit(@Field("data") data: String): BaseResponse<InitData>
 
     @FormUrlEncoded
+    @POST("login/auto")
+    suspend fun postLoginAuto(@Field("data") data: String): BaseResponse<NormalLogin>
+
+    @FormUrlEncoded
     @POST("login/normal")
     suspend fun postLoginNormal(@Field("data") data: String): BaseResponse<NormalLogin>
+
+    @FormUrlEncoded
+    @POST("login/sendCode")
+    suspend fun postLoginSendCode(@Field("data") data: String): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("login/modpw")
+    suspend fun postLoginModpw(@Field("data") data: String): BaseResponse<Any>
 
 
 }

@@ -1,5 +1,10 @@
 package com.sdxxtop.zjlguardian.ui.login.data
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
+
 /**
  * Email: zhousaito@163.com
  * Created by zhousaito 2019-09-19 14:17
@@ -28,3 +33,8 @@ data class UserInfo(
     val status: Int,
     val username: String
 )
+
+@SuppressLint("ParcelCreator")
+@Parcelize
+class ForgetInfo(var phone:String,
+                 var password:String?): Parcelable

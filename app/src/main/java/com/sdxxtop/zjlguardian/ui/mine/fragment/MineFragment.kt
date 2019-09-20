@@ -2,25 +2,43 @@ package com.sdxxtop.zjlguardian.ui.mine.fragment
 
 
 import androidx.fragment.app.Fragment
+import com.sdxxtop.base.BaseFragment
 import com.sdxxtop.base.BaseNormalFragment
 import com.sdxxtop.base.ext.topViewPadding
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentMineBinding
+import com.sdxxtop.zjlguardian.model.db.UserSession
+import com.sdxxtop.zjlguardian.ui.mine.viewmodel.MineViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class MineFragment : BaseNormalFragment<FragmentMineBinding>() {
+class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
+    override fun vmClazz() = MineViewModel::class.java
+
+    override fun bindVM() {
+        mBinding.vm = mViewModel
+    }
+
     override fun layoutId() = R.layout.fragment_mine
+
+    override fun initObserve() {
+
+    }
 
     override fun initView() {
         topViewPadding(mBinding.stvTitle)
     }
 
     override fun initData() {
+
+        mViewModel.partName.set(UserSession.getInstance().partName)
+        mViewModel.phone.set(UserSession.getInstance().mobile)
+        mViewModel.userName.set(UserSession.getInstance().userName)
     }
 
     override fun loadData() {
+        mLoadService.showSuccess()
     }
 
 }

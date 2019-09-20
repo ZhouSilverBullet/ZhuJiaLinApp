@@ -6,10 +6,12 @@ import android.view.View
 import android.view.Window
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.sdxxtop.base.lifecycle.ActivityLifecycleImpl
 import com.sdxxtop.base.navigationstatus.INavigationColorStatus
+import com.sdxxtop.common.dialog.LoadingDialog
 import me.yokeyword.fragmentation.SupportActivity
 
 /**
@@ -18,7 +20,7 @@ import me.yokeyword.fragmentation.SupportActivity
  * Version: 1.0
  * Description:
  */
-abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActivity(), IVMView<VM>, INavigationColorStatus, View.OnClickListener {
+abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportActivity(), IVMView<VM>, INavigationColorStatus, View.OnClickListener {
     companion object {
         const val TAG = "BaseActivity"
     }
@@ -34,6 +36,10 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActiv
 //        ViewModelProviders.of(this@BaseActivity)[getVmClass()]
     }
 
+    val mLoadingDialog by lazy {
+        LoadingDialog(this)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +53,21 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : SupportActiv
         setDarkStatusIcon(window, isDarkStatusIcon())
 
         initView()
+        initSelfObserve()
         initObserve()
         initEvent()
         initData()
         loadData()
+    }
+
+    private fun initSelfObserve() {
+        mViewModel.mIsLoadingShow.observe(this, Observer {
+            if (it) {
+                mLoadingDialog.show()
+            } else {
+                mLoadingDialog.dismiss()
+            }
+        })
     }
 
     override fun initEvent() {

@@ -22,12 +22,14 @@ public interface HttpConstantValue {
 
     String COMPANY_ID = "company_id";
     String USER_ID = "user_id";
+    String USER_NAME = "user_name";
     String DEVICE_NAME = "device_name";
     String DEVICE_NO = "device_no";
 
     String AUTO_TOKEN = "auto_token";
     String EXPIRE_TIME = "expire_time";
     String PART_ID = "part_id";
+    String PART_NAME = "part_name";
     String MOBILE = "mobile";
 
     String PLATFORM_ID = "1";

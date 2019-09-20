@@ -58,8 +58,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入手机号"
+                android:text="@={vm.phone}"
                 android:drawableStart="@drawable/cellphone"
                 android:drawablePadding="10dp"
+                android:maxLength="11"
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -80,7 +82,9 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="请输入6位验证码"
+                    android:hint="请输入4位验证码"
+                    android:text="@={vm.code}"
+                    android:maxLength="6"
                     android:drawableStart="@drawable/messge_code"
                     android:drawablePadding="10dp"
                     android:inputType="number"
@@ -91,6 +95,7 @@
 
 
             <Button
+                android:id="@+id/btn_code"
                 style="@style/app_button_style_30"
                 android:textSize="12sp"
                 android:layout_marginTop="10dp"
@@ -115,6 +120,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="请输入新密码"
+                android:text="@={vm.password}"
                 android:inputType="textPassword"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/password"
@@ -139,6 +145,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="请再次输入新密码"
+                    android:text="@={vm.confirmPassword}"
                     android:inputType="textPassword"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/password"
@@ -160,6 +167,8 @@
 
 
         <Button
+            android:id="@+id/btn_push"
+            android:onClick="@{vm::onForgetPush}"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:text="提交"

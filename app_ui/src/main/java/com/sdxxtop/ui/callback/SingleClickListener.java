@@ -29,12 +29,14 @@ public abstract class SingleClickListener implements View.OnClickListener {
             mLastClickTime = nowTime;
         }
 
-//        else {
-//            // 快速点击事件
-//            onFastClick();
-//        }
+        else {
+            // 快速点击事件
+            onFastClick();
+        }
     }
 
     protected abstract void onSingleClick(View v);
-//    protected abstract void onFastClick();
+    protected void onFastClick() {
+
+    }
 }

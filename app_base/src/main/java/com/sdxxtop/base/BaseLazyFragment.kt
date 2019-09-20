@@ -21,7 +21,7 @@ import me.yokeyword.fragmentation.SupportFragment
  * 剩下的再次来到的时候，要用户手动加载
  *
  */
-abstract class BaseLazyFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM> {
+abstract class BaseLazyFragment<DB : ViewDataBinding, VM : BaseViewModel> : SupportFragment(), IVMView<VM> {
     companion object {
         const val TAG = "BaseFragment"
     }

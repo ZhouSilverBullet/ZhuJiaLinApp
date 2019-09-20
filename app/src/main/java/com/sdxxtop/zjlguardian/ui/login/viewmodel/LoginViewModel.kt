@@ -2,10 +2,13 @@ package com.sdxxtop.zjlguardian.ui.login.viewmodel
 
 import android.view.View
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.base.BaseViewModel
-import com.sdxxtop.network.helper.DefaultParams
+import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.App
+import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
+import com.sdxxtop.zjlguardian.model.db.UserSession
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
 import com.sdxxtop.zjlguardian.ui.home.MainTabActivity
 import com.sdxxtop.zjlguardian.ui.login.ForgetActivity
@@ -18,33 +21,68 @@ import es.dmoral.toasty.Toasty
  * Description:
  */
 class LoginViewModel : BaseViewModel() {
+
+    val mSkipLogin = MutableLiveData<Boolean>()
+
     val phone = ObservableField<String>()
     val password = ObservableField<String>()
 
-    fun onForgetPassword(v: View) {
-        startActivity(v.context, ForgetActivity::class.java)
-    }
+//    fun onForgetPassword(v: View) {
+//        startActivity(v.context, ForgetActivity::class.java)
+//    }
 
     fun onLoginClick(v: View) {
+        showLoadingDialog(true)
+        val phoneText = phone.get()
+        if (phoneText?.length != 11) {
+            showLoadingDialog(false)
+            UIUtils.showToast("请输入正确的手机号码")
+            return
+        }
 
-        login()
+        val passwordText = password.get()
+        if (passwordText == null || passwordText.length < 6 || passwordText.length > 20) {
+            showLoadingDialog(false)
+            UIUtils.showToast(App.INSTANCE.getString(R.string.password_format))
+            return
+        }
+
+
+        login(v, phoneText, passwordText)
 
 
 //        startActivity(v.context, MainTabActivity::class.java)
     }
 
-    private fun login() {
+    private fun login(v: View, phoneText: String, passwordText: String) {
         loadOnUI({
             val params = HttpParams()
-            params.put("mb", phone.get())
-            params.put("pw", password.get())
+            params.put("mb", phoneText)
+            params.put("pw", passwordText)
             //这里实际上返回了结果
             RetrofitClient.apiService.postLoginNormal(params.data)
         }, {
-            //            Logger.e(it.toString())
-//            mInitData.value = it
+
+            //这个结果如果是true的话就要进行密码修改
+            //否则就登录成功了
+            if (!it.modpw) {
+                val userSession = UserSession.getInstance()
+                userSession.saveInfo(it.auto_info.auto_token,
+                        it.auto_info.expire_time,
+                        it.user_info.part_id,
+                        it.user_info.id,
+                        it.user_info.mobile, 0)
+
+                userSession.saveMineInfo(it.user_info.username,it.user_info.part_name)
+            }
+
+            mSkipLogin.value = it.modpw
+
+            showLoadingDialog(false)
         }, { code, msg, t ->
-            Toasty.error(App.INSTANCE, msg).show()
+
+            UIUtils.showToast(msg)
+            showLoadingDialog(false)
         })
     }
 }

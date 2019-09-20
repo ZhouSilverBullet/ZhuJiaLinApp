@@ -76,6 +76,11 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
+
+    //使用Kotlin实验特性
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -117,7 +122,7 @@ dependencies {
     implementation project(path: ':app_crash')
     implementation project(path: ':app_tracker')
     implementation project(path: ':sdk_amap')
-    implementation project(path: ':sdk_baiduface')
+//    implementation project(path: ':sdk_baiduface')
     implementation project(path: ':sdk_alipush')
 
     //splash直接依赖上

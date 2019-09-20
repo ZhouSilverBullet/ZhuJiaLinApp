@@ -34,21 +34,25 @@
                 android:layout_height="match_parent"
                 tools:context=".ui.home.fragment.TestFragment">
 
+
                 <com.sdxxtop.ui.TextContentView
                     app:tcv_text_view="手机号："
-                    app:tcv_content_text="18212341963"
+                    app:contentText="@{vm.phone}"
+                    tools:tcv_content_text="18212341963"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextContentView
                     app:tcv_text_view="姓\t\t\t名："
-                    app:tcv_content_text="王凯"
+                    app:contentText="@{vm.userName}"
+                    tools:tcv_content_text="王凯"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextContentView
                     app:tcv_text_view="所属单位："
-                    app:tcv_content_text="扶贫办"
+                    app:contentText="@{vm.partName}"
+                    tools:tcv_content_text="扶贫办"
                     app:tcv_line_is_show="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

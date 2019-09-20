@@ -19,7 +19,7 @@ import me.yokeyword.fragmentation.SupportFragment
  * Version: 1.0
  * Description:
  */
-abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : SupportFragment(), IVMView<VM>, IPreLoad, View.OnClickListener {
+abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : SupportFragment(), IVMView<VM>, IPreLoad, View.OnClickListener {
     companion object {
         const val TAG = "BaseFragment"
     }

@@ -3,6 +3,7 @@ package com.sdxxtop.base
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +20,7 @@ import java.lang.Exception
  * Description:
  */
 abstract class BaseViewModel : ViewModel() {
+    val mIsLoadingShow = MutableLiveData(false)
     val mThrowable = MutableLiveData<Throwable>()
     //抽取了LoadData
     private val loadData: ILoadData = LoadDataImpl(BaseApplication.INSTANCE, viewModelScope)
@@ -82,5 +84,9 @@ abstract class BaseViewModel : ViewModel() {
 
         }
         return false
+    }
+
+    fun showLoadingDialog(isShow: Boolean) {
+        mIsLoadingShow.value = isShow
     }
 }

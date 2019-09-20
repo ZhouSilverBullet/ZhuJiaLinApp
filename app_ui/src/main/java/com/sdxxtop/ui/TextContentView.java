@@ -6,16 +6,26 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
+import androidx.databinding.InverseBindingMethod;
+import androidx.databinding.InverseBindingMethods;
 
 /**
  * Created by Administrator on 2018/5/15.
  */
-
+//@InverseBindingMethods({
+//        @InverseBindingMethod(
+//                type = TextContentView.class,
+//                attribute = "tcv_content_text",
+//                event = "checkedValueAttrChanged",
+//                method = "getTvContentText")
+//})
 public class TextContentView extends LinearLayout {
 
     private String contentViewHintValue;
@@ -87,5 +97,20 @@ public class TextContentView extends LinearLayout {
 
     public void setShowLine(boolean isShow) {
         editLine.setVisibility(isShow ? VISIBLE : GONE);
+    }
+
+    public void setTvContentText(String tvContentText) {
+        tvContent.setText(tvContentText);
+    }
+
+    private String tvContentText;
+
+    public String getTvContentText() {
+        return tvContentText;
+    }
+
+    @BindingAdapter(value = "contentText", requireAll = false)
+    public static void setTcvContentText(TextContentView view, String value) {
+       view.setTvContentText(value);
     }
 }
