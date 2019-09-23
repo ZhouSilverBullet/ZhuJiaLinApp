@@ -126,6 +126,8 @@ dependencies {
 //    implementation project(path: ':sdk_baiduface')
     implementation project(path: ':sdk_alipush')
 
+    implementation 'com.github.huangyanbin:SmartTable:2.2.0'
+
     //splash直接依赖上
 //    implementation project(path: ':splash')
 

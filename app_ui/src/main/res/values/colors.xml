@@ -55,6 +55,7 @@
     <color name="color_FF0CBEB5">#0CBEB5</color>
     <color name="color_FF1ED8AF">#1ED8AF</color>
     <color name="color_EBEBEB">#EBEBEB</color>
+    <color name="color_880CBEB5">#880CBEB5</color>
 
     <array name="tab_colors">
         <item>#34B26D</item>

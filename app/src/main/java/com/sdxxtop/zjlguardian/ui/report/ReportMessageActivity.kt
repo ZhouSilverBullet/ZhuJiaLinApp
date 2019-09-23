@@ -34,6 +34,7 @@ class ReportMessageActivity : BaseActivity<ActivityReportMessageBinding, ReportM
         fragmentList.add(ReportMessageDataFragment())
 
         mBinding.vp.adapter = ReportPagerAdapter(supportFragmentManager, titleList, fragmentList)
+        mBinding.vp.setPagingEnabled(false)
         mBinding.tab.setupWithViewPager(mBinding.vp)
     }
 
