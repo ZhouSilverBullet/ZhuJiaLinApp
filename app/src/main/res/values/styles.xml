@@ -10,6 +10,9 @@
         <item name="buttonStyle">@style/app_button_style</item>
         <item name="android:textViewStyle">@style/app_text_style</item>
         <item name="editTextStyle">@style/app_edit_style</item>
+        <item name="android:checkboxStyle">@style/app_check_box</item>
+
+        <item name="android:windowBackground">@color/color_EFEFF4</item>
     </style>
 
     <style name="AppWhiteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -58,6 +61,10 @@
         <item name="android:textColorHint">@color/color_666666</item>
         <item name="colorControlNormal">@color/color_CCCCCC</item>
         <item name="colorControlActivated">@color/main_color</item>
+    </style>
+
+    <style name="app_check_box" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/radiobtn_checked_style</item>
     </style>
 
 
