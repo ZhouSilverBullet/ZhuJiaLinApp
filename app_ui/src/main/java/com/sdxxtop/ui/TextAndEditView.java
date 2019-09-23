@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 
 /**
  * Created by Administrator on 2018/5/15.
@@ -74,5 +75,10 @@ public class TextAndEditView extends LinearLayout {
 
     public void setShowLine(boolean isShow) {
         editLine.setVisibility(isShow ? VISIBLE : GONE);
+    }
+
+    @BindingAdapter(value = "editContentText", requireAll = false)
+    public static void setTextEditContentText(TextAndEditView view, String value) {
+        view.getEditText().setText(value);
     }
 }

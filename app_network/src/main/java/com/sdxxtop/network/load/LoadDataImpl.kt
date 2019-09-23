@@ -1,6 +1,8 @@
 package com.sdxxtop.network.load
 
 import android.content.Context
+import android.util.Log
+import com.sdxxtop.common.utils.LogUtil
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.network.utils.NetworkUtils
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +32,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                 }
             } catch (e: Exception) {
                 catchBack(e)
+                LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
             }
@@ -52,6 +55,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                 }
             } catch (e: Exception) {
                 failBlock(-101, NetworkUtils.getHttpExceptionMsg(e), e)
+                LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
             }
@@ -89,6 +93,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                 }
             } catch (e: Exception) {
                 failBlock(-101, NetworkUtils.getHttpExceptionMsg(e), e)
+                LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
             }

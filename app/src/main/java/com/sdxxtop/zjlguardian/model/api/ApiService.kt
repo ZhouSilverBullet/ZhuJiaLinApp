@@ -2,10 +2,10 @@ package com.sdxxtop.zjlguardian.model.api
 
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.zjlguardian.model.data.InitData
+import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 /**
  * Email: zhousaito@163.com
@@ -40,4 +40,11 @@ interface ApiService {
     suspend fun postLoginModpw(@Field("data") data: String): BaseResponse<Any>
 
 
+    @Multipart
+    @POST("event/add")
+    suspend fun postEventAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("event/cat")
+    suspend fun postEventCat(@Field("data") data: String): BaseResponse<CatDataList>
 }

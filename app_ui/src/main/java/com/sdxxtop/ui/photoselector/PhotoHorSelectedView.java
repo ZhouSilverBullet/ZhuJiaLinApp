@@ -33,7 +33,7 @@ public class PhotoHorSelectedView extends RelativeLayout implements PhotoHorRecy
     private RecyclerView mRecycleView;
     private PhotoHorRecyclerAdapter mAdapter;
 
-    private static final int DEFAULT_MAX_COUNT = 10;
+    private static final int DEFAULT_MAX_COUNT = 5;
 
     private List<LocalMedia> localMediaList = new ArrayList<>();
 

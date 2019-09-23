@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
+import androidx.databinding.BindingAdapter;
 
 import com.sdxxtop.common.utils.UIUtils;
 
@@ -159,5 +160,14 @@ public class NumberEditTextView extends RelativeLayout implements TextWatcher {
 
     public String getEditValue() {
         return etContent.getText().toString().trim();
+    }
+
+    public EditText getEtContent() {
+        return etContent;
+    }
+
+    @BindingAdapter(value = "numEditText", requireAll = false)
+    public static void setTextNumEditText(NumberEditTextView view, String value) {
+        view.getEtContent().setText(value);
     }
 }

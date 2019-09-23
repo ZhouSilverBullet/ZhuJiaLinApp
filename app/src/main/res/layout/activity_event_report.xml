@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <variable
             name="vm"
             type="com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportViewModel" />
     </data>
@@ -45,25 +49,36 @@
                 <com.sdxxtop.ui.TextAndEditView
                     app:taev_text_view="事件标题："
                     app:taev_edit_text_hint="请输入你的标题"
+                    app:editContentText="@{vm.mEventTitle}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_classify"
                     app:tcv_text_view="事件分类："
                     app:tcv_content_text="治安"
+                    android:onClick="onClick"
+                    app:contentText="@{vm.mClassifyStr}"
                     app:tcv_text_img_is_show="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.sdxxtop.ui.TextAndEditView
-                    app:taev_text_view="发生地点："
+                <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_place"
+                    app:tcv_text_view="发生地点："
+                    android:onClick="onClick"
+                    app:tcv_text_img_is_show="true"
                     app:taev_edit_text_hint="请输入地点"
+                    app:contentText="@{vm.mEventPlace}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_date"
                     app:tcv_text_view="期望解决日期："
+                    android:onClick="onClick"
                     app:tcv_content_hint_text="年-月-日"
+                    app:contentText="@{vm.mEventDate}"
                     app:tcv_text_img_is_show="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -86,6 +101,7 @@
 
                     <com.sdxxtop.ui.NumberEditTextView
                         android:id="@+id/net_content"
+                        app:numEditText="@{vm.mDec}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -111,13 +127,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(最多上传照片9张)"
+                        android:text="(最多上传照片5张)"
                         android:textSize="11sp" />
                 </LinearLayout>
 
                 <com.sdxxtop.ui.photoselector.PhotoHorSelectedView
-                    android:layout_marginBottom="40dp"
                     android:id="@+id/phsv"
+                    android:layout_marginBottom="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -133,6 +149,7 @@
 
         <Button
             android:id="@+id/btn_push"
+            android:onClick="@{click::onClick}"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"

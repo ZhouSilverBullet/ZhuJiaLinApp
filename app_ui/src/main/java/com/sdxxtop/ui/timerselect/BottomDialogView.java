@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.sdxxtop.ui.R;
 
@@ -31,6 +32,9 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
     private View loadProgress;
     private Calendar mCurrentCalendar;
 
+    private boolean isYearMouthDay;
+    private LinearLayout timepickerLayout;
+
     //这里的view其实可以替换直接传layout过来的 因为各种原因没传(lan)
     public BottomDialogView(Context context, onConfirmClick listener) {
         super(context, R.style.MyDialogStyleBottom);
@@ -41,6 +45,15 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
     public BottomDialogView(Context context) {
         super(context, R.style.MyDialogStyleBottom);
         this.context = context;
+    }
+
+    /**
+     * 设置只选年月日
+     *
+     * @param yearMouthDay
+     */
+    public void setYearMouthDay(boolean yearMouthDay) {
+        isYearMouthDay = yearMouthDay;
     }
 
     public void setCurrentDate(Calendar calendar) {
@@ -79,15 +92,23 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
         minuteWheel = (WheelView) findViewById(R.id.minute_wheel);
         lineWheel = (WheelView) findViewById(R.id.line_wheel);
         loadProgress = findViewById(R.id.load_progress);
+        timepickerLayout = findViewById(R.id.timepicker);
         lineAdapter = new LineAdapter();
         selectTimeAdapter.setLoadDataFinishListener(new SelectTimeAdapter.LoadDataFinishListener() {
             @Override
             public void onLoadFinish() {
                 if (timeWheel != null) {
                     timeWheel.setAdapter(selectTimeAdapter);
-                    hourWheel.setAdapter(hourAdapter);
-                    minuteWheel.setAdapter(minuteAdapter);
-                    lineWheel.setAdapter(lineAdapter);
+                    if (isYearMouthDay) {
+                        timepickerLayout.setWeightSum(2f);
+                        hourWheel.setVisibility(View.GONE);
+                        minuteWheel.setVisibility(View.GONE);
+                        lineWheel.setVisibility(View.GONE);
+                    } else {
+                        hourWheel.setAdapter(hourAdapter);
+                        minuteWheel.setAdapter(minuteAdapter);
+                        lineWheel.setAdapter(lineAdapter);
+                    }
                     timeWheel.requestLayout();
 
                     loadProgress.setVisibility(View.GONE);
@@ -144,10 +165,17 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
             Log.e("时间==", "" + item + "指针==" + currentitem);
             Log.e("时间==", "" + item1 + "指针==" + currentItem2);
             Log.e("时间==", "" + item2 + "指针==" + currentItem3);
-            String allTime = item + " " + item1 + ":" + item2;
+            String allTime;
+            if (isYearMouthDay) {
+                allTime = item;
+            } else {
+                allTime = item + " " + item1 + ":" + item2;
+            }
+
             if (mListener != null) {
                 mListener.onClick(allTime);
             }
+
             this.dismiss();
         }
     }
