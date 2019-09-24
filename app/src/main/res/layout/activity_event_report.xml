@@ -49,7 +49,7 @@
                 <com.sdxxtop.ui.TextAndEditView
                     app:taev_text_view="事件标题："
                     app:taev_edit_text_hint="请输入你的标题"
-                    app:editContentText="@{vm.mEventTitle}"
+                    app:editContentText="@={vm.mEventTitle}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -58,7 +58,7 @@
                     app:tcv_text_view="事件分类："
                     app:tcv_content_text="治安"
                     android:onClick="onClick"
-                    app:contentText="@{vm.mClassifyStr}"
+                    app:contentText="@={vm.mClassifyStr}"
                     app:tcv_text_img_is_show="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -69,7 +69,7 @@
                     android:onClick="onClick"
                     app:tcv_text_img_is_show="true"
                     app:taev_edit_text_hint="请输入地点"
-                    app:contentText="@{vm.mEventPlace}"
+                    app:contentText="@={vm.mEventPlace}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -78,7 +78,7 @@
                     app:tcv_text_view="期望解决日期："
                     android:onClick="onClick"
                     app:tcv_content_hint_text="年-月-日"
-                    app:contentText="@{vm.mEventDate}"
+                    app:contentText="@={vm.mEventDate}"
                     app:tcv_text_img_is_show="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -101,7 +101,7 @@
 
                     <com.sdxxtop.ui.NumberEditTextView
                         android:id="@+id/net_content"
-                        app:numEditText="@{vm.mDec}"
+                        app:numEditText="@={vm.mDec}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"

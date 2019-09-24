@@ -2,7 +2,9 @@ package com.sdxxtop.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,8 @@ import androidx.databinding.InverseBindingAdapter;
 import androidx.databinding.InverseBindingListener;
 import androidx.databinding.InverseBindingMethod;
 import androidx.databinding.InverseBindingMethods;
+
+import com.sdxxtop.common.utils.UIUtils;
 
 /**
  * Created by Administrator on 2018/5/15.
@@ -109,8 +113,71 @@ public class TextContentView extends LinearLayout {
         return tvContentText;
     }
 
+    public TextView getTvContent() {
+        return tvContent;
+    }
+
+    //    @BindingAdapter(value = "contentText", requireAll = false)
+//    public static void setTcvContentText(TextContentView view, String value) {
+//       view.setTvContentText(value);
+//    }
+
     @BindingAdapter(value = "contentText", requireAll = false)
-    public static void setTcvContentText(TextContentView view, String value) {
-       view.setTvContentText(value);
+    public static void setTcvContentText(TextContentView view, String text) {
+
+        final CharSequence oldText =  view.getTvContent().getText();
+        if (text == oldText || (text == null && oldText.length() == 0)) {
+            return;
+        }
+        if (!haveContentsChanged(text, oldText)) {
+            return; // No content changes, so don't set anything.
+        }
+        view.setTvContentText(text);
+
+    }
+
+    @InverseBindingAdapter(attribute = "contentText", event = "contentTextAttrChanged")
+    public static String setEditContentText(TextContentView view) {
+        return view.getTvContent().getText().toString();
+    }
+
+    @BindingAdapter(value = "contentTextAttrChanged")
+    public static void setChangeListener(TextContentView view, InverseBindingListener listener) {
+        view.getTvContent().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (listener != null) {
+                    listener.onChange();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private static boolean haveContentsChanged(CharSequence str1, CharSequence str2) {
+        if ((str1 == null) != (str2 == null)) {
+            return true;
+        } else if (str1 == null) {
+            return false;
+        }
+        final int length = str1.length();
+        if (length != str2.length()) {
+            return true;
+        }
+        for (int i = 0; i < length; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

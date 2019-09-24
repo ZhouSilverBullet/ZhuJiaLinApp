@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
 
 import com.sdxxtop.common.utils.UIUtils;
 
@@ -167,7 +169,61 @@ public class NumberEditTextView extends RelativeLayout implements TextWatcher {
     }
 
     @BindingAdapter(value = "numEditText", requireAll = false)
-    public static void setTextNumEditText(NumberEditTextView view, String value) {
-        view.getEtContent().setText(value);
+    public static void setTextNumEditText(NumberEditTextView view, String text) {
+
+        final CharSequence oldText =  view.getEtContent().getText();
+        if (text == oldText || (text == null && oldText.length() == 0)) {
+            return;
+        }
+        if (!haveContentsChanged(text, oldText)) {
+            return; // No content changes, so don't set anything.
+        }
+        view.getEtContent().setText(text);
+
+    }
+
+    @InverseBindingAdapter(attribute = "numEditText", event = "numEditTextAttrChanged")
+    public static String setEditContentText(NumberEditTextView view) {
+        return view.getEtContent().getText().toString();
+    }
+
+    @BindingAdapter(value = "numEditTextAttrChanged")
+    public static void setChangeListener(NumberEditTextView view, InverseBindingListener listener) {
+        view.getEtContent().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (listener != null) {
+                    listener.onChange();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private static boolean haveContentsChanged(CharSequence str1, CharSequence str2) {
+        if ((str1 == null) != (str2 == null)) {
+            return true;
+        } else if (str1 == null) {
+            return false;
+        }
+        final int length = str1.length();
+        if (length != str2.length()) {
+            return true;
+        }
+        for (int i = 0; i < length; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
