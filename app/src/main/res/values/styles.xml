@@ -50,9 +50,16 @@
         <item name="android:background">@drawable/abc_btn_colored_material_30</item>
     </style>
 
+    <!--   这个是普通是color_333333 点击 primary_color_press  -->
     <style name="app_text_style" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/tv_color</item>
+    </style>
+
+    <!--   这个是普通是primary_color 点击 primary_color_press  -->
+    <style name="app_text_style2" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/tv_primary_color</item>
     </style>
 
     <style name="app_edit_style" parent="Widget.AppCompat.EditText">
@@ -77,4 +84,11 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/actionsheet_red</item>
     </style>
+
+
+    <style name="picker_dialog" parent="dialog_style">
+        <item name="android:textViewStyle">@style/app_text_style2</item>
+    </style>
+
+
 </resources>

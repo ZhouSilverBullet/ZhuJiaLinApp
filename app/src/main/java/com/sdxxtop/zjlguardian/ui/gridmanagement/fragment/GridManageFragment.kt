@@ -3,23 +3,19 @@ package com.sdxxtop.zjlguardian.ui.gridmanagement.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kingja.loadsir.core.LoadSir
 import com.sdxxtop.base.BaseFragment
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.ui.autotext.AutoTextViewManager
 import com.sdxxtop.ui.autotext.IAutoValue
-import com.sdxxtop.ui.loadsir.ErrorCallback
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentGridManageBinding
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportActivity
-import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportViewModel
 import com.sdxxtop.zjlguardian.ui.gridmanagement.adapter.GridManageAdapter
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GridManagerData
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_CELL
@@ -144,10 +140,74 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
     }
 
+//    val peoplePickerView by lazy {
+//        val departmentData = ArrayList<DepartmentData>()
+//        var dData = DepartmentData()
+//        dData.setLabel("部门A")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门B")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门C")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门D")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门E")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//
+//
+//        val peopleData = ArrayList<PeopleData>()
+//        var pData = PeopleData()
+//        pData.setLabel("用户1")
+//        peopleData.add(pData)
+//
+//        pData = PeopleData()
+//        pData.setLabel("用户2")
+//        peopleData.add(pData)
+//        pData = PeopleData()
+//        pData.setLabel("用户3")
+//        peopleData.add(pData)
+//        pData = PeopleData()
+//        pData.setLabel("用户4")
+//        peopleData.add(pData)
+//        pData = PeopleData()
+//        pData.setLabel("用户5")
+//        peopleData.add(pData)
+//        for (i in departmentData.indices) {
+//            departmentData.get(i).setPeopleDataList(ArrayList(peopleData))
+//        }
+//
+//        dData = DepartmentData()
+//        dData.setLabel("部门F")
+//        departmentData.add(dData)
+//
+//        val p = PeoplePickerView(activity!!, departmentData)
+//        p
+//    }
+
     override fun onClick(v: View) {
         when (v) {
             mBinding.btnReport -> {
                 startActivity(Intent(activity, EventReportActivity::class.java))
+//                peoplePickerView.show()
             }
             mBinding.btnSelfHandle -> {
                 startActivity(Intent(activity, SelfHandleActivity::class.java))

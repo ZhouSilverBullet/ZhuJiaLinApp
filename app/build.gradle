@@ -127,6 +127,7 @@ dependencies {
     implementation project(path: ':sdk_alipush')
 
     implementation 'com.github.huangyanbin:SmartTable:2.2.0'
+    implementation 'com.github.Blincheng:AddressSelector:v1.0.4'
 
     //splash直接依赖上
 //    implementation project(path: ':splash')
