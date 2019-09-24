@@ -30,11 +30,17 @@ class EventReportActivity : BaseActivity<ActivityEventReportBinding, EventReport
         mViewModel.mCatClassifyData.observe(this, Observer {
             catList.addAll(it)
         })
+
+        mViewModel.mPushSuccessData.observe(this, Observer {
+            val intent = Intent(this@EventReportActivity, EventReportDetailActivity::class.java)
+            intent.putExtra("eventId", it.toInt())
+            startActivity(intent)
+        })
     }
 
     override fun initView() {
         mBinding.stvTitle.tvRight.setOnClickListener {
-
+            startActivity(Intent(this@EventReportActivity, EventReportListActivity::class.java))
         }
     }
 
@@ -62,6 +68,7 @@ class EventReportActivity : BaseActivity<ActivityEventReportBinding, EventReport
     }
 
     override fun onClick(v: View) {
+        UIUtils.hideInput(v)
         when (v) {
             mBinding.btnPush -> {
                 mViewModel.pushData(mBinding.phsv.imagePushPath)

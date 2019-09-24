@@ -2,6 +2,7 @@ ext.mainApp = true //标记为主app module
 apply from: rootProject.file('cc-settings-2.gradle')
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -81,6 +82,11 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    kapt {  // kapt 配置
+        generateStubs = true
+    }
+
 }
 
 dependencies {
@@ -92,6 +98,8 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.material"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+    kapt 'com.android.databinding:compiler:3.1.4'
+
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.BaseRecyclerViewAdapterHelper"
 
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.SmartRefreshLayout"

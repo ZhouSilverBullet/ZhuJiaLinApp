@@ -89,6 +89,7 @@ public class TitleView extends RelativeLayout {
             linearBack.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    UIUtils.hideInput(v);
                     if (getContext() instanceof Activity) {
                         ((Activity) getContext()).finish();
                     }

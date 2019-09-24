@@ -97,7 +97,7 @@
                         android:layout_marginRight="15dp"
                         android:text="事件简要描述"
                         android:textColor="@color/color_303030"
-                        android:textSize="17sp" />
+                        android:textSize="@dimen/sp_14" />
 
                     <com.sdxxtop.ui.NumberEditTextView
                         android:id="@+id/net_content"

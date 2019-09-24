@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.event_report.EventReportDetailActivity">
+
+        <com.sdxxtop.ui.TitleView
+            android:id="@+id/stv_title"
+            app:titleValue="事件详情"
+            app:titleColor="@color/white"
+            app:bgColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftLayoutIsShow="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_title"
+                    app:tcv_text_view="事件标题："
+                    tools:tcv_content_text="垃圾桶损坏"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_classify"
+                    app:tcv_text_view="事件分类："
+                    tools:tcv_content_text="治安"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_place"
+                    app:tcv_text_view="发生地点："
+                    tools:tcv_content_text="治安"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.sdxxtop.ui.TextContentView
+                    android:id="@+id/tcv_date"
+                    app:tcv_text_view="期望解决日期："
+                    tools:tcv_content_text="2019-22-22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/ll_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:text="事件简要描述："
+                        android:textColor="@color/color_303030"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:id="@+id/tv_content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="这是内容"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <View
+                        android:id="@+id/text_and_edit_line"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_E6E6E6" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_photo_title"
+                    android:visibility="gone"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="现场照片："
+                        android:textColor="@color/color_303030"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(最多上传照片5张)"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_people"
+                        app:tcv_text_view="事件责任人："
+                        tools:tcv_content_text="张三"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_shouli_date"
+                        app:tcv_text_view="受理日期："
+                        tools:tcv_content_text="2019-22-22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_compete_date"
+                        app:tcv_text_view="完成日期："
+                        tools:tcv_content_text="2019-22-22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_response_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="15dp"
+                            android:text="事件简要描述："
+                            android:textColor="@color/color_303030"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/tv_response_content_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="这是内容"
+                            android:textSize="@dimen/sp_14"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="5dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

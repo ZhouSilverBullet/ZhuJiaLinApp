@@ -2,7 +2,10 @@ package com.sdxxtop.zjlguardian.model.api
 
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.zjlguardian.model.data.InitData
+import com.sdxxtop.zjlguardian.model.imgpush.ImageData
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
+import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
+import com.sdxxtop.zjlguardian.ui.event_report.data.ReportListData
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -42,9 +45,21 @@ interface ApiService {
 
     @Multipart
     @POST("event/add")
-    suspend fun postEventAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<Any>
+    suspend fun postEventAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
 
     @FormUrlEncoded
     @POST("event/cat")
     suspend fun postEventCat(@Field("data") data: String): BaseResponse<CatDataList>
+
+    @FormUrlEncoded
+    @POST("event/lists")
+    suspend fun postEventLists(@Field("data") data: String): BaseResponse<ReportListData>
+
+    @FormUrlEncoded
+    @POST("event/details")
+    suspend fun postEventDetails(@Field("data") data: String): BaseResponse<EventReportDetailData>
+
+    @Multipart
+    @POST("event/test")
+    suspend fun postUpimg(@PartMap map: HashMap<String, RequestBody>): BaseResponse<ImageData>
 }

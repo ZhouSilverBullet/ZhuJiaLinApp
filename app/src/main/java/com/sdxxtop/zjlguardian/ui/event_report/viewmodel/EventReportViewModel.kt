@@ -8,6 +8,7 @@ import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.helper.HttpImageParams
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
+import com.sdxxtop.zjlguardian.model.imgpush.ImagePushUtil
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatData
 import java.io.File
 
@@ -27,9 +28,14 @@ class EventReportViewModel : BaseViewModel() {
 
     val mlonLng = ObservableField<String>()
 
-    val mCatClassifyData = MutableLiveData<List<CatData>>();
+    val mCatClassifyData = MutableLiveData<List<CatData>>()
+
+    val mPushSuccessData = MutableLiveData<String>()
 
     fun pushData(imagePushPath: MutableList<File>) {
+
+
+
         val eventTitle = mEventTitle.get() ?: ""
         val eventPlace = mEventPlace.get() ?: ""
         val eventDate = mEventDate.get() ?: ""
@@ -62,7 +68,23 @@ class EventReportViewModel : BaseViewModel() {
 //            return
 //        }
 
-        showLoadingDialog(true)
+        //含有图片的时候
+        if (imagePushPath.size > 0) {
+            showLoadingDialog(true)
+            ImagePushUtil(imagePushPath).pushImage({
+                pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath)
+            }, { code: Int, msg: String, t: Throwable ->
+                UIUtils.showToast(msg)
+                showLoadingDialog(false)
+            })
+        } else{
+            showLoadingDialog(true)
+            pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath)
+        }
+
+    }
+
+    private fun pushData(eventTitle: String, eventPlace: String, eventDate: String, dec: String, imagePushPath: MutableList<File>) {
 
         loadOnUI({
             val params = HttpImageParams()
@@ -75,6 +97,8 @@ class EventReportViewModel : BaseViewModel() {
 
             RetrofitClient.apiService.postEventAdd(params.imgData)
         }, {
+            mPushSuccessData.value = it
+
             showLoadingDialog(false)
         }, { code, msg, t ->
 
