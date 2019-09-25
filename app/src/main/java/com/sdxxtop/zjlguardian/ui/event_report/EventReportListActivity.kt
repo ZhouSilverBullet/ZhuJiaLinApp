@@ -8,12 +8,22 @@ import com.sdxxtop.common.utils.ItemDivider
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityEventReportListBinding
+import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.ui.event_report.adapter.EventReportListAdapter
 import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportListViewModel
+import com.sdxxtop.zjlguardian.ui.self_handle.adapter.SelfHandleListAdapter
 
 class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, EventReportListViewModel>() {
     val mAdapter by lazy {
         EventReportListAdapter()
+    }
+
+    val mSelfAdapter by lazy {
+        SelfHandleListAdapter()
+    }
+
+    val keyEventType  by lazy {
+        intent.getIntExtra(EventReportDetailActivity.KEY_EVENT_TYPE, 0)
     }
 
     override fun vmClazz() = EventReportListViewModel::class.java
@@ -26,7 +36,11 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
 
     override fun initObserve() {
         mViewModel.mReportList.observe(this, Observer {
-            mAdapter.replaceData(it)
+            if (keyEventType == 0) {
+                mAdapter.replaceData(it)
+            } else {
+                mSelfAdapter.replaceData(it)
+            }
         })
     }
 
@@ -34,7 +48,6 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
     override fun initView() {
         mBinding.rv.layoutManager = LinearLayoutManager(this)
         mBinding.rv.addItemDecoration(ItemDivider().setDividerWidth(UIUtils.dip2px(10)))
-        mBinding.rv.adapter = mAdapter
     }
 
     override fun initEvent() {
@@ -44,10 +57,27 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
             intent.putExtra("eventId", eventReportItem.event_id)
             startActivity(intent)
         }
+
+        mSelfAdapter.setOnItemClickListener { adapter, view, position ->
+            val eventReportItem = mSelfAdapter.data[position]
+            val intent = Intent(view.context, EventReportDetailActivity::class.java)
+            intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_SELF)
+            intent.putExtra("eventId", eventReportItem.event_id)
+            startActivity(intent)
+        }
+
     }
 
     override fun initData() {
-        mViewModel.loadData()
+
+        if (keyEventType == 0) {
+            mBinding.stvTitle.setTitleValue("我的上报")
+            mBinding.rv.adapter = mAdapter
+        } else {
+            mBinding.stvTitle.setTitleValue("我的处理")
+            mBinding.rv.adapter = mSelfAdapter
+        }
+        mViewModel.loadData(keyEventType)
     }
 
 }

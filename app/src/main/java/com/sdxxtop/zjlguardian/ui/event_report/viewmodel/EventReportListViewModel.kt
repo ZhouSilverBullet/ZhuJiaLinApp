@@ -16,10 +16,14 @@ import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportItem
 class EventReportListViewModel : BaseViewModel() {
     val mReportList = MutableLiveData<List<EventReportItem>>()
 
-    fun loadData() {
+    fun loadData(keyEventType: Int) {
         loadOnUI({
             val params = HttpParams()
-            RetrofitClient.apiService.postEventLists(params.data)
+            if (keyEventType == 0) {
+                RetrofitClient.apiService.postEventLists(params.data)
+            } else {
+                RetrofitClient.apiService.postEventSelfLists(params.data)
+            }
         }, {
             showLoadingDialog(false)
             mReportList.value = it.list

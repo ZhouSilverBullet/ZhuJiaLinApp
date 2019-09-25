@@ -2,7 +2,6 @@ package com.sdxxtop.zjlguardian.ui.event_report
 
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.amap.api.mapcore.util.la
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityEventReportDetailBinding
@@ -10,6 +9,12 @@ import com.sdxxtop.zjlguardian.ui.event_report.adapter.ImageHorizontalAdapter
 import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportDetailViewModel
 
 class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding, EventReportDetailViewModel>() {
+    companion object {
+        val KEY_EVENT_TYPE = "type"
+        val TYPE_EVENT = 0 //事件处理详情
+        val TYPE_SELF = 1 //自行处理
+    }
+
     val mAdapter by lazy {
         ImageHorizontalAdapter()
     }
@@ -42,7 +47,9 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
 
     override fun initData() {
         val eventId = intent.getIntExtra("eventId", 0)
-        mViewModel.loadData(eventId)
+        val keyEventType = intent.getIntExtra(KEY_EVENT_TYPE, 0)
+        mBinding.stvTitle.setTitleValue(if (keyEventType == 0) "事件详情" else "自行处理详情")
+        mViewModel.loadData(eventId, keyEventType)
 
     }
 }

@@ -55,11 +55,25 @@ interface ApiService {
     @POST("event/lists")
     suspend fun postEventLists(@Field("data") data: String): BaseResponse<ReportListData>
 
+
     @FormUrlEncoded
     @POST("event/details")
     suspend fun postEventDetails(@Field("data") data: String): BaseResponse<EventReportDetailData>
 
+
     @Multipart
     @POST("event/test")
     suspend fun postUpimg(@PartMap map: HashMap<String, RequestBody>): BaseResponse<ImageData>
+
+    @Multipart
+    @POST("eventself/add")
+    suspend fun postEventSelfAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
+
+    @FormUrlEncoded
+    @POST("eventself/details")
+    suspend fun postEventSelfDetails(@Field("data") data: String): BaseResponse<EventReportDetailData>
+
+    @FormUrlEncoded
+    @POST("eventself/lists")
+    suspend fun postEventSelfLists(@Field("data") data: String): BaseResponse<ReportListData>
 }

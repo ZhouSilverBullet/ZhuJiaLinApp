@@ -5,6 +5,7 @@ import com.sdxxtop.base.BaseViewModel
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity.Companion.TYPE_EVENT
 import com.sdxxtop.zjlguardian.ui.event_report.data.DetailData
 
 /**
@@ -16,11 +17,16 @@ import com.sdxxtop.zjlguardian.ui.event_report.data.DetailData
 class EventReportDetailViewModel : BaseViewModel() {
     val mDetailData = MutableLiveData<DetailData>()
 
-    fun loadData(eventId: Int) {
+    fun loadData(eventId: Int, keyEventType: Int) {
         loadOnUI({
             val params = HttpParams()
             params.put("ei", eventId)
-            RetrofitClient.apiService.postEventDetails(params.data)
+            //0 事件处理 1自行处理
+            if (keyEventType == TYPE_EVENT) {
+                RetrofitClient.apiService.postEventDetails(params.data)
+            } else{
+                RetrofitClient.apiService.postEventSelfDetails(params.data)
+            }
         }, {
             showLoadingDialog(false)
             val list = it.list

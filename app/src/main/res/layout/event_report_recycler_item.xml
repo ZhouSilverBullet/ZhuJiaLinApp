@@ -17,7 +17,7 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/sp_12"
-            android:text="待受理" />
+            android:text="待受理：" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -52,10 +52,9 @@
         <TextView
             android:id="@+id/tv_category"
             tools:text="户籍"
-            android:layout_marginRight="30dp"
             android:singleLine="true"
             android:textSize="@dimen/sp_12"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -97,10 +96,9 @@
         <TextView
             android:id="@+id/tv_end_time"
             tools:text="2019-08-20"
-            android:layout_marginRight="30dp"
             android:singleLine="true"
             android:textSize="@dimen/sp_12"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content" />
 
         <TextView
