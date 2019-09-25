@@ -73,25 +73,32 @@
                     android:textColor="@color/color_B2B2B2" />
 
                 <com.sdxxtop.ui.TextAndTextView
-                    android:onClick="@{vm::skipReportList}"
+                    android:id="@+id/tatv_event_report"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="true"
                     app:tatv_text_view="我的上报事件"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextAndTextView
+                    android:id="@+id/tatv_self_handle"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="true"
                     app:tatv_text_view="我的自行处理"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextAndTextView
+                    android:id="@+id/tatv_department_event"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="true"
                     app:tatv_text_view="部门事件"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextAndTextView
+                    android:id="@+id/tatv_daiban"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="false"
                     app:tatv_text_view="我的待办事项"
                     android:layout_width="match_parent"
@@ -102,6 +109,8 @@
                     android:layout_height="16dp" />
 
                 <com.sdxxtop.ui.TextAndTextView
+                    android:id="@+id/tatv_message"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="true"
                     app:tatv_text_view="消息"
                     android:layout_width="match_parent"

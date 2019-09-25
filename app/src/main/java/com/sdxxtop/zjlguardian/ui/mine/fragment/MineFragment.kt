@@ -11,6 +11,8 @@ import com.sdxxtop.common.dialog.IosAlertDialog
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentMineBinding
 import com.sdxxtop.zjlguardian.model.db.UserSession
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
 import com.sdxxtop.zjlguardian.ui.login.LoginActivity
 import com.sdxxtop.zjlguardian.ui.mine.viewmodel.MineViewModel
 
@@ -50,6 +52,21 @@ class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
         when (v) {
             mBinding.btnLogout -> {
                 logout()
+            }
+            mBinding.tatvEventReport -> {
+                val intent = Intent(activity, EventReportListActivity::class.java)
+                startActivity(intent)
+            }
+            mBinding.tatvSelfHandle -> {
+                val intent = Intent(activity, EventReportListActivity::class.java)
+                intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_SELF)
+                startActivity(intent)
+            }
+            mBinding.tatvDepartmentEvent -> {
+                
+            }
+            mBinding.tatvDaiban -> {
+
             }
             else -> {
             }
