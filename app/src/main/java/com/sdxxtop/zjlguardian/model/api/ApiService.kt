@@ -44,9 +44,9 @@ interface ApiService {
     suspend fun postLoginModpw(@Field("data") data: String): BaseResponse<Any>
 
 
-    @Multipart
+    @FormUrlEncoded
     @POST("event/add")
-    suspend fun postEventAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
+    suspend fun postEventAdd(@Field("data") data: String): BaseResponse<String>
 
     @FormUrlEncoded
     @POST("event/cat")
@@ -63,12 +63,12 @@ interface ApiService {
 
 
     @Multipart
-    @POST("event/test")
+    @POST("event/upimg")
     suspend fun postUpimg(@PartMap map: HashMap<String, RequestBody>): BaseResponse<ImageData>
 
-    @Multipart
+    @FormUrlEncoded
     @POST("eventself/add")
-    suspend fun postEventSelfAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
+    suspend fun postEventSelfAdd(@Field("data") data: String): BaseResponse<String>
 
     @FormUrlEncoded
     @POST("eventself/details")
@@ -89,4 +89,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("phone/search")
     suspend fun postPhoneSearch(@Field("data") data: String): BaseResponse<ContactData>
+
+
+    @FormUrlEncoded
+    @POST("event/index")
+    suspend fun postEventIndex(@Field("data") data: String): BaseResponse<ReportListData>
+
 }

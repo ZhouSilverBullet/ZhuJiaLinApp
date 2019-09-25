@@ -1,4 +1,4 @@
-package com.sdxxtop.zjlguardian.ui.self_handle.adapter;
+package com.sdxxtop.zjlguardian.ui.commission.adapter;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,20 +14,32 @@ import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportItem;
  * Version: 1.0
  * Description:
  */
-public class SelfHandleListAdapter extends BaseQuickAdapter<EventReportItem, BaseViewHolder> {
-    public SelfHandleListAdapter() {
-        super(R.layout.self_handle_recycler_item);
+public class CommissionListAdapter extends BaseQuickAdapter<EventReportItem, BaseViewHolder> {
+    public CommissionListAdapter() {
+        super(R.layout.event_report_recycler_item);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, EventReportItem item) {
         LinearLayout llRoot = helper.getView(R.id.ll_root);
         TextView tvTitle = helper.getView(R.id.tv_title);
+        TextView tvEventType = helper.getView(R.id.tv_event_type);
         TextView tvCategory = helper.getView(R.id.tv_category);
+        TextView tvDepartPeople = helper.getView(R.id.tv_depart_people);
+        TextView tvName = helper.getView(R.id.tv_name);
+        TextView tvEndTime = helper.getView(R.id.tv_end_time);
         TextView tvStartTime = helper.getView(R.id.tv_start_time);
 
+
+        tvEventType.setText("事件类型：");
+        tvCategory.setText(item.getType_name());
+        tvDepartPeople.setText("所属分类：");
+        tvName.setText(item.getCat_name());
+
         tvTitle.setText(item.getTitle());
-        tvCategory.setText(item.getCat_name());
+
+
+        tvEndTime.setText(item.getEnd_day());
         tvStartTime.setText(item.getAdd_date());
 
 

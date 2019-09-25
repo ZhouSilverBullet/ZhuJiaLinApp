@@ -37,7 +37,7 @@ class MainTabActivity : BaseActivity<ActivityMainTabBinding, MainTabViewModel>()
     override fun initView() {
         switchFragment(0)
         StatusNavUtils.setStatusBarColor(this, 0x00000000)
-        initUnReadMessageViews()
+//        initUnReadMessageViews()
     }
 
     override fun initEvent() {

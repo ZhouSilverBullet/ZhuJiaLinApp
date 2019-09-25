@@ -18,7 +18,8 @@
         android:theme="@style/NoTitleTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
-        <activity android:name=".ui.event_report.EventReportDetailActivity"></activity>
+        <activity android:name=".ui.commission.CommissionActivity"></activity>
+        <activity android:name=".ui.event_report.EventReportDetailActivity" />
         <activity android:name=".ui.event_report.EventReportListActivity" />
         <activity android:name=".ui.report.ReportMessageActivity" />
         <activity android:name=".ui.report.ReportAddActivity" />

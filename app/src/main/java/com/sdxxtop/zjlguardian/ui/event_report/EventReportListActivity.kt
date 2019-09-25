@@ -9,6 +9,9 @@ import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityEventReportListBinding
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
+import com.sdxxtop.zjlguardian.ui.contact.data.TYPE_PART_DATA
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity.Companion.TYPE_EVENT
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity.Companion.TYPE_SELF
 import com.sdxxtop.zjlguardian.ui.event_report.adapter.EventReportListAdapter
 import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportListViewModel
 import com.sdxxtop.zjlguardian.ui.self_handle.adapter.SelfHandleListAdapter
@@ -70,10 +73,10 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
 
     override fun initData() {
 
-        if (keyEventType == 0) {
+        if (keyEventType == TYPE_EVENT) {
             mBinding.stvTitle.setTitleValue("我的上报")
             mBinding.rv.adapter = mAdapter
-        } else {
+        } else if(keyEventType == TYPE_SELF){
             mBinding.stvTitle.setTitleValue("我的处理")
             mBinding.rv.adapter = mSelfAdapter
         }

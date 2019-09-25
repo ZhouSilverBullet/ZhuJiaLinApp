@@ -30,7 +30,10 @@ data class EventReportItem(
         val end_day: String,
         val event_id: Int,
         val status: String,
-        val title: String
+        val title: String,
+        //我的上报字段
+        val type:Int,
+        val type_name:String
 )
 
 data class EventReportDetailData(

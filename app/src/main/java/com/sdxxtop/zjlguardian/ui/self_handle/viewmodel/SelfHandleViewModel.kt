@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.base.BaseViewModel
+import com.sdxxtop.common.GSON
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.helper.HttpImageParams
@@ -65,29 +66,30 @@ class SelfHandleViewModel : BaseViewModel() {
         if (imagePushPath.size > 0) {
             showLoadingDialog(true)
             ImagePushUtil(imagePushPath).pushImage({
-                pushData(eventTitle, eventPlace, dec, imagePushPath)
+                var imgJson = GSON.toJson(it)
+                pushData(eventTitle, eventPlace, dec, imagePushPath,imgJson )
             }, { code: Int, msg: String, t: Throwable ->
                 UIUtils.showToast(msg)
                 showLoadingDialog(false)
             })
         } else {
             showLoadingDialog(true)
-            pushData(eventTitle, eventPlace, dec, imagePushPath)
+            pushData(eventTitle, eventPlace, dec, imagePushPath, "[]")
         }
 
     }
 
-    private fun pushData(eventTitle: String, eventPlace: String, dec: String, imagePushPath: MutableList<File>) {
+    private fun pushData(eventTitle: String, eventPlace: String, dec: String, imagePushPath: MutableList<File>, imgJson:String) {
 
         loadOnUI({
-            val params = HttpImageParams()
+            val params = HttpParams()
             params.put("te", eventTitle)
             params.put("ci", mClassify.get())
             params.put("pe", eventPlace)
             params.put("ct", dec)
-            params.addImagePathList("img[]", imagePushPath)
+            params.put("ig", imgJson)
 
-            RetrofitClient.apiService.postEventSelfAdd(params.imgData)
+            RetrofitClient.apiService.postEventSelfAdd(params.data)
         }, {
             mPushSuccessData.value = it
 
