@@ -14,15 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/color_EFEFF4"
         tools:context=".ui.home.fragment.TestFragment">
 
-<!--        <com.sdxxtop.ui.TitleView-->
-<!--            android:id="@+id/stv_title"-->
-<!--            app:titleValue="通讯录"-->
-<!--            app:titleColor="@color/white"-->
-<!--            app:bgColor="@color/colorPrimary"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content" />-->
+        <!--        <com.sdxxtop.ui.TitleView-->
+        <!--            android:id="@+id/stv_title"-->
+        <!--            app:titleValue="通讯录"-->
+        <!--            app:titleColor="@color/white"-->
+        <!--            app:bgColor="@color/colorPrimary"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content" />-->
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -89,10 +90,13 @@
 
                     <requestFocus />
                 </EditText>
-
             </RelativeLayout>
         </FrameLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

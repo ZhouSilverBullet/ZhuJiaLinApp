@@ -3,6 +3,7 @@ package com.sdxxtop.zjlguardian.model.api
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.zjlguardian.model.data.InitData
 import com.sdxxtop.zjlguardian.model.imgpush.ImageData
+import com.sdxxtop.zjlguardian.ui.contact.data.ContactData
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
 import com.sdxxtop.zjlguardian.ui.event_report.data.ReportListData
@@ -76,4 +77,16 @@ interface ApiService {
     @FormUrlEncoded
     @POST("eventself/lists")
     suspend fun postEventSelfLists(@Field("data") data: String): BaseResponse<ReportListData>
+
+    /**
+     *  lists
+     * search
+     */
+    @FormUrlEncoded
+    @POST("phone/{path}")
+    suspend fun postPhoneLists(@Path("path") path: String, @Field("data") data: String): BaseResponse<ContactData>
+
+    @FormUrlEncoded
+    @POST("phone/search")
+    suspend fun postPhoneSearch(@Field("data") data: String): BaseResponse<ContactData>
 }

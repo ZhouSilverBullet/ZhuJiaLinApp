@@ -27,6 +27,7 @@
         <activity android:name=".ui.contact.ContactSearchActivity" />
         <activity
             android:name=".ui.home.MainTabActivity"
+            android:theme="@style/MainTabNoTitleTheme"
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".ui.login.ForgetActivity"

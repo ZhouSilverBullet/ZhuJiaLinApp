@@ -124,6 +124,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.contrarywind:Android-PickerView:4.1.8'
+    implementation 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
 
     implementation project(path: ':app_base')
     implementation project(path: ':app_common')

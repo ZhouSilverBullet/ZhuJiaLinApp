@@ -8,12 +8,12 @@
     <item
         android:id="@+id/item_small_video"
         android:icon="@drawable/tab_home_selector"
-        android:title="居民服务" />
+        android:title="事件上报" />
 
     <item
         android:id="@+id/item_video"
         android:icon="@drawable/tab_video_selector"
-        android:title="学海无涯" />
+        android:title="通讯录" />
     <!--<item-->
     <!--android:id="@+id/item_add"-->
     <!--android:icon="@drawable/add_channel"-->
