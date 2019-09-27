@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sdxxtop.zjlguardian.ui.message.viewmodel.MessageDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.message.MessageDetailActivity">
+
+        <com.sdxxtop.ui.TitleView
+            android:id="@+id/stv_title"
+            app:titleValue="通知详情"
+            app:titleColor="@color/white"
+            app:bgColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftLayoutIsShow="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingLeft="@dimen/dp_14"
+                android:paddingRight="@dimen/dp_14"
+                android:ellipsize="end"
+                android:layout_marginTop="10dp"
+                tools:text="合乎你天性的生活就是最好的合乎你天性的生活就是最好的合乎你天性的生活就是最好的合乎你天性的生活就是最好的"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:padding="@dimen/sp_14"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:padding="@dimen/dp_16"
+                android:id="@+id/tv_content"
+                android:textSize="@dimen/sp_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="【大白，卖的一手好萌】一波三折，妙趣横生。悬疑和温情，搞笑与动作，即使拍成真人版也绝对是一部好题材和好故事。大白呆萌可爱一逗比，细节刻画真实有趣，放气如放屁，警察局撕扯胶带还有低电量时如同宿醉一样。最后，“I will always with you ！”绝对催泪开年最佳动画！
+        它是只充气机器人,也是个医疗伴侣，能够快速扫描检测出人体的不正常情绪或受伤，并对其治疗。大白呆萌可爱，作为机器人医生它很称职，也是小宏最好的朋友。小宏之" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

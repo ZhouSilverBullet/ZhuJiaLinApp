@@ -8,6 +8,8 @@ import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
 import com.sdxxtop.zjlguardian.ui.event_report.data.ReportListData
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
+import com.sdxxtop.zjlguardian.ui.message.data.MessageDetails
+import com.sdxxtop.zjlguardian.ui.message.data.MessageListData
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -95,4 +97,11 @@ interface ApiService {
     @POST("event/index")
     suspend fun postEventIndex(@Field("data") data: String): BaseResponse<ReportListData>
 
+    @FormUrlEncoded
+    @POST("message/lists")
+    suspend fun postMessageLists(@Field("data") data: String): BaseResponse<MessageListData>
+
+    @FormUrlEncoded
+    @POST("message/details")
+    suspend fun postMessageDetails(@Field("data") data: String): BaseResponse<MessageDetails>
 }
