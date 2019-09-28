@@ -9,6 +9,7 @@ import java.util.List;
  * Description:
  */
 public class DepartmentData implements IPickerData {
+    private int departmentId;
     private String label;
     private String value;
     private boolean status;
@@ -46,9 +47,17 @@ public class DepartmentData implements IPickerData {
         this.peopleDataList = peopleDataList;
     }
 
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
     @Override
     public int getId() {
-        return 0;
+        return departmentId;
     }
 
     @Override

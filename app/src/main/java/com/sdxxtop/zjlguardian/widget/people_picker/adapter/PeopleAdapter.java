@@ -29,6 +29,7 @@ public class PeopleAdapter extends BaseQuickAdapter<PeopleData, BaseViewHolder> 
 
         llRoot.setBackgroundResource(item.isStatus() ? R.drawable.item_click_gray_selector : R.drawable.item_click_selector);
         tvPeople.setTextColor(item.isStatus() ? mContext.getResources().getColor(R.color.colorPrimary) : mContext.getResources().getColor(R.color.color_333333));
+        tvPeople.setText(item.getLabel());
         ivCheck.setVisibility(item.isStatus() ? View.VISIBLE : View.INVISIBLE);
 
     }

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:background="@color/color_EFEFF4"
     android:layout_width="match_parent"
-    android:layout_height="400dp">
+    android:layout_height="300dp">
 
     <LinearLayout
         android:gravity="center_vertical"

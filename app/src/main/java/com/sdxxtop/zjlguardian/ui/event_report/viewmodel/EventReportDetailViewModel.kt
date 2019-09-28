@@ -9,6 +9,8 @@ import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity.Companion.TYPE_EVENT
 import com.sdxxtop.zjlguardian.ui.event_report.data.DetailData
+import com.sdxxtop.zjlguardian.ui.event_report.data.PartListData
+import com.sdxxtop.zjlguardian.ui.event_report.data.PartListItem
 
 /**
  * Email: zhousaito@163.com
@@ -24,6 +26,9 @@ class EventReportDetailViewModel : BaseViewModel() {
     val mFinishSuccess = MutableLiveData<Boolean>()
 
     var mResponseValue = ObservableField<String>()
+
+    //单位列表
+    val mPartListData = MutableLiveData<List<PartListItem>>()
 
     fun loadData(eventId: Int, path: String, requestType: Int, keyEventType: Int) {
         loadOnUI({
@@ -71,11 +76,13 @@ class EventReportDetailViewModel : BaseViewModel() {
     }
 
     //流转
-    fun eventTrans(eventId: Int) {
+    fun eventTrans(eventId: Int, turnPartId: Int, userId: Int) {
         showLoadingDialog(true)
         loadOnUI({
             val params = HttpParams()
             params.put("ei", eventId)
+            params.put("tp", turnPartId)
+            params.put("tui", userId)
             //0 事件处理 1自行处理
             RetrofitClient.apiService.postEventTrans(params.data)
         }, {
@@ -129,5 +136,24 @@ class EventReportDetailViewModel : BaseViewModel() {
         })
     }
 
+    //单位列表
+    fun loadPartData(isShowProgress: Boolean) {
+        showLoadingDialog(isShowProgress)
+        loadOnUI({
+            val params = HttpParams()
+            //0 事件处理 1自行处理
+            RetrofitClient.apiService.postPartLists(params.data)
+        }, {
+
+            mPartListData.value = it.list
+
+            showLoadingDialog(false)
+        }, { code, msg, t ->
+
+            UIUtils.showToast(msg)
+
+            showLoadingDialog(false)
+        })
+    }
 
 }

@@ -4,11 +4,16 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdxxtop.base.BaseActivity
+import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityEventReportDetailBinding
 import com.sdxxtop.zjlguardian.ui.event_report.adapter.ImageHorizontalAdapter
 import com.sdxxtop.zjlguardian.ui.event_report.data.DetailData
 import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportDetailViewModel
+import com.sdxxtop.zjlguardian.widget.people_picker.PeoplePickerView
+import com.sdxxtop.zjlguardian.widget.people_picker.data.DepartmentData
+import com.sdxxtop.zjlguardian.widget.people_picker.data.IPickerData
+import com.sdxxtop.zjlguardian.widget.people_picker.data.PeopleData
 
 class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding, EventReportDetailViewModel>() {
     companion object {
@@ -38,6 +43,8 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         ImageHorizontalAdapter()
     }
 
+    var mPeoplePickerView: PeoplePickerView? = null
+
     override fun vmClazz() = EventReportDetailViewModel::class.java
 
     override fun bindVM() {
@@ -57,13 +64,42 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         })
 
         mViewModel.mTransSuccess.observe(this, Observer {
-            //流转，刷新界面
-            initData()
+            //流转成功，要结束页面
+//            initData()
+            finish()
         })
 
         mViewModel.mFinishSuccess.observe(this, Observer {
             //已完成，刷新界面
             initData()
+        })
+
+        mViewModel.mPartListData.observe(this, Observer {
+            if (mPeoplePickerView == null) {
+                val departmentData = ArrayList<DepartmentData>()
+                it.forEach { partData ->
+                    //增加部门List
+                    val dData = DepartmentData()
+                    dData.label = partData.part_name
+                    dData.departmentId = partData.part_id
+                    departmentData.add(dData)
+                    val peopleData = ArrayList<PeopleData>()
+                    //增加用户List
+                    dData.peopleDataList = peopleData
+                    partData.users.forEach { user ->
+                        val pData = PeopleData()
+                        pData.label = user.username
+                        pData.peopleId = user.id
+                        peopleData.add(pData)
+                    }
+
+                }
+                mPeoplePickerView = PeoplePickerView(this, departmentData)
+                mPeoplePickerView?.setSelectorListener { departmentData, userData ->
+                    mViewModel.eventTrans(eventId, departmentData.id, userData.id)
+                }
+                mPeoplePickerView?.show()
+            }
         })
 
     }
@@ -215,7 +251,11 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
                 mViewModel.eventSettle(eventId)
             }
             mBinding.btnTurnPeople -> {
-                mViewModel.eventTrans(eventId)
+                if (mPeoplePickerView == null) {
+                    mViewModel.loadPartData(true)
+                    return
+                }
+                mPeoplePickerView?.show()
             }
 
             mBinding.btnJiejue -> {

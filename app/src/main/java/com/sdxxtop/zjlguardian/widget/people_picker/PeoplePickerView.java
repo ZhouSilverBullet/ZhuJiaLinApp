@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sdxxtop.common.utils.ItemDivider;
-import com.sdxxtop.common.utils.UIUtils;
 import com.sdxxtop.zjlguardian.R;
 import com.sdxxtop.zjlguardian.widget.people_picker.adapter.DepartAdapter;
 import com.sdxxtop.zjlguardian.widget.people_picker.adapter.PeopleAdapter;
@@ -76,7 +75,11 @@ public class PeoplePickerView extends Dialog {
         llContainer = findViewById(R.id.ll_container);
         tvConfirm = findViewById(R.id.tv_confirm);
         tvConfirm.setOnClickListener(v -> {
-            UIUtils.showToast("pickerData -> " + pickerData[0] + "--" + pickerData[1]);
+//            UIUtils.showToast("pickerData -> " + pickerData[0] + "--" + pickerData[1]);
+            //监听回调
+            if (selectorListener != null) {
+                selectorListener.onSelector(pickerData[0], pickerData[1]);
+            }
             dismiss();
         });
 
@@ -172,5 +175,15 @@ public class PeoplePickerView extends Dialog {
 
     private void tvConfirmStatus() {
         tvConfirm.setEnabled(pickerData[1] != null);
+    }
+
+    private SelectorListener selectorListener;
+
+    public void setSelectorListener(SelectorListener selector) {
+        this.selectorListener = selector;
+    }
+
+    public interface SelectorListener {
+        void onSelector(IPickerData departmentData, IPickerData data);
     }
 }

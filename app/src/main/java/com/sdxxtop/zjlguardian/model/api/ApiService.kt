@@ -6,6 +6,7 @@ import com.sdxxtop.zjlguardian.model.imgpush.ImageData
 import com.sdxxtop.zjlguardian.ui.contact.data.ContactData
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
+import com.sdxxtop.zjlguardian.ui.event_report.data.PartListData
 import com.sdxxtop.zjlguardian.ui.event_report.data.ReportListData
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GruadeEntry
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
@@ -95,6 +96,11 @@ interface ApiService {
     @FormUrlEncoded
     @POST("event/trans")
     suspend fun postEventTrans(@Field("data") data: String): BaseResponse<Any>
+
+    //单位列表
+    @FormUrlEncoded
+    @POST("part/lists")
+    suspend fun postPartLists(@Field("data") data: String): BaseResponse<PartListData>
 
 
     @FormUrlEncoded

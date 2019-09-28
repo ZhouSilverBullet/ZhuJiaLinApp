@@ -31,6 +31,6 @@ public class DepartAdapter extends BaseQuickAdapter<DepartmentData, BaseViewHold
 
         rlRoot.setBackgroundResource(item.isStatus() ? R.drawable.item_click_gray_selector : R.drawable.item_click_selector);
         tvDepart.setTextColor(item.isStatus() ? mContext.getResources().getColor(R.color.colorPrimary) : mContext.getResources().getColor(R.color.color_333333));
-
+        tvDepart.setText(item.getLabel());
     }
 }

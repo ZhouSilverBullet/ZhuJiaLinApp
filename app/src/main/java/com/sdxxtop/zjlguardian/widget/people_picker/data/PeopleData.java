@@ -7,6 +7,7 @@ package com.sdxxtop.zjlguardian.widget.people_picker.data;
  * Description:
  */
 public class PeopleData implements IPickerData {
+    private int peopleId;
     private String label;
     private String value;
     private boolean status;
@@ -35,9 +36,17 @@ public class PeopleData implements IPickerData {
         this.status = status;
     }
 
+    public int getPeopleId() {
+        return peopleId;
+    }
+
+    public void setPeopleId(int peopleId) {
+        this.peopleId = peopleId;
+    }
+
     @Override
     public int getId() {
-        return 0;
+        return peopleId;
     }
 
     @Override
