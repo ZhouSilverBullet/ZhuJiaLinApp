@@ -1,12 +1,23 @@
 package com.sdxxtop.zjlguardian.ui.gridmanagement.adapter
 
+import android.content.Intent
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.sdxxtop.zjlguardian.R
-import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GridManagerData
-import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_CELL
-import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_EMPTY_LINE
-import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_MORE
+import com.sdxxtop.zjlguardian.ui.commission.CommissionActivity
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportActivity
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
+import com.sdxxtop.zjlguardian.ui.gridmanagement.data.*
+import io.reactivex.Observable
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Email: zhousaito@163.com
@@ -24,10 +35,94 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
     override fun convert(helper: BaseViewHolder?, item: GridManagerData?) {
         when (item?.itemType) {
             ITEM_MORE -> {
-
+                handleMore(helper, item)
             }
-            ITEM_CELL-> {
+            ITEM_CELL -> {
+                handleCell(helper, item)
+            }
+            else -> {
+            }
+        }
+    }
 
+    private fun handleMore(helper: BaseViewHolder?, item: GridManagerData) {
+        val tvTitle = helper?.getView<TextView>(R.id.tv_title)
+        val llMore = helper?.getView<LinearLayout>(R.id.ll_more)
+        val ivIcon = helper?.getView<ImageView>(R.id.iv_left_icon)
+
+        when (item.eventItemType) {
+            EVENT_DEPARTMENT -> {
+                tvTitle?.text = "部门事件"
+                ivIcon?.setImageResource(R.drawable.grid_manager_depart)
+                llMore?.setOnClickListener {
+
+                }
+            }
+            EVENT_MINE -> {
+                tvTitle?.text = "我的待办"
+                ivIcon?.setImageResource(R.drawable.grid_manager_mine_todo)
+                llMore?.setOnClickListener {
+                    val intent = Intent(mContext, CommissionActivity::class.java)
+                    mContext.startActivity(intent)
+                }
+            }
+            EVENT_REPORT -> {
+                tvTitle?.text = "我的上报"
+                ivIcon?.setImageResource(R.drawable.grid_manager_report)
+
+                llMore?.setOnClickListener {
+                    val intent = Intent(mContext, EventReportListActivity::class.java)
+                    mContext.startActivity(intent)
+                }
+            }
+            else -> {
+            }
+        }
+    }
+
+    private fun handleCell(helper: BaseViewHolder?, item: GridManagerData) {
+        val ivIcon = helper?.getView<ImageView>(R.id.iv_cell_left_icon)
+        val tvTypeTitle = helper?.getView<TextView>(R.id.tv_type_title)
+        val tvDate = helper?.getView<TextView>(R.id.tv_date)
+        val tvName = helper?.getView<TextView>(R.id.tv_name)
+
+        tvDate?.text = StringBuilder("截止日期：").append(item.end_day)
+
+        val vLine = helper?.getView<View>(R.id.v_line)
+        //最后一个不显示线
+        if (item.isLast) {
+            vLine?.visibility = View.GONE
+        } else {
+            vLine?.visibility = View.VISIBLE
+        }
+
+        helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
+            val intent = Intent(mContext, EventReportDetailActivity::class.java)
+            intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+            intent.putExtra("eventId", item.event_id)
+            mContext.startActivity(intent)
+        }
+
+        when (item.eventItemType) {
+            EVENT_DEPARTMENT -> {
+
+//                tvTitle?.text = "部门事件"
+                tvTypeTitle?.text = StringBuilder(item.status ?: "").append("：").append(item.title)
+
+                tvName?.text = item.duty_name
+            }
+            EVENT_MINE -> {
+//                tvTitle?.text = "我的待办"
+                tvTypeTitle?.text = StringBuilder(item.type_name
+                        ?: "").append("：").append(item.title)
+
+                tvName?.text = ""
+            }
+            EVENT_REPORT -> {
+//                tvTitle?.text = "我的上报"
+                tvTypeTitle?.text = StringBuilder(item.status ?: "").append("：").append(item.title)
+
+                tvName?.text = ""
             }
             else -> {
             }

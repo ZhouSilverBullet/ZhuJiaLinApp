@@ -22,13 +22,86 @@ const val ITEM_CELL = 1
  */
 const val ITEM_EMPTY_LINE = 2
 
-class GridManagerData(var type: Int=ITEM_MORE,
-                      //1.事件部门 2.我的代办 3.我的上报
-                      var itemMoreType:Int = 1) : MultiItemEntity {
+/**
+ * 1.事件部门
+ */
+const val EVENT_DEPARTMENT = 1
+/**
+ * 2.我的代办
+ */
+const val EVENT_MINE = 2
+/**
+ * 空3.我的上报
+ */
+const val EVENT_REPORT = 3
+
+
+class GridManagerData(var gridType: Int = ITEM_MORE,
+        //1.事件部门 2.我的代办 3.我的上报
+                      var eventItemType: Int = EVENT_DEPARTMENT,
+                      var isLast:Boolean = false) : MultiItemEntity {
+    var add_date: String? = null
+    var cat_id: Int = 0
+    var cat_name: String? = null
+    var duty_id: Int = 0
+    var duty_name: String? = null
+    var end_day: String? = null
+    var event_id: Int = 0
+    var status: String? = null
+    var title: String? = null
+
+    var type: Int = 0
+    var type_name: String? = null
 
 
     override fun getItemType(): Int {
-        return type
+        return gridType
     }
 
 }
+
+
+data class GruadeEntry(
+        val broadcast: List<String>,
+        val message: String,
+        val part_event: List<GridManagerData>,
+        val todo_event: List<GridManagerData>,
+        val up_event: List<GridManagerData>
+)
+
+data class PartEvent(
+        val add_date: String,
+        val cat_id: Int,
+        val cat_name: String,
+        val duty_id: Int,
+        val duty_name: String,
+        val end_day: String,
+        val event_id: Int,
+        val status: String,
+        val title: String
+)
+
+data class TodoEvent(
+        val add_date: String,
+        val cat_id: Int,
+        val cat_name: String,
+        val end_day: String,
+        val event_id: Int,
+        val status: String,
+        val title: String,
+        val type: Int,
+        val type_name: String
+)
+
+data class UpEvent(
+        val add_date: String,
+        val cat_id: Int,
+        val cat_name: String,
+        val duty_id: Int,
+        val duty_name: String,
+        val end_day: String,
+        val event_id: Int,
+        val status: String,
+        val title: String
+)
+

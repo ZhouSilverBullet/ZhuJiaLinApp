@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
     android:orientation="vertical"
     android:paddingTop="@dimen/dp_14"
     android:background="@drawable/item_click_selector"
@@ -8,16 +10,17 @@
 
     <ImageView
         android:id="@+id/iv_cell_left_icon"
-        android:paddingLeft="@dimen/dp_38"
-        android:src="@drawable/books_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_marginLeft="@dimen/dp_38"
+        android:src="@drawable/grid_manager_message"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:adjustViewBounds="true" />
 
     <TextView
         android:id="@+id/tv_type_title"
         android:layout_marginLeft="8dp"
         android:layout_toEndOf="@id/iv_cell_left_icon"
-        android:text="事件类：贫困老人漏报问题"
+        tools:text="事件类：贫困老人漏报问题"
         android:singleLine="true"
         android:textSize="@dimen/sp_16"
         android:layout_width="wrap_content"
@@ -26,10 +29,24 @@
     <TextView
         android:id="@+id/tv_date"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="3dp"
         android:layout_below="@+id/iv_cell_left_icon"
         android:layout_toRightOf="@id/iv_cell_left_icon"
-        android:text="截止日期：2019-08-11"
+        tools:text="截止日期：2019-08-11"
+        android:textColor="@color/color_808080"
+        android:textSize="@dimen/sp_12"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/dp_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/iv_cell_left_icon"
+        android:layout_toRightOf="@id/tv_date"
+        tools:text="王开祥"
         android:textColor="@color/color_808080"
         android:textSize="@dimen/sp_12"
         android:singleLine="true"
@@ -40,7 +57,6 @@
         android:id="@+id/v_line"
         android:layout_below="@id/tv_date"
         android:background="@color/color_E6E6E6"
-        android:layout_marginTop="@dimen/dp_14"
         android:layout_marginLeft="@dimen/dp_16"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1" />

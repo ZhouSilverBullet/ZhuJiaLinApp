@@ -36,7 +36,7 @@ public abstract class BaseParams implements IDefaultValue {
     }
 
     public String getPartId() {
-        String pi = map.get("ci");
+        String pi = map.get("pti");
         if (TextUtils.isEmpty(pi)) {
             pi = String.valueOf(SpUtil.getInt(HttpConstantValue.PART_ID, 0));
         }

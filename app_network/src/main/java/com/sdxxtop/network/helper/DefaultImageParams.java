@@ -13,7 +13,7 @@ public class DefaultImageParams extends BaseImageParams {
     @Override
     public void defaultValue() {
         put("ui", SpUtil.getInt(HttpConstantValue.USER_ID, 0));
-        put("pi", SpUtil.getInt(HttpConstantValue.PART_ID, 0));
+        put("pti", SpUtil.getInt(HttpConstantValue.PART_ID, 0));
         put("plid", "1");
     }
 

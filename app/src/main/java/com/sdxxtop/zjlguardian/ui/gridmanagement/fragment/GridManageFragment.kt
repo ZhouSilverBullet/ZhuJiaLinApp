@@ -3,9 +3,11 @@ package com.sdxxtop.zjlguardian.ui.gridmanagement.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -42,58 +44,77 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
     override fun layoutId() = R.layout.fragment_grid_manage
 
     override fun initObserve() {
+        mViewModel.mGridManagerData.observe(this, Observer {
+            mAdapter.replaceData(it)
+        })
+
+        mViewModel.mGruadeEntryData.observe(this, Observer {
+            mLoadService.showSuccess()
+
+            //轮播图
+            mBinding.bView.setImages(it.broadcast)
+            mBinding.bView.start()
+
+            mBinding.tvMessage.text = it.message
+
+            mBinding.llNotice.visibility = if (TextUtils.isEmpty(it.message)) View.GONE else View.VISIBLE
+
+//            val autoTextViewManager = AutoTextViewManager(mBinding.atvView)
+//            val autoValueList = ArrayList<IAutoValue>()
+//
+//            autoValueList.add(AutoValue("你好111111111"))
+//            autoTextViewManager.setData(autoValueList)
+//            autoTextViewManager.start()
+        })
     }
 
     override fun initView() {
         mBinding.bView.setImageLoader(GlideImageLoader())
-        val arrayList = ArrayList<Int>()
-        arrayList.add(R.drawable.test0)
-        arrayList.add(R.drawable.test1)
-        arrayList.add(R.drawable.test2)
-        arrayList.add(R.drawable.test3)
-
-        mBinding.bView.setImages(arrayList)
-        mBinding.bView.start()
+//        val arrayList = ArrayList<Int>()
+//        arrayList.add(R.drawable.test0)
+//        arrayList.add(R.drawable.test1)
+//        arrayList.add(R.drawable.test2)
+//        arrayList.add(R.drawable.test3)
 
 
-        val autoTextViewManager = AutoTextViewManager(mBinding.atvView)
-        val autoValueList = ArrayList<IAutoValue>()
-        autoValueList.add(AutoValue("你好111111111"))
-        autoValueList.add(AutoValue("你好222222222"))
-        autoValueList.add(AutoValue("你好3333333333"))
-        autoValueList.add(AutoValue("你好55555555555555555555555555555555555555555555555555555555"))
-        autoTextViewManager.setData(autoValueList)
-        autoTextViewManager.start()
+//        val autoTextViewManager = AutoTextViewManager(mBinding.atvView)
+//        val autoValueList = ArrayList<IAutoValue>()
+//        autoValueList.add(AutoValue("你好111111111"))
+//        autoValueList.add(AutoValue("你好222222222"))
+//        autoValueList.add(AutoValue("你好3333333333"))
+//        autoValueList.add(AutoValue("你好55555555555555555555555555555555555555555555555555555555"))
+//        autoTextViewManager.setData(autoValueList)
+//        autoTextViewManager.start()
 
         mBinding.rv.layoutManager = LinearLayoutManager(activity)
         mBinding.rv.adapter = mAdapter
 
-        var gridManagerData1 = GridManagerData(ITEM_MORE)
-        var gridManagerData2 = GridManagerData(ITEM_CELL)
-        var gridManagerData3 = GridManagerData(ITEM_CELL)
-        var gridManagerData4 = GridManagerData(ITEM_EMPTY_LINE)
+//        var gridManagerData1 = GridManagerData(ITEM_MORE)
+//        var gridManagerData2 = GridManagerData(ITEM_CELL)
+//        var gridManagerData3 = GridManagerData(ITEM_CELL)
+//        var gridManagerData4 = GridManagerData(ITEM_EMPTY_LINE)
+//
+//        var gridManagerData5 = GridManagerData(ITEM_MORE)
+//        var gridManagerData6 = GridManagerData(ITEM_CELL)
+//        var gridManagerData9 = GridManagerData(ITEM_EMPTY_LINE)
+//
+//        var gridManagerData7 = GridManagerData(ITEM_MORE)
+//        var gridManagerData8 = GridManagerData(ITEM_CELL)
+//        var gridManagerData10 = GridManagerData(ITEM_EMPTY_LINE)
+//
+//        var list = ArrayList<GridManagerData>()
+//        list.add(gridManagerData1)
+//        list.add(gridManagerData2)
+//        list.add(gridManagerData3)
+//        list.add(gridManagerData4)
+//        list.add(gridManagerData5)
+//        list.add(gridManagerData6)
+//        list.add(gridManagerData9)
+//        list.add(gridManagerData7)
+//        list.add(gridManagerData8)
+//        list.add(gridManagerData10)
 
-        var gridManagerData5 = GridManagerData(ITEM_MORE)
-        var gridManagerData6 = GridManagerData(ITEM_CELL)
-        var gridManagerData9 = GridManagerData(ITEM_EMPTY_LINE)
 
-        var gridManagerData7 = GridManagerData(ITEM_MORE)
-        var gridManagerData8 = GridManagerData(ITEM_CELL)
-        var gridManagerData10 = GridManagerData(ITEM_EMPTY_LINE)
-
-        var list = ArrayList<GridManagerData>()
-        list.add(gridManagerData1)
-        list.add(gridManagerData2)
-        list.add(gridManagerData3)
-        list.add(gridManagerData4)
-        list.add(gridManagerData5)
-        list.add(gridManagerData6)
-        list.add(gridManagerData9)
-        list.add(gridManagerData7)
-        list.add(gridManagerData8)
-        list.add(gridManagerData10)
-
-        mAdapter.addData(list)
     }
 
     override fun initData() {
@@ -106,7 +127,7 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
     }
 
     override fun loadData() {
-        mLoadService.showSuccess()
+        mViewModel.loadData()
     }
 
     override fun preLoad() {
@@ -119,10 +140,13 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
 
             val requestOptions = RequestOptions()
-            requestOptions.placeholder(com.sdxxtop.zjlguardian.R.drawable.placeholder_icon) //设置“加载中”状态时显示的图片
-                    .error(com.sdxxtop.zjlguardian.R.drawable.error_icon) //设置“加载失败”状态时显示的图片
-            Glide.with(context!!).load(path as Int).apply(requestOptions).into(imageView!!)
-
+            requestOptions.placeholder(R.drawable.placeholder_icon) //设置“加载中”状态时显示的图片
+                    .error(R.drawable.error_icon) //设置“加载失败”状态时显示的图片
+            if (path is String) {
+                Glide.with(context!!).load(path).apply(requestOptions).into(imageView!!)
+            } else {
+                Glide.with(context!!).load(R.drawable.error_icon).apply(requestOptions).into(imageView!!)
+            }
 
 //            imageView?.setImageResource(path as Int)
 //            GlideUtil.displayImage(context!!, path as String, imageView!!)

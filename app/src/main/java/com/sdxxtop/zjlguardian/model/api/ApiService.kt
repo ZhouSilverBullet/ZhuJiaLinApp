@@ -7,6 +7,7 @@ import com.sdxxtop.zjlguardian.ui.contact.data.ContactData
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
 import com.sdxxtop.zjlguardian.ui.event_report.data.ReportListData
+import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GruadeEntry
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
 import com.sdxxtop.zjlguardian.ui.message.data.MessageDetails
 import com.sdxxtop.zjlguardian.ui.message.data.MessageListData
@@ -45,6 +46,9 @@ interface ApiService {
     @POST("login/modpw")
     suspend fun postLoginModpw(@Field("data") data: String): BaseResponse<Any>
 
+    @FormUrlEncoded
+    @POST("main/index")
+    suspend fun postMainIndex(@Field("data") data: String): BaseResponse<GruadeEntry>
 
     @FormUrlEncoded
     @POST("event/add")

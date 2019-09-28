@@ -14,7 +14,7 @@ class HttpParams : BaseParams() {
 
     override fun defaultValue() {
         put("ui", SpUtil.getInt(HttpConstantValue.USER_ID, 0))
-        put("p", SpUtil.getInt(HttpConstantValue.PART_ID, 0))
+        put("pti", SpUtil.getInt(HttpConstantValue.PART_ID, 0))
         put("pi", HttpConstantValue.PLATFORM_ID)
     }
 
