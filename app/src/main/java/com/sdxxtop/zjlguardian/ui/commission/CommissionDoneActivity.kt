@@ -1,6 +1,9 @@
 package com.sdxxtop.zjlguardian.ui.commission
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amap.api.mapcore.util.it
@@ -13,9 +16,8 @@ import com.sdxxtop.zjlguardian.ui.commission.adapter.CommissionListAdapter
 import com.sdxxtop.zjlguardian.ui.commission.viewmodel.CommissionViewModel
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
-import com.sdxxtop.zjlguardian.ui.event_report.adapter.EventReportListAdapter
 
-class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionViewModel>() {
+class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, CommissionViewModel>() {
 
     val mAdapter by lazy {
         CommissionListAdapter()
@@ -50,12 +52,11 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
             startActivity(intent)
         }
 
-        mBinding.stvTitle.tvRight.setOnClickListener {
-            startActivity(Intent(this, CommissionDoneActivity::class.java))
-        }
+        mBinding.stvTitle.tvRight.visibility = View.GONE
+        mBinding.stvTitle.setTitleValue("已完成事项")
     }
 
     override fun loadData() {
-        mViewModel.loadData()
+        mViewModel.loadDoneData()
     }
 }

@@ -14,6 +14,7 @@ import com.sdxxtop.zjlguardian.widget.people_picker.PeoplePickerView
 import com.sdxxtop.zjlguardian.widget.people_picker.data.DepartmentData
 import com.sdxxtop.zjlguardian.widget.people_picker.data.IPickerData
 import com.sdxxtop.zjlguardian.widget.people_picker.data.PeopleData
+import kotlinx.android.synthetic.main.activity_event_report_detail.view.*
 
 class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding, EventReportDetailViewModel>() {
     companion object {
@@ -137,9 +138,9 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         mBinding.llResponseContent.visibility = if (replyEmpty) View.GONE else View.VISIBLE
         if (!replyEmpty) {
             mBinding.tvResponseContentText.text = it.reply[0].desc
-            mBinding.vLine.visibility = View.VISIBLE
+            mBinding.tcvCompeteDate.setShowLine(true)
         } else {
-            mBinding.vLine.visibility = View.GONE
+            mBinding.tcvCompeteDate.setShowLine(false)
         }
 
         //处理状态

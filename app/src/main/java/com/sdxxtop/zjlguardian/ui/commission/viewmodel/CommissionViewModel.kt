@@ -30,4 +30,20 @@ class CommissionViewModel : BaseViewModel() {
             showLoadingDialog(false)
         })
     }
+
+    //我的代办完成数据
+    fun loadDoneData() {
+        loadOnUI({
+            val params = HttpParams()
+            RetrofitClient.apiService.postEventDone(params.data)
+        }, {
+            showLoadingDialog(false)
+            mReportList.value = it.list
+        }, { code, msg, t ->
+
+            UIUtils.showToast(msg)
+
+            showLoadingDialog(false)
+        })
+    }
 }

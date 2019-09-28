@@ -23,6 +23,8 @@
             app:bgColor="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
             app:leftLayoutIsShow="true"
+            app:rightTextColor="@color/tv_white_color"
+            app:rightTextValue="已完成"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

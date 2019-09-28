@@ -133,6 +133,11 @@ interface ApiService {
     suspend fun postEventIndex(@Field("data") data: String): BaseResponse<ReportListData>
 
     @FormUrlEncoded
+    @POST("event/done")
+    suspend fun postEventDone(@Field("data") data: String): BaseResponse<ReportListData>
+
+
+    @FormUrlEncoded
     @POST("message/lists")
     suspend fun postMessageLists(@Field("data") data: String): BaseResponse<MessageListData>
 

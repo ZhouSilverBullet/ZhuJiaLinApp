@@ -50,7 +50,7 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
 
     override fun initView() {
         mBinding.rv.layoutManager = LinearLayoutManager(this)
-        mBinding.rv.addItemDecoration(ItemDivider().setDividerWidth(UIUtils.dip2px(10)))
+        mBinding.rv.addItemDecoration(ItemDivider().setDividerColor(0xE6E6E6).setDividerWidth(UIUtils.dip2px(10)))
     }
 
     override fun initEvent() {
