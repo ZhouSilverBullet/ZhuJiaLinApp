@@ -63,14 +63,39 @@ interface ApiService {
     suspend fun postEventLists(@Field("data") data: String): BaseResponse<ReportListData>
 
 
-    @FormUrlEncoded
-    @POST("event/details")
-    suspend fun postEventDetails(@Field("data") data: String): BaseResponse<EventReportDetailData>
+//    @FormUrlEncoded
+//    @POST("event/details")
+//    suspend fun postEventDetails(@Field("data") data: String): BaseResponse<EventReportDetailData>
 
+    /**
+     * path:
+     *  event/details
+     *  eventself/details
+     *  event/todo
+     */
+    @FormUrlEncoded
+    @POST("{path}")
+    suspend fun postEventDetails(@Path("path") path: String, @Field("data") data: String): BaseResponse<EventReportDetailData>
 
     @Multipart
     @POST("event/upimg")
     suspend fun postUpimg(@PartMap map: HashMap<String, RequestBody>): BaseResponse<ImageData>
+
+    //受理
+    @FormUrlEncoded
+    @POST("event/settle")
+    suspend fun postEventSettle(@Field("data") data: String): BaseResponse<Any>
+
+    //解决
+    @FormUrlEncoded
+    @POST("event/finish")
+    suspend fun postEventFinish(@Field("data") data: String): BaseResponse<Any>
+
+    //流转
+    @FormUrlEncoded
+    @POST("event/trans")
+    suspend fun postEventTrans(@Field("data") data: String): BaseResponse<Any>
+
 
     @FormUrlEncoded
     @POST("eventself/add")

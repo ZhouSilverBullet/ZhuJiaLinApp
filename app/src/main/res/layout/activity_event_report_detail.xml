@@ -91,7 +91,7 @@
                         android:layout_marginBottom="5dp" />
 
                     <View
-                        android:id="@+id/text_and_edit_line"
+                        android:id="@+id/v_line"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="0dp"
                         android:layout_width="match_parent"
@@ -129,11 +129,66 @@
                     android:layout_height="105dp"
                     android:visibility="gone" />
 
+
                 <LinearLayout
+                    android:id="@+id/ll_report"
                     android:layout_marginTop="@dimen/dp_16"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_report_people_dec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="事件上报人"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="@dimen/sp_14"
+                        android:textColor="@color/color_B2B2B2" />
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_report_people"
+                        app:tcv_text_view="事件上报人："
+                        tools:tcv_content_text="张三"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_report_date"
+                        app:tcv_text_view="上报日期："
+                        tools:tcv_content_text="2019-22-22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.sdxxtop.ui.TextContentView
+                        android:id="@+id/tcv_jiejue_date"
+                        app:tcv_text_view="期待解决日期："
+                        tools:tcv_content_text="2019-22-22"
+                        app:tcv_line_is_show="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_replay"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_duty_people_dec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="事件责任人"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="@dimen/sp_14"
+                        android:textColor="@color/color_B2B2B2" />
 
                     <com.sdxxtop.ui.TextContentView
                         android:id="@+id/tcv_people"
@@ -153,11 +208,14 @@
                         android:id="@+id/tcv_compete_date"
                         app:tcv_text_view="完成日期："
                         tools:tcv_content_text="2019-22-22"
+                        app:tcv_line_is_show="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <LinearLayout
                         android:id="@+id/ll_response_content"
+                        android:visibility="gone"
+                        tools:visibility="visible"
                         android:background="@color/white"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -186,6 +244,86 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
+                <!--  1:待受理 2:处理中 3:已完成 4:无法解决 -->
+
+                <LinearLayout
+                    android:id="@+id/ll_net_response"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:text="内容回复"
+                        android:textColor="@color/color_303030"
+                        android:textSize="@dimen/sp_14" />
+
+                    <com.sdxxtop.ui.NumberEditTextView
+                        android:id="@+id/net_content_response"
+                        android:background="@color/white"
+                        app:numEditText="@={vm.mResponseValue}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="5dp" />
+
+                    <Button
+                        android:id="@+id/btn_jiejue"
+                        android:onClick="onClick"
+                        android:text="已解决"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp" />
+
+                    <Button
+                        android:id="@+id/btn_not_jiejue"
+                        android:onClick="onClick"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="无法解决"
+                        style="@style/app_button_style_white_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_shouli"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:onClick="onClick"
+                    android:text="受理"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp" />
+
+                <Button
+                    android:id="@+id/btn_turn_people"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:onClick="onClick"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="流转"
+                    style="@style/app_button_style_white_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

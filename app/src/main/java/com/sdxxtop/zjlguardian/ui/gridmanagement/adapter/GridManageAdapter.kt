@@ -96,12 +96,7 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
             vLine?.visibility = View.VISIBLE
         }
 
-        helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
-            val intent = Intent(mContext, EventReportDetailActivity::class.java)
-            intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
-            intent.putExtra("eventId", item.event_id)
-            mContext.startActivity(intent)
-        }
+
 
         when (item.eventItemType) {
             EVENT_DEPARTMENT -> {
@@ -117,6 +112,14 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                         ?: "").append("：").append(item.title)
 
                 tvName?.text = ""
+
+                helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
+                    val intent = Intent(mContext, EventReportDetailActivity::class.java)
+                    intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
+                    intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+                    intent.putExtra("eventId", item.event_id)
+                    mContext.startActivity(intent)
+                }
             }
             EVENT_REPORT -> {
 //                tvTitle?.text = "我的上报"

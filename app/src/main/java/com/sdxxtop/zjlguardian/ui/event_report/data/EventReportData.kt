@@ -53,7 +53,10 @@ data class DetailData(
         val reply: List<Reply>,
         val settle_date: String,
         val settle_time: String,
-        val title: String
+        val title: String,
+        val status: Int,
+        val add_time: String,
+        val user_name: String
 )
 
 data class Reply(
