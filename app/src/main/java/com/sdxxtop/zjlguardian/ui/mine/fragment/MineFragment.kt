@@ -12,6 +12,7 @@ import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentMineBinding
 import com.sdxxtop.zjlguardian.model.db.UserSession
 import com.sdxxtop.zjlguardian.ui.commission.CommissionActivity
+import com.sdxxtop.zjlguardian.ui.department.DepartmentListActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
 import com.sdxxtop.zjlguardian.ui.login.LoginActivity
@@ -65,7 +66,8 @@ class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
                 startActivity(intent)
             }
             mBinding.tatvDepartmentEvent -> {
-
+                val intent = Intent(activity, DepartmentListActivity::class.java)
+                startActivity(intent)
             }
 
             mBinding.tatvDaiban -> {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.sdxxtop.zjlguardian.ui.department.viewmodel.DepartmentListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.department.DepartmentListActivity">
+
+        <com.sdxxtop.ui.TitleView
+            android:id="@+id/stv_title"
+            app:titleValue="部门事件"
+            app:titleColor="@color/white"
+            app:bgColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftLayoutIsShow="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:adjustViewBounds="true"
+            android:src="@drawable/top_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

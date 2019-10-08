@@ -55,7 +55,8 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                 tvTitle?.text = "部门事件"
                 ivIcon?.setImageResource(R.drawable.grid_manager_depart)
                 llMore?.setOnClickListener {
-
+                    val intent = Intent(mContext, CommissionActivity::class.java)
+                    mContext.startActivity(intent)
                 }
             }
             EVENT_MINE -> {
@@ -105,6 +106,14 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                 tvTypeTitle?.text = StringBuilder(item.status ?: "").append("：").append(item.title)
 
                 tvName?.text = item.duty_name
+
+                helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
+                    val intent = Intent(mContext, EventReportDetailActivity::class.java)
+                    intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+                    intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+                    intent.putExtra("eventId", item.event_id)
+                    mContext.startActivity(intent)
+                }
             }
             EVENT_MINE -> {
 //                tvTitle?.text = "我的待办"
@@ -126,6 +135,14 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                 tvTypeTitle?.text = StringBuilder(item.status ?: "").append("：").append(item.title)
 
                 tvName?.text = ""
+
+                helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
+                    val intent = Intent(mContext, EventReportDetailActivity::class.java)
+                    intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+                    intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+                    intent.putExtra("eventId", item.event_id)
+                    mContext.startActivity(intent)
+                }
             }
             else -> {
             }

@@ -3,6 +3,7 @@ package com.sdxxtop.zjlguardian.ui.event_report
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amap.api.mapcore.util.it
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
@@ -24,6 +25,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         val TYPE_EVENT = 0 //事件处理详情
         val TYPE_SELF = 1 //自行处理
         val TYPE_COMMISSION = 2 //代办
+        val TYPE_DEPARTMENT = 3 //部门事件
     }
 
     var path: String = ""
@@ -158,9 +160,50 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         // status=2： 显示回复框、解决按钮
         // status=3： 已完成
         // status=4： 已完成
-        when (it.status) {
-            1 -> {
 
+        when(keyEventType) {
+
+            //处理事件详情
+            TYPE_EVENT -> {
+                handleTypeEvent()
+            }
+
+            //处理自行处理
+            TYPE_SELF -> {
+                handleTypeSelf()
+            }
+
+            //处理我的代办
+            TYPE_COMMISSION -> {
+                handleTypeCommission(it.status)
+            }
+
+        }
+
+
+    }
+
+    private fun handleTypeSelf() {
+        //事件责任人
+        mBinding.llReplay.visibility = View.GONE
+        //事件上报人
+        mBinding.llReport.visibility = View.GONE
+    }
+
+    /**
+     * 事件详情
+     */
+    private fun handleTypeEvent() {
+        mBinding.llReport.visibility = View.GONE
+    }
+
+    /**
+     * 我的代办
+     */
+    private fun handleTypeCommission(status: Int) {
+        mBinding.llReport.visibility = View.VISIBLE
+        when (status) {
+            1 -> {
                 mBinding.btnShouli.visibility = View.VISIBLE
                 mBinding.btnTurnPeople.visibility = View.VISIBLE
 

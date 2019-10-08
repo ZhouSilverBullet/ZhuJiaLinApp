@@ -42,9 +42,29 @@ class MessageActivity : BaseActivity<ActivityMessageBinding, MessageViewModel>()
     override fun initEvent() {
         mAdapter.setOnItemClickListener { adapter, view, position ->
             val eventReportItem = mAdapter.data[position]
-            val intent = Intent(view.context, MessageDetailActivity::class.java)
-            intent.putExtra("messageId", eventReportItem.message_id)
-            startActivity(intent)
+            //0普通消息 1咨询 2投诉 3上报事件 4自行处理
+            when (eventReportItem.type) {
+                0 -> {
+                    val intent = Intent(view.context, MessageDetailActivity::class.java)
+                    intent.putExtra("messageId", eventReportItem.message_id)
+                    startActivity(intent)
+                }
+                1 -> {
+
+                }
+                2 -> {
+
+                }
+                3 -> {
+
+                }
+                4 -> {
+
+                }
+                else -> {
+                }
+            }
+
         }
 
     }

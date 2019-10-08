@@ -4,6 +4,7 @@ import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.zjlguardian.model.data.InitData
 import com.sdxxtop.zjlguardian.model.imgpush.ImageData
 import com.sdxxtop.zjlguardian.ui.contact.data.ContactData
+import com.sdxxtop.zjlguardian.ui.department.data.DepartmentData
 import com.sdxxtop.zjlguardian.ui.event_report.data.CatDataList
 import com.sdxxtop.zjlguardian.ui.event_report.data.EventReportDetailData
 import com.sdxxtop.zjlguardian.ui.event_report.data.PartListData
@@ -144,4 +145,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("message/details")
     suspend fun postMessageDetails(@Field("data") data: String): BaseResponse<MessageDetails>
+
+
+    @FormUrlEncoded
+    @POST("event/partlists")
+    suspend fun postEventPartLists(@Field("data") data: String): BaseResponse<DepartmentData>
 }

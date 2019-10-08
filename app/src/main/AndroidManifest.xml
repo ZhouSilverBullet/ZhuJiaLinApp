@@ -18,7 +18,8 @@
         android:theme="@style/NoTitleTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
-        <activity android:name=".ui.commission.CommissionDoneActivity"></activity>
+        <activity android:name=".ui.department.DepartmentListActivity"></activity>
+        <activity android:name=".ui.commission.CommissionDoneActivity" />
         <activity android:name=".ui.message.MessageDetailActivity" />
         <activity android:name=".ui.message.MessageActivity" />
         <activity android:name=".ui.commission.CommissionActivity" />
