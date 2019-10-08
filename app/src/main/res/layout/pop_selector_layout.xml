@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:paddingTop="16dp"
+        android:background="@color/color_F0F0F0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="状态"
+        android:layout_marginTop="@dimen/dp_16"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/sp_14" />
+
+    <LinearLayout
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cb_shouli"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="待受理" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <CheckBox
+            android:id="@+id/cb_chulizhong"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="处理中" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <CheckBox
+            android:id="@+id/cb_complete"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="已完成" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_marginTop="15dp"
+        android:text="分类"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/sp_14" />
+
+    <LinearLayout
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cb_event"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="事件" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <CheckBox
+            android:id="@+id/cb_commission"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="咨询" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <CheckBox
+            android:id="@+id/cb_tousu"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="投诉" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_marginTop="15dp"
+        android:text="排序"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/sp_14" />
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_submit"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="最近提交" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <RadioButton
+            android:id="@+id/rb_timelost"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="即将到期" />
+
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_reset"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/color_F0F0F0"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/tv_reset"
+                android:text="重置"
+                android:gravity="center"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_complete"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/tv_complete"
+                android:text="完成"
+                android:gravity="center"
+                android:background="@color/main_color"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
