@@ -17,13 +17,13 @@
         android:background="@color/color_EFEFF4"
         tools:context=".ui.report.fragment.ReportFragment">
 
-        <com.sdxxtop.ui.TitleView
-            android:id="@+id/stv_title"
-            app:titleValue="数据上报"
-            app:titleColor="@color/white"
-            app:bgColor="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+<!--        <com.sdxxtop.ui.TitleView-->
+<!--            android:id="@+id/stv_title"-->
+<!--            app:titleValue="数据上报"-->
+<!--            app:titleColor="@color/white"-->
+<!--            app:bgColor="@color/colorPrimary"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"

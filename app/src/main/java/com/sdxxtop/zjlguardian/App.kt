@@ -47,25 +47,25 @@ class App : BaseApplication() {
 //        FaceSession.initFace(this, "licenseID")
 
         //友盟统计
-//        AnalyticsSession.initAnalytics(this, isDebug(), "5d4245600cafb2f31f0009f5")
+        AnalyticsSession.initAnalytics(this, isDebug(), "5d4245600cafb2f31f0009f5")
 
         //crash 初始化
         CrashSession.initCrash(this, isDebug(), BuildConfig.VERSION_NAME)
 
         Log.i(TAG, "--------------调取-------------->")
 
-//        if (isAppProcess(getCurProcessName())) {
-//            initTracker()
-//
-//            LoadSir.beginBuilder()
-//                    .addCallback(ErrorCallback())
-//                    .addCallback(EmptyCallback())
-//                    .addCallback(LoadingCallback())
-//                    .addCallback(TimeoutCallback())
-//                    .addCallback(CustomCallback())
-//                    .setDefaultCallback(LoadingCallback::class.java)
-//                    .commit()
-//        }
+        if (isAppProcess(getCurProcessName())) {
+            initTracker()
+
+            LoadSir.beginBuilder()
+                    .addCallback(ErrorCallback())
+                    .addCallback(EmptyCallback())
+                    .addCallback(LoadingCallback())
+                    .addCallback(TimeoutCallback())
+                    .addCallback(CustomCallback())
+                    .setDefaultCallback(LoadingCallback::class.java)
+                    .commit()
+        }
     }
 
     override fun isDebug(): Boolean {

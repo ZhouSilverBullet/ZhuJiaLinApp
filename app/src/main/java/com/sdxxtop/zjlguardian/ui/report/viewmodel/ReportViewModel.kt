@@ -24,7 +24,7 @@ class ReportViewModel : BaseViewModel() {
             showLoadingDialog(false)
             mReportList.value = it.list
         }, { code, msg, t ->
-
+            mThrowable.value = t
 //            UIUtils.showToast(msg)
 
             showLoadingDialog(false)
