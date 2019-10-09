@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.ui.commission.CommissionActivity
+import com.sdxxtop.zjlguardian.ui.department.DepartmentListActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
@@ -55,7 +56,7 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                 tvTitle?.text = "部门事件"
                 ivIcon?.setImageResource(R.drawable.grid_manager_depart)
                 llMore?.setOnClickListener {
-                    val intent = Intent(mContext, CommissionActivity::class.java)
+                    val intent = Intent(mContext, DepartmentListActivity::class.java)
                     mContext.startActivity(intent)
                 }
             }

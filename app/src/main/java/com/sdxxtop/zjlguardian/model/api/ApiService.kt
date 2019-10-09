@@ -13,6 +13,7 @@ import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GruadeEntry
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
 import com.sdxxtop.zjlguardian.ui.message.data.MessageDetails
 import com.sdxxtop.zjlguardian.ui.message.data.MessageListData
+import com.sdxxtop.zjlguardian.ui.report.data.ReportReportListData
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -150,4 +151,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("event/partlists")
     suspend fun postEventPartLists(@Field("data") data: String): BaseResponse<DepartmentData>
+
+
+    @FormUrlEncoded
+    @POST("collect/lists")
+    suspend fun postEventCollectLists(@Field("data") data: String): BaseResponse<ReportReportListData>
 }

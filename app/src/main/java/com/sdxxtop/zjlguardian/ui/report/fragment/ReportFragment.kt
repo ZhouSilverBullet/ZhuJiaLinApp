@@ -2,15 +2,14 @@ package com.sdxxtop.zjlguardian.ui.report.fragment
 
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdxxtop.base.BaseFragment
-import com.sdxxtop.base.BaseNormalFragment
 import com.sdxxtop.base.ext.topViewPadding
 import com.sdxxtop.common.utils.ItemDivider
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentReportBinding
-import com.sdxxtop.zjlguardian.databinding.FragmentTestBinding
 import com.sdxxtop.zjlguardian.ui.report.adapter.ReportAdapter
 import com.sdxxtop.zjlguardian.ui.report.viewmodel.ReportViewModel
 
@@ -32,6 +31,9 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>() {
     override fun layoutId() = R.layout.fragment_report
 
     override fun initObserve() {
+        mViewModel.mReportList.observe(this, Observer {
+            mAdapter.replaceData(it)
+        })
     }
 
 
@@ -47,13 +49,14 @@ class ReportFragment : BaseFragment<FragmentReportBinding, ReportViewModel>() {
     override fun initData() {
         mLoadService.showSuccess()
 
-        val strArrayList = ArrayList<String>()
-        strArrayList.add("1")
-        strArrayList.add("2")
-        mAdapter.addData(strArrayList)
+//        val strArrayList = ArrayList<String>()
+//        strArrayList.add("1")
+//        strArrayList.add("2")
+//        mAdapter.addData(strArrayList)
     }
 
     override fun loadData() {
+        mViewModel.loadData()
     }
 
 }
