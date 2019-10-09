@@ -46,6 +46,7 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
             val eventReportItem = mAdapter.data[position]
             val intent = Intent(view.context, EventReportDetailActivity::class.java)
             intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
+            intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, eventReportItem.type)
             intent.putExtra("eventId", eventReportItem.event_id)
             startActivity(intent)
         }

@@ -24,6 +24,7 @@ import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_CELL
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_EMPTY_LINE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_MORE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.viewmodel.GridManageViewModel
+import com.sdxxtop.zjlguardian.ui.message.MessageActivity
 import com.sdxxtop.zjlguardian.ui.self_handle.SelfHandleActivity
 import com.youth.banner.loader.ImageLoader
 
@@ -122,7 +123,8 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
     override fun initEvent() {
         mBinding.stvTitle.ivRight.setOnClickListener {
-
+            val intent = Intent(activity, MessageActivity::class.java)
+            startActivity(intent)
         }
     }
 
