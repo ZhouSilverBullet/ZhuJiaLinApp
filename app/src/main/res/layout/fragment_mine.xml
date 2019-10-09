@@ -117,6 +117,8 @@
                     android:layout_height="wrap_content" />
 
                 <com.sdxxtop.ui.TextAndTextView
+                    android:id="@+id/tatv_changepassword"
+                    android:onClick="@{click::onClick}"
                     app:tatv_line_is_show="false"
                     app:tatv_text_view="修改密码"
                     android:layout_width="match_parent"

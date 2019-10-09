@@ -21,7 +21,8 @@ class ReportAdapter(val layoutId: Int = R.layout.report_recycler_item) : BaseQui
         val btnAdd = helper.getView<Button>(R.id.btn_add)
         val tvNumber = helper.getView<TextView>(R.id.tv_number)
         val tvTitle = helper.getView<TextView>(R.id.tv_title)
-        tvNumber.setText(item.name)
+        tvTitle.setText(item.name)
+        tvNumber.setText("数据量：" + item.count)
         btnAdd.setOnClickListener {
             mContext.startActivity(Intent(mContext, ReportAddActivity::class.java))
         }

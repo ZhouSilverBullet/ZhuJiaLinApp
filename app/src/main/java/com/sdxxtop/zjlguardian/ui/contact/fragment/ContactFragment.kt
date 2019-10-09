@@ -108,6 +108,7 @@ class ContactFragment : BaseTitleFragment<FragmentContactBinding, ContactViewMod
             //当search显示的时候，按返回键，就隐藏search
             searchGone(mBinding.rlSearch, mBinding.vBg)
             mViewModel.searchData("")
+            mBinding.etSearch.setText("")
             return true
         }
         return super.onBackPressedSupport()

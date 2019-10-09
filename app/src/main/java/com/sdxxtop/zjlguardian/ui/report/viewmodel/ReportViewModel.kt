@@ -25,7 +25,7 @@ class ReportViewModel : BaseViewModel() {
             mReportList.value = it.list
         }, { code, msg, t ->
 
-            UIUtils.showToast(msg)
+//            UIUtils.showToast(msg)
 
             showLoadingDialog(false)
         })

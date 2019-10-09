@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityForgetBinding
+import com.sdxxtop.zjlguardian.model.db.UserSession
 import com.sdxxtop.zjlguardian.ui.login.viewmodel.ForgetViewModel
 import com.sdxxtop.zjlguardian.widget.CodeButtonManager
 import com.sdxxtop.zjlguardian.widget.callback.SingleClickCallback
@@ -14,6 +15,10 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>(), S
 
     val codeButtonManager by lazy {
         CodeButtonManager(mBinding.btnCode)
+    }
+
+    val isMineFragmentSkip by lazy {
+        intent.getBooleanExtra("isMineFragmentSkip", false)
     }
 
     override fun vmClazz() = ForgetViewModel::class.java
@@ -26,14 +31,25 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>(), S
 
     override fun initObserve() {
         mViewModel.mForgetRequestSucc.observe(this, Observer {
-            val intent = Intent()
-            intent.putExtra("forgetInfo", it)
-            setResult(100, intent)
+            if (isMineFragmentSkip) {
+                UserSession.getInstance().logout()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("isMineFragmentSkipForget", true)
+                intent.putExtra("forgetInfo", it)
+                startActivity(intent)
+                finishAffinity()
+            } else {
+                val intent = Intent()
+                intent.putExtra("forgetInfo", it)
+                setResult(100, intent)
+            }
         })
     }
 
     override fun initView() {
-
+        if (isMineFragmentSkip) {
+            mViewModel.phone.set(UserSession.getInstance().userName)
+        }
     }
 
     override fun initEvent() {

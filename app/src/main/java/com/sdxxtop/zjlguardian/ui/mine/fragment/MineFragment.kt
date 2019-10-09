@@ -15,6 +15,7 @@ import com.sdxxtop.zjlguardian.ui.commission.CommissionActivity
 import com.sdxxtop.zjlguardian.ui.department.DepartmentListActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportListActivity
+import com.sdxxtop.zjlguardian.ui.login.ForgetActivity
 import com.sdxxtop.zjlguardian.ui.login.LoginActivity
 import com.sdxxtop.zjlguardian.ui.message.MessageActivity
 import com.sdxxtop.zjlguardian.ui.mine.viewmodel.MineViewModel
@@ -78,6 +79,11 @@ class MineFragment : BaseFragment<FragmentMineBinding, MineViewModel>() {
             //消息
             mBinding.tatvMessage -> {
                 val intent = Intent(activity, MessageActivity::class.java)
+                startActivity(intent)
+            }
+            mBinding.tatvChangepassword -> {
+                val intent = Intent(activity, ForgetActivity::class.java)
+                intent.putExtra("isMineFragmentSkip", true)
                 startActivity(intent)
             }
             else -> {

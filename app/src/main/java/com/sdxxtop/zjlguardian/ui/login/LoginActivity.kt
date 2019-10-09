@@ -42,8 +42,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     }
 
     override fun initView() {
-        mViewModel.phone.set(UserSession.getInstance().mobile)
-        mViewModel.password.set(UserSession.getInstance().password)
+        val forget = intent.getBooleanExtra("isMineFragmentSkipForget", false)
+        val forgetInfo = intent.getParcelableExtra<ForgetInfo>("forgetInfo")
+        if (forget && forgetInfo != null) {
+            mViewModel.phone.set(forgetInfo.phone)
+            mViewModel.password.set(forgetInfo.password)
+        } else {
+            mViewModel.phone.set(UserSession.getInstance().mobile)
+            mViewModel.password.set(UserSession.getInstance().password)
+        }
     }
 
     override fun isDarkStatusIcon(): Boolean {

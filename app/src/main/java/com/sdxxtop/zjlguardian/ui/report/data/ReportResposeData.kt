@@ -12,5 +12,6 @@ data class ReportReportListData(
 
 data class ReportItemData(
     val form_id: Int,
-    val name: String
+    val name: String,
+    val count: Int
 )
