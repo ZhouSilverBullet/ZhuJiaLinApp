@@ -13,6 +13,7 @@ import com.kingja.loadsir.core.LoadSir
 import com.sdxxtop.base.lifecycle.ActivityLifecycleImpl
 import com.sdxxtop.base.navigationstatus.INavigationColorStatus
 import com.sdxxtop.common.dialog.LoadingDialog
+import com.sdxxtop.network.helper.exception.ApiException
 import com.sdxxtop.ui.loadsir.EmptyCallback
 import com.sdxxtop.ui.loadsir.ErrorCallback
 import com.sdxxtop.ui.loadsir.LoadingCallback
@@ -68,7 +69,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
         loadService.showCallback(LoadingCallback::class.java)
         //加载错误页面
         mViewModel.mThrowable.observe(this, Observer {
-            loadService.showCallback(ErrorCallback::class.java)
+            showErrorCallback(it.code, it.errorMsg)
         })
 
         initView()
@@ -77,6 +78,25 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
         initEvent()
         initData()
         loadData()
+    }
+
+    /**
+     * 默认显示errorCallback
+     * 有的时候，后台会出现
+     * {
+        "code": 201,
+        "msg": "暂无上报记录",
+        "data": {}
+        }
+     * 这个就可能就是显示数据为空的界面了
+     * 所以加入这个方法让子类对应可以重写来判断
+     */
+    open fun showErrorCallback(code: Int, errorMsg: String) {
+        if (code == 201) {
+            loadService.showCallback(EmptyCallback::class.java)
+        } else {
+            loadService.showCallback(ErrorCallback::class.java)
+        }
     }
 
     private fun initSelfObserve() {

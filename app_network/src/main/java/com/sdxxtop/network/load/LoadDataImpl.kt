@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.common.utils.LogUtil
 import com.sdxxtop.network.helper.data.BaseResponse
+import com.sdxxtop.network.helper.exception.ApiException
 import com.sdxxtop.network.utils.NetworkUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                                    failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                                    catchBack: suspend CoroutineScope.(t: Throwable) -> Unit,
                                    finallyBack: suspend CoroutineScope.() -> Unit,
-                                   throwable: MutableLiveData<Throwable>
+                                   throwable: MutableLiveData<ApiException>
     ) {
         viewModelScope.launch {
             try {
@@ -34,7 +35,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                 }
             } catch (e: Exception) {
                 catchBack(e)
-                throwable.value = e
+                throwable.value = ApiException()
                 LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
@@ -47,7 +48,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
             //空实现带参方法
                               failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                               finallyBack: suspend CoroutineScope.() -> Unit,
-                              throwable: MutableLiveData<Throwable>
+                              throwable: MutableLiveData<ApiException>
 
     ) {
         viewModelScope.launch {
@@ -59,7 +60,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                 }
             } catch (e: Exception) {
                 failBlock(-101, NetworkUtils.getHttpExceptionMsg(e), e)
-                throwable.value = e
+                throwable.value = ApiException()
                 LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
@@ -75,12 +76,12 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
     fun <T> converterResponse(response: BaseResponse<T>,
                               successBlock: (T) -> Unit,
                               failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
-                              throwable: MutableLiveData<Throwable>) {
+                              throwable: MutableLiveData<ApiException>) {
         if (response.code == 200) {
             successBlock(response.data)
         } else {
             val t = Throwable("正常数据，业务code非200")
-            throwable.value = t
+            throwable.value = ApiException(response.code, response.msg)
             failBlock(response.code, response.msg, t)
         }
     }
@@ -90,7 +91,7 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                                   successBlock: (BaseResponse<T>) -> Unit,
                                   failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                                   finallyBack: suspend CoroutineScope.() -> Unit,
-                                  throwable: MutableLiveData<Throwable>
+                                  throwable: MutableLiveData<ApiException>
     ) {
         viewModelScope.launch {
             try {
@@ -116,12 +117,12 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
     fun <T> converterBaseResponse(response: BaseResponse<T>,
                                   successBlock: (BaseResponse<T>) -> Unit,
                                   failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
-                                  throwable: MutableLiveData<Throwable>) {
+                                  throwable: MutableLiveData<ApiException>) {
         if (response.code == 200) {
             successBlock(response)
         } else {
             val t = Throwable("正常数据，业务code非200")
-            throwable.value = t
+            throwable.value = ApiException(response.code, response.msg)
             failBlock(response.code, response.msg, t)
         }
     }

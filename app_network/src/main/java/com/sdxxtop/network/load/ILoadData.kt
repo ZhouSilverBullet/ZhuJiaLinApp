@@ -3,6 +3,7 @@ package com.sdxxtop.network.load
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.network.helper.data.BaseResponse
+import com.sdxxtop.network.helper.exception.ApiException
 import kotlinx.coroutines.CoroutineScope
 
 /**
@@ -30,7 +31,7 @@ interface ILoadData {
                           successBlock: (T) -> Unit,
                           failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                           catchBack: suspend CoroutineScope.(t: Throwable) -> Unit = {},
-                          finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<Throwable>)
+                          finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<ApiException>)
 
     /**
      * 返回值全部放在了 failBlock 回调
@@ -39,7 +40,7 @@ interface ILoadData {
                      successBlock: (T) -> Unit,
             //空实现带参方法
                      failBlock: (code: Int, msg: String, t: Throwable) -> Unit = { code, msg, t -> },
-                     finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<Throwable>)
+                     finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<ApiException>)
 
     /**
      * 返回值全部放在了 failBlock 回调
@@ -50,5 +51,5 @@ interface ILoadData {
     fun <T> loadBaseOnUI(block: suspend CoroutineScope.() -> BaseResponse<T>,
                          successBlock: (BaseResponse<T>) -> Unit,
                          failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
-                         finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<Throwable>)
+                         finallyBack: suspend CoroutineScope.() -> Unit = {}, throwable: MutableLiveData<ApiException>)
 }

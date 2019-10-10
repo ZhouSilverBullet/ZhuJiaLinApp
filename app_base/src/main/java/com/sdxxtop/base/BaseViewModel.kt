@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sdxxtop.network.helper.data.BaseResponse
+import com.sdxxtop.network.helper.exception.ApiException
 import com.sdxxtop.network.load.ILoadData
 import com.sdxxtop.network.load.LoadDataImpl
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +22,7 @@ import java.lang.Exception
  */
 abstract class BaseViewModel : ViewModel() {
     val mIsLoadingShow = MutableLiveData(false)
-    val mThrowable = MutableLiveData<Throwable>()
+    val mThrowable = MutableLiveData<ApiException>()
     //抽取了LoadData
     private val loadData: ILoadData = LoadDataImpl(BaseApplication.INSTANCE, viewModelScope)
 

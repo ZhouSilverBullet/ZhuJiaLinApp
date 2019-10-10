@@ -44,7 +44,11 @@ class ReportFragment : BaseTitleFragment<FragmentReportBinding, ReportViewModel>
         })
 
         mViewModel.mThrowable.observe(this, Observer {
-            mLoadService.showCallback(ErrorCallback::class.java)
+            if (it.code == 201) {
+                mLoadService.showCallback(EmptyCallback::class.java)
+            } else {
+                mLoadService.showCallback(ErrorCallback::class.java)
+            }
         })
     }
 
