@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportListViewModel" />
@@ -25,9 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.youth.banner.Banner
-            android:layout_width="match_parent"
-            android:layout_height="130dp" />
+        <ImageView style="@style/TopImageView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"

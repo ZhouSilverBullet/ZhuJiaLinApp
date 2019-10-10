@@ -31,7 +31,7 @@ abstract class BaseViewModel : ViewModel() {
                           failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                           catchBack: suspend CoroutineScope.(t: Throwable) -> Unit = {},
                           finallyBack: suspend CoroutineScope.() -> Unit = {}) {
-        loadData.loadCatchOnUI(block, successBlock, failBlock, catchBack, finallyBack)
+        loadData.loadCatchOnUI(block, successBlock, failBlock, catchBack, finallyBack, mThrowable)
     }
 
 
@@ -40,7 +40,7 @@ abstract class BaseViewModel : ViewModel() {
             //空实现带参方法
                      failBlock: (code: Int, msg: String, t: Throwable) -> Unit = { code, msg, t -> },
                      finallyBack: suspend CoroutineScope.() -> Unit = {}) {
-        loadData.loadOnUI(block, successBlock, failBlock, finallyBack)
+        loadData.loadOnUI(block, successBlock, failBlock, finallyBack, mThrowable)
     }
 
 
@@ -48,7 +48,7 @@ abstract class BaseViewModel : ViewModel() {
                          successBlock: (BaseResponse<T>) -> Unit,
                          failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                          finallyBack: suspend CoroutineScope.() -> Unit = {}) {
-        loadData.loadBaseOnUI(block, successBlock, failBlock, finallyBack)
+        loadData.loadBaseOnUI(block, successBlock, failBlock, finallyBack, mThrowable)
     }
 
     fun startActivity(context: Context?, intent: Intent): Boolean {

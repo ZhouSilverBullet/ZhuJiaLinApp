@@ -57,12 +57,13 @@ public class SelectorPopupWindow extends PopupWindow {
     }
 
     private void initView(View view) {
-        CheckBox cbShouli = view.findViewById(R.id.cb_shouli);
-        CheckBox cbChulizhong = view.findViewById(R.id.cb_chulizhong);
-        CheckBox cbComplete = view.findViewById(R.id.cb_complete);
-        CheckBox cbEvent = view.findViewById(R.id.cb_event);
-        CheckBox cbCommission = view.findViewById(R.id.cb_commission);
-        CheckBox cbTousu = view.findViewById(R.id.cb_tousu);
+        RadioButton rbShouli = view.findViewById(R.id.rb_shouli);
+        RadioButton rbChulizhong = view.findViewById(R.id.rb_chulizhong);
+        RadioButton rbComplete = view.findViewById(R.id.rb_complete);
+
+        RadioButton rbEvent = view.findViewById(R.id.rb_event);
+        RadioButton rbCommission = view.findViewById(R.id.rb_commission);
+        RadioButton rbTousu = view.findViewById(R.id.rb_tousu);
 
         RadioButton rbSubmit = view.findViewById(R.id.rb_submit);
         RadioButton rbTimelost = view.findViewById(R.id.rb_timelost);
@@ -73,12 +74,14 @@ public class SelectorPopupWindow extends PopupWindow {
         llReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbShouli.setChecked(false);
-                cbChulizhong.setChecked(false);
-                cbComplete.setChecked(false);
-                cbEvent.setChecked(false);
-                cbCommission.setChecked(false);
-                cbTousu.setChecked(false);
+                rbShouli.setChecked(false);
+                rbChulizhong.setChecked(false);
+                rbComplete.setChecked(false);
+
+                rbEvent.setChecked(false);
+                rbCommission.setChecked(false);
+                rbTousu.setChecked(false);
+
                 rbSubmit.setChecked(false);
                 rbTimelost.setChecked(false);
             }

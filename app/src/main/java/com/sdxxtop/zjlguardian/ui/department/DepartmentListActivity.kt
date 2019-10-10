@@ -1,6 +1,7 @@
 package com.sdxxtop.zjlguardian.ui.department
 
 import android.content.Intent
+import android.view.View
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
@@ -41,6 +42,8 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
     override fun initObserve() {
         mViewModel.mDepartmentList.observe(this, Observer {
             mAdapter.replaceData(it)
+
+            showLoadSir(it.isEmpty())
         })
     }
 
@@ -48,6 +51,10 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
         mBinding.rv.layoutManager = LinearLayoutManager(this)
         mBinding.rv.addItemDecoration(ItemDivider().setDividerColor(0xE6E6E6).setDividerWidth(UIUtils.dip2px(10)))
         mBinding.rv.adapter = mAdapter
+    }
+
+    override fun loadSirBindView(): View {
+        return mBinding.rv
     }
 
     override fun initEvent() {
@@ -69,15 +76,17 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
     }
 
     override fun onShow() {
-        ViewCompat.animate(mBinding.ivRank).rotation(90f)
-                .setDuration(500)
-                .start()
+//        ViewCompat.animate(mBinding.ivRank)
+//                .rotation(-90f)
+//                .setDuration(500)
+//                .start()
     }
 
     override fun onDismiss() {
-        ViewCompat.animate(mBinding.ivRank).rotation(270f)
-                .setDuration(500)
-                .start()
+//        ViewCompat.animate(mBinding.ivRank)
+//                .rotation(90f)
+//                .setDuration(500)
+//                .start()
     }
 
 

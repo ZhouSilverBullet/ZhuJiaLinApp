@@ -40,16 +40,6 @@ class SelfHandleActivity : BaseActivity<ActivitySelfHandleBinding, SelfHandleVie
     }
 
     override fun initView() {
-        mBinding.bView.setImageLoader(GridManageFragment.GlideImageLoader())
-        val arrayList = ArrayList<Int>()
-        arrayList.add(R.drawable.test0)
-        arrayList.add(R.drawable.test1)
-        arrayList.add(R.drawable.test2)
-        arrayList.add(R.drawable.test3)
-
-        mBinding.bView.setImages(arrayList)
-        mBinding.bView.start()
-
         mBinding.stvTitle.tvRight.setOnClickListener {
             val intent = Intent(this@SelfHandleActivity, EventReportListActivity::class.java)
             intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, TYPE_SELF)

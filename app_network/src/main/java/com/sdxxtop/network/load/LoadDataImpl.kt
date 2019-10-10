@@ -2,6 +2,7 @@ package com.sdxxtop.network.load
 
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.common.utils.LogUtil
 import com.sdxxtop.network.helper.data.BaseResponse
 import com.sdxxtop.network.utils.NetworkUtils
@@ -21,17 +22,19 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                                    successBlock: (T) -> Unit,
                                    failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                                    catchBack: suspend CoroutineScope.(t: Throwable) -> Unit,
-                                   finallyBack: suspend CoroutineScope.() -> Unit
+                                   finallyBack: suspend CoroutineScope.() -> Unit,
+                                   throwable: MutableLiveData<Throwable>
     ) {
         viewModelScope.launch {
             try {
                 if (NetworkUtils.isNetworkAvailable(context)) {
-                    converterResponse(block(), successBlock, failBlock)
+                    converterResponse(block(), successBlock, failBlock, throwable)
                 } else {
                     catchBack(UnknownHostException("网络连接失败，请重试"))
                 }
             } catch (e: Exception) {
                 catchBack(e)
+                throwable.value = e
                 LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
@@ -43,18 +46,20 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                               successBlock: (T) -> Unit,
             //空实现带参方法
                               failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
-                              finallyBack: suspend CoroutineScope.() -> Unit
+                              finallyBack: suspend CoroutineScope.() -> Unit,
+                              throwable: MutableLiveData<Throwable>
 
     ) {
         viewModelScope.launch {
             try {
                 if (NetworkUtils.isNetworkAvailable(context)) {
-                    converterResponse(block(), successBlock, failBlock)
+                    converterResponse(block(), successBlock, failBlock, throwable)
                 } else {
                     failBlock(-100, "网络连接失败，请重试", UnknownHostException())
                 }
             } catch (e: Exception) {
                 failBlock(-101, NetworkUtils.getHttpExceptionMsg(e), e)
+                throwable.value = e
                 LogUtil.e("LoadDataImpl", e.message ?: "")
             } finally {
                 finallyBack()
@@ -68,12 +73,15 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
      * 失败 failBlock
      */
     fun <T> converterResponse(response: BaseResponse<T>,
-                              successBlock: (T) -> Unit
-                              , failBlock: (code: Int, msg: String, t: Throwable) -> Unit) {
+                              successBlock: (T) -> Unit,
+                              failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
+                              throwable: MutableLiveData<Throwable>) {
         if (response.code == 200) {
             successBlock(response.data)
         } else {
-            failBlock(response.code, response.msg, Throwable("正常数据，业务code非200"))
+            val t = Throwable("正常数据，业务code非200")
+            throwable.value = t
+            failBlock(response.code, response.msg, t)
         }
     }
 
@@ -81,13 +89,13 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
     override fun <T> loadBaseOnUI(block: suspend CoroutineScope.() -> BaseResponse<T>,
                                   successBlock: (BaseResponse<T>) -> Unit,
                                   failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
-                                  finallyBack: suspend CoroutineScope.() -> Unit
-
+                                  finallyBack: suspend CoroutineScope.() -> Unit,
+                                  throwable: MutableLiveData<Throwable>
     ) {
         viewModelScope.launch {
             try {
                 if (NetworkUtils.isNetworkAvailable(context)) {
-                    converterBaseResponse(block(), successBlock, failBlock)
+                    converterBaseResponse(block(), successBlock, failBlock, throwable)
                 } else {
                     failBlock(-100, "网络连接失败", UnknownHostException())
                 }
@@ -106,12 +114,15 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
      * 失败 failBlock
      */
     fun <T> converterBaseResponse(response: BaseResponse<T>,
-                                  successBlock: (BaseResponse<T>) -> Unit
-                                  , failBlock: (code: Int, msg: String, t: Throwable) -> Unit) {
+                                  successBlock: (BaseResponse<T>) -> Unit,
+                                  failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
+                                  throwable: MutableLiveData<Throwable>) {
         if (response.code == 200) {
             successBlock(response)
         } else {
-            failBlock(response.code, response.msg, Throwable("正常数据，业务code非200"))
+            val t = Throwable("正常数据，业务code非200")
+            throwable.value = t
+            failBlock(response.code, response.msg, t)
         }
     }
 }

@@ -59,6 +59,8 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
     override fun initObserve() {
         mViewModel.mDetailData.observe(this, Observer {
             handleDetailData(it)
+
+            showLoadSir(it == null)
         })
 
         mViewModel.mSettleSuccess.observe(this, Observer {
@@ -161,7 +163,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         // status=3： 已完成
         // status=4： 已完成
 
-        when(keyEventType) {
+        when (keyEventType) {
 
             //处理事件详情
             TYPE_EVENT -> {
@@ -238,6 +240,10 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         mBinding.rv.adapter = mAdapter
 
         handleEventType()
+    }
+
+    override fun loadSirBindView(): View {
+        return mBinding.nsvView
     }
 
     /**

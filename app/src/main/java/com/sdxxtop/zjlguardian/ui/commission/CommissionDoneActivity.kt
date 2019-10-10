@@ -10,6 +10,7 @@ import com.amap.api.mapcore.util.it
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.common.utils.ItemDivider
 import com.sdxxtop.common.utils.UIUtils
+import com.sdxxtop.ui.loadsir.EmptyCallback
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityCommissionBinding
 import com.sdxxtop.zjlguardian.ui.commission.adapter.CommissionListAdapter
@@ -34,6 +35,7 @@ class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, Commissio
     override fun initObserve() {
         mViewModel.mReportList.observe(this, Observer {
             mAdapter.replaceData(it)
+            showLoadSir(it.isEmpty())
         })
     }
 
@@ -41,6 +43,10 @@ class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, Commissio
         mBinding.rv.layoutManager = LinearLayoutManager(this)
         mBinding.rv.addItemDecoration(ItemDivider().setDividerColor(0xE6E6E6).setDividerWidth(UIUtils.dip2px(10)))
         mBinding.rv.adapter = mAdapter
+    }
+
+    override fun loadSirBindView(): View {
+        return mBinding.rv
     }
 
     override fun initEvent() {

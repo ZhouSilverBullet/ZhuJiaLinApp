@@ -31,7 +31,7 @@ abstract class BaseApplication : MultiDexApplication() {
         super.onCreate()
         INSTANCE = this
 
-        ConnectivityReceiver.register(this)
+//        ConnectivityReceiver.register(this)
         LeakSentry.config = LeakSentry.config.copy(watchFragmentViews = false)
 
 

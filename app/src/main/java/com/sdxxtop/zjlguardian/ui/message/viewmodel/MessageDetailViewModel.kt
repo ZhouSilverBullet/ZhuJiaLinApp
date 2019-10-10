@@ -30,8 +30,6 @@ class MessageDetailViewModel : BaseViewModel() {
             UIUtils.showToast(msg)
 
             showLoadingDialog(false)
-
-            mThrowable.value = t
         })
     }
 }

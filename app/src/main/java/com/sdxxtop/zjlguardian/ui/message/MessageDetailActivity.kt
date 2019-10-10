@@ -12,7 +12,7 @@ import com.sdxxtop.zjlguardian.ui.message.viewmodel.MessageDetailViewModel
 
 class MessageDetailActivity : BaseActivity<ActivityMessageDetailBinding, MessageDetailViewModel>() {
 
-    lateinit var loadService: LoadService<Any>
+    lateinit var loadDetailService: LoadService<Any>
 
     val messageId by lazy {
         intent.getIntExtra("messageId", 0)
@@ -32,16 +32,16 @@ class MessageDetailActivity : BaseActivity<ActivityMessageDetailBinding, Message
             mBinding.tvContent.setText(it.content)
             mBinding.tvTime.setText(it.add_time)
 
-            loadService.showSuccess()
+            loadDetailService.showSuccess()
         })
 
         mViewModel.mThrowable.observe(this, Observer {
-            loadService.showCallback(ErrorCallback::class.java)
+            loadDetailService.showCallback(ErrorCallback::class.java)
         })
     }
 
     override fun initView() {
-        loadService = LoadSir.getDefault().register(mBinding.llContent) {
+        loadDetailService = LoadSir.getDefault().register(mBinding.llContent) {
             mViewModel.loadData(messageId)
         }
     }

@@ -1,11 +1,13 @@
 package com.sdxxtop.zjlguardian.ui.event_report
 
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.common.utils.ItemDivider
 import com.sdxxtop.common.utils.UIUtils
+import com.sdxxtop.ui.loadsir.ErrorCallback
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.ActivityEventReportListBinding
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
@@ -44,13 +46,18 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
             } else {
                 mSelfAdapter.replaceData(it)
             }
+
+            showLoadSir(it.isEmpty())
         })
     }
-
 
     override fun initView() {
         mBinding.rv.layoutManager = LinearLayoutManager(this)
         mBinding.rv.addItemDecoration(ItemDivider().setDividerColor(0xE6E6E6).setDividerWidth(UIUtils.dip2px(10)))
+    }
+
+    override fun loadSirBindView(): View {
+        return mBinding.rv
     }
 
     override fun initEvent() {

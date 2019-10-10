@@ -9,9 +9,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.kingja.loadsir.core.LoadSir
 import com.sdxxtop.base.lifecycle.ActivityLifecycleImpl
 import com.sdxxtop.base.navigationstatus.INavigationColorStatus
 import com.sdxxtop.common.dialog.LoadingDialog
+import com.sdxxtop.ui.loadsir.EmptyCallback
+import com.sdxxtop.ui.loadsir.ErrorCallback
+import com.sdxxtop.ui.loadsir.LoadingCallback
 import me.yokeyword.fragmentation.SupportActivity
 
 /**
@@ -36,10 +40,19 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
 //        ViewModelProviders.of(this@BaseActivity)[getVmClass()]
     }
 
+    val loadService by lazy {
+        LoadSir.getDefault().register(loadSirBindView()) {
+            preLoad();
+        }
+    }
+
+    open fun loadSirBindView(): View {
+        return View(this)
+    }
+
     val mLoadingDialog by lazy {
         LoadingDialog(this)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +64,12 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
         mBinding.executePendingBindings()
 
         setDarkStatusIcon(window, isDarkStatusIcon())
+
+        loadService.showCallback(LoadingCallback::class.java)
+        //加载错误页面
+        mViewModel.mThrowable.observe(this, Observer {
+            loadService.showCallback(ErrorCallback::class.java)
+        })
 
         initView()
         initSelfObserve()
@@ -82,6 +101,13 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
     override fun loadData() {
     }
 
+    /**
+     * 没有数据的时候显示页面点击时回调
+     */
+    open fun preLoad() {
+    }
+
+
     override fun onClick(v: View) {
     }
 
@@ -105,6 +131,14 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
 
     open fun isDarkStatusIcon(): Boolean {
         return false
+    }
+
+    fun showLoadSir(isEmpty: Boolean) {
+        if (isEmpty) {
+            loadService.showCallback(EmptyCallback::class.java)
+        } else {
+            loadService.showSuccess()
+        }
     }
 
 //    inline fun <reified vm : ViewModel> bindViewModel(): vm {

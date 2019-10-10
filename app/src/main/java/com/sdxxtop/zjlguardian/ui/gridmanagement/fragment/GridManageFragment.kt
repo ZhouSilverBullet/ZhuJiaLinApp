@@ -50,8 +50,6 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
         })
 
         mViewModel.mGruadeEntryData.observe(this, Observer {
-            mLoadService.showSuccess()
-
             //轮播图
             mBinding.bView.setImages(it.broadcast)
             mBinding.bView.start()
@@ -60,6 +58,7 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
             mBinding.llNotice.visibility = if (TextUtils.isEmpty(it.message)) View.GONE else View.VISIBLE
 
+            mLoadService.showSuccess()
 //            val autoTextViewManager = AutoTextViewManager(mBinding.atvView)
 //            val autoValueList = ArrayList<IAutoValue>()
 //

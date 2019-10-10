@@ -21,14 +21,15 @@
         android:layout_marginBottom="15dp"
         android:textSize="@dimen/sp_14" />
 
-    <LinearLayout
+    <RadioGroup
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16"
         android:paddingRight="@dimen/dp_16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/cb_shouli"
+        <RadioButton
+            android:id="@+id/rb_shouli"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -42,8 +43,8 @@
             android:layout_width="20dp"
             android:layout_height="1dp" />
 
-        <CheckBox
-            android:id="@+id/cb_chulizhong"
+        <RadioButton
+            android:id="@+id/rb_chulizhong"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -57,8 +58,8 @@
             android:layout_width="20dp"
             android:layout_height="1dp" />
 
-        <CheckBox
-            android:id="@+id/cb_complete"
+        <RadioButton
+            android:id="@+id/rb_complete"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -67,7 +68,7 @@
             android:textColor="@color/tv_black_color"
             android:textSize="@dimen/sp_12"
             android:text="已完成" />
-    </LinearLayout>
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,14 +80,15 @@
         android:layout_marginBottom="15dp"
         android:textSize="@dimen/sp_14" />
 
-    <LinearLayout
+    <RadioGroup
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16"
         android:paddingRight="@dimen/dp_16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/cb_event"
+        <RadioButton
+            android:id="@+id/rb_event"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -100,8 +102,8 @@
             android:layout_width="20dp"
             android:layout_height="1dp" />
 
-        <CheckBox
-            android:id="@+id/cb_commission"
+        <RadioButton
+            android:id="@+id/rb_commission"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -115,8 +117,8 @@
             android:layout_width="20dp"
             android:layout_height="1dp" />
 
-        <CheckBox
-            android:id="@+id/cb_tousu"
+        <RadioButton
+            android:id="@+id/rb_tousu"
             android:layout_width="60dp"
             android:layout_height="24dp"
             android:gravity="center"
@@ -125,7 +127,7 @@
             android:textColor="@color/tv_black_color"
             android:textSize="@dimen/sp_12"
             android:text="投诉" />
-    </LinearLayout>
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"

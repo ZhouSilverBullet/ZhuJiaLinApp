@@ -103,5 +103,11 @@
         <item name="android:textViewStyle">@style/app_text_style2</item>
     </style>
 
+    <style name="TopImageView">
+        <item name="android:src">@drawable/top_icon</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 </resources>
