@@ -1,5 +1,6 @@
 package com.sdxxtop.zjlguardian.ui.event_report
 
+import android.text.TextUtils
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,8 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         val TYPE_SELF = 1 //自行处理
         val TYPE_COMMISSION = 2 //代办
         val TYPE_DEPARTMENT = 3 //部门事件
+
+        val EMPTY_TIME = "1000-01-01"
     }
 
     var path: String = ""
@@ -113,17 +116,19 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         mBinding.tcvTitle.tvContentText = it.title
         mBinding.tcvClassify.tvContentText = it.cat_name
         mBinding.tcvPlace.tvContentText = it.place
-        mBinding.tcvDate.tvContentText = it.settle_time
+        mBinding.tcvDate.tvContentText = it.settle_date
         mBinding.tvContentText.text = it.content
 
         //判断图片rv
         if (it.img.isNotEmpty()) {
             mBinding.vLine.visibility = View.VISIBLE
             mBinding.rv.visibility = View.VISIBLE
+            mBinding.llPhotoTitle.visibility = View.VISIBLE
             mAdapter.replaceData(it.img)
         } else {
             mBinding.vLine.visibility = View.GONE
             mBinding.rv.visibility = View.GONE
+            mBinding.llPhotoTitle.visibility = View.GONE
         }
 
 
@@ -134,17 +139,30 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
 
         //事件责任人
         mBinding.tcvPeople.tvContentText = it.duty_name
-        mBinding.tcvShouliDate.tvContentText = it.settle_time
-        mBinding.tcvCompeteDate.tvContentText = it.finish_time
+
+        if (EMPTY_TIME == it.settle_time || TextUtils.isEmpty(it.settle_time)) {
+            mBinding.tcvShouliDate.tvContentText = "待受理"
+        } else {
+            mBinding.tcvShouliDate.tvContentText = it.settle_time
+        }
+
+        if (EMPTY_TIME == it.finish_time || TextUtils.isEmpty(it.finish_time)) {
+            mBinding.tcvCompeteDate.tvContentText = "未完成"
+        } else {
+            mBinding.tcvCompeteDate.tvContentText = it.finish_time
+        }
 
         //回复
-        val replyEmpty = it.reply.isEmpty()
-        mBinding.llResponseContent.visibility = if (replyEmpty) View.GONE else View.VISIBLE
-        if (!replyEmpty) {
-            mBinding.tvResponseContentText.text = it.reply[0].desc
-            mBinding.tcvCompeteDate.setShowLine(true)
-        } else {
-            mBinding.tcvCompeteDate.setShowLine(false)
+        //当为自行处理的时候，这个会出现空指针异常，所以要判断一下
+        if (it.reply != null) {
+            val replyEmpty = it.reply.isEmpty()
+            mBinding.llResponseContent.visibility = if (replyEmpty) View.GONE else View.VISIBLE
+            if (!replyEmpty) {
+                mBinding.tvResponseContentText.text = it.reply[0].desc
+                mBinding.tcvCompeteDate.setShowLine(true)
+            } else {
+                mBinding.tcvCompeteDate.setShowLine(false)
+            }
         }
 
         //处理状态

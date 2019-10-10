@@ -70,34 +70,37 @@ class EventReportViewModel : BaseViewModel() {
 //        }
 
         //含有图片的时候
-        if (imagePushPath.size > 0) {
-            showLoadingDialog(true)
-            ImagePushUtil(imagePushPath).pushImage({
-                var imgJson = GSON.toJson(it)
-                pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath, imgJson)
-            }, { code: Int, msg: String, t: Throwable ->
-                UIUtils.showToast(msg)
-                showLoadingDialog(false)
-            })
-        } else{
-            showLoadingDialog(true)
-            pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath, "[]")
-        }
+//        if (imagePushPath.size > 0) {
+//            showLoadingDialog(true)
+//            ImagePushUtil(imagePushPath).pushImage({
+//                var imgJson = GSON.toJson(it)
+//                pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath, imgJson)
+//            }, { code: Int, msg: String, t: Throwable ->
+//                UIUtils.showToast(msg)
+//                showLoadingDialog(false)
+//            })
+//        } else{
+//            showLoadingDialog(true)
+//        }
+        showLoadingDialog(true)
+        pushData(eventTitle, eventPlace, eventDate, dec, imagePushPath, "[]")
 
     }
 
     private fun pushData(eventTitle: String, eventPlace: String, eventDate: String, dec: String, imagePushPath: MutableList<File>, imgJson:String) {
 
         loadOnUI({
-            val params = HttpParams()
+            val params = HttpImageParams()
             params.put("te", eventTitle)
             params.put("ci", mClassify.get())
             params.put("pe", eventPlace)
             params.put("sd", eventDate)
             params.put("ct", dec)
-            params.put("ig", imgJson)
+//            params.put("ig", imgJson)
 
-            RetrofitClient.apiService.postEventAdd(params.data)
+            params.addImagePathList("file[]", imagePushPath)
+
+            RetrofitClient.apiService.postEventAdd(params.imgData)
         }, {
             mPushSuccessData.value = it
 

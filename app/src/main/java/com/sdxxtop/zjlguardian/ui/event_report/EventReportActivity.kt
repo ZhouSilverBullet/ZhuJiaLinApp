@@ -33,6 +33,7 @@ class EventReportActivity : BaseActivity<ActivityEventReportBinding, EventReport
 
         mViewModel.mPushSuccessData.observe(this, Observer {
             val intent = Intent(this@EventReportActivity, EventReportDetailActivity::class.java)
+            intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
             intent.putExtra("eventId", it.toInt())
             startActivity(intent)
         })

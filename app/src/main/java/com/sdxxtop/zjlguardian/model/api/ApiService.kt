@@ -53,9 +53,9 @@ interface ApiService {
     @POST("main/index")
     suspend fun postMainIndex(@Field("data") data: String): BaseResponse<GruadeEntry>
 
-    @FormUrlEncoded
+    @Multipart
     @POST("event/add")
-    suspend fun postEventAdd(@Field("data") data: String): BaseResponse<String>
+    suspend fun postEventAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
 
     @FormUrlEncoded
     @POST("event/cat")
@@ -105,9 +105,9 @@ interface ApiService {
     suspend fun postPartLists(@Field("data") data: String): BaseResponse<PartListData>
 
 
-    @FormUrlEncoded
+    @Multipart
     @POST("eventself/add")
-    suspend fun postEventSelfAdd(@Field("data") data: String): BaseResponse<String>
+    suspend fun postEventSelfAdd(@PartMap map: HashMap<String, RequestBody>): BaseResponse<String>
 
     @FormUrlEncoded
     @POST("eventself/details")
