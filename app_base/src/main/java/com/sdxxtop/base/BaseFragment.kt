@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.sdxxtop.base.load.IPreLoad
+import com.sdxxtop.common.dialog.LoadingDialog
 import me.yokeyword.fragmentation.SupportFragment
 
 /**
@@ -32,6 +34,10 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : SupportF
 
 //        下面这种方式是反射获取的，有时候会比较影响性能
 //        ViewModelProviders.of(this@BaseActivity)[getVmClass()]
+    }
+
+    val mLoadingDialog by lazy {
+        LoadingDialog(activity)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -64,9 +70,20 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : SupportF
         mBinding.executePendingBindings()
 
         initView()
+        initSelfObserve()
         initObserve()
         initEvent()
         initData()
+    }
+
+    private fun initSelfObserve() {
+        mViewModel.mIsLoadingShow.observe(this, Observer {
+            if (it) {
+                mLoadingDialog.show()
+            } else {
+                mLoadingDialog.dismiss()
+            }
+        })
     }
 
     override fun preLoad() {

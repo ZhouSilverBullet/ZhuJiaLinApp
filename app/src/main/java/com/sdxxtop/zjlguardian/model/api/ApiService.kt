@@ -172,5 +172,5 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("collect/del")
-    suspend fun postEventCollectDel(@Field("data") data: String): BaseResponse<String>
+    suspend fun postEventCollectDel(@Field("data") data: String): BaseResponse<Any>
 }

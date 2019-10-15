@@ -252,6 +252,7 @@ class ReportMessageDataViewModel : BaseViewModel() {
 
 
     fun delete(dataId: Int?) {
+        showLoadingDialog(true)
         loadOnUI({
             val params = HttpParams()
             params.put("di", dataId ?: 0)
