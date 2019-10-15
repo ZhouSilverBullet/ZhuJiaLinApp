@@ -13,6 +13,7 @@ import com.sdxxtop.zjlguardian.ui.gridmanagement.data.GruadeEntry
 import com.sdxxtop.zjlguardian.ui.login.data.NormalLogin
 import com.sdxxtop.zjlguardian.ui.message.data.MessageDetails
 import com.sdxxtop.zjlguardian.ui.message.data.MessageListData
+import com.sdxxtop.zjlguardian.ui.report.data.ReportDetailListData
 import com.sdxxtop.zjlguardian.ui.report.data.ReportReportListData
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -156,4 +157,20 @@ interface ApiService {
     @FormUrlEncoded
     @POST("collect/lists")
     suspend fun postEventCollectLists(@Field("data") data: String): BaseResponse<ReportReportListData>
+
+    @FormUrlEncoded
+    @POST("collect/details")
+    suspend fun postEventCollectDetails(@Field("data") data: String): BaseResponse<ReportDetailListData>
+
+    @FormUrlEncoded
+    @POST("collect/search")
+    suspend fun postEventCollectSearch(@Field("data") data: String): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("collect/formdata")
+    suspend fun postEventCollectFormData(@Field("data") data: String): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("collect/del")
+    suspend fun postEventCollectDel(@Field("data") data: String): BaseResponse<String>
 }

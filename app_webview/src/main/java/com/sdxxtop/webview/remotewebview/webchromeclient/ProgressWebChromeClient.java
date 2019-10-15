@@ -1,11 +1,13 @@
 package com.sdxxtop.webview.remotewebview.webchromeclient;
 
-import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -14,18 +16,16 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.google.gson.Gson;
 import com.sdxxtop.webview.command.Command;
-import com.sdxxtop.webview.command.ResultBack;
-import com.sdxxtop.webview.remotewebview.BaseWebView;
 import com.sdxxtop.webview.remotewebview.ProgressWebView;
 import com.sdxxtop.webview.utils.WebConstants;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static com.sdxxtop.webview.command.Command.COMMAND_UPDATE_TITLE_PARAMS_TITLE;
 
 public class ProgressWebChromeClient extends WebChromeClient {
 
+    private OpenFileChooserCallBack mOpenFileChooserCallBack;
     private Handler progressHandler;
 
     public ProgressWebChromeClient(Handler progressHandler) {
@@ -74,5 +74,26 @@ public class ProgressWebChromeClient extends WebChromeClient {
                         }).show();
         result.confirm();// 不加这行代码，会造成Alert劫持：Alert只会弹出一次，并且WebView会卡死
         return true;
+    }
+
+    public void setOpenFileChooserCallBack(OpenFileChooserCallBack openFileChooserCallBack) {
+        mOpenFileChooserCallBack = openFileChooserCallBack;
+    }
+    //For Android  >5.0
+    @Override
+    public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback,
+                                     FileChooserParams fileChooserParams) {
+        Log.i("---1","111");
+        if (mOpenFileChooserCallBack != null) {
+            return mOpenFileChooserCallBack.openFileChooserCallBackAndroid5(webView, filePathCallback, fileChooserParams);
+        }
+        return false;
+    }
+
+    public interface OpenFileChooserCallBack {
+
+        // for API - Version above 5.0 (contais 5.0).
+        boolean openFileChooserCallBackAndroid5(WebView webView, ValueCallback<Uri[]> filePathCallback,
+                                                FileChooserParams fileChooserParams);
     }
 }

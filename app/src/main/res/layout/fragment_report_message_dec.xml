@@ -20,14 +20,16 @@
             android:id="@+id/tcv_publisher"
             android:layout_marginTop="@dimen/dp_16"
             app:tcv_text_view="表单发布者："
-            app:tcv_content_text="李亮"
+            tools:tcv_content_text="李亮"
+            app:contentText="@={vm.mReportName}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <com.sdxxtop.ui.TextContentView
             android:id="@+id/tcv_dec"
             app:tcv_text_view="说明："
-            app:tcv_content_text="严格按表单格式采集数据"
+            tools:tcv_content_text="严格按表单格式采集数据"
+            app:contentText="@={vm.mDec}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -35,6 +37,7 @@
             android:id="@+id/tcv_date"
             app:tcv_text_view="截止日期："
             app:tcv_content_text="2019-8-20"
+            app:contentText="@={vm.mEndTime}"
             app:tcv_line_is_show="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -61,7 +64,8 @@
 
                 <TextView
                     android:textSize="@dimen/sp_14"
-                    android:text="6"
+                    tools:text="6"
+                    android:text='@={vm.mCount+""}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -89,7 +93,8 @@
 
                 <TextView
                     android:textSize="@dimen/sp_14"
-                    android:text="6"
+                    tools:text="6"
+                    android:text='@={vm.mTotalCount+""}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

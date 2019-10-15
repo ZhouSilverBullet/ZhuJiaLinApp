@@ -69,7 +69,11 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
         loadService.showCallback(LoadingCallback::class.java)
         //加载错误页面
         mViewModel.mThrowable.observe(this, Observer {
-            showErrorCallback(it.code, it.errorMsg)
+            if (it == null) {
+                showErrorCallback(-100, "数据发生异常")
+            } else {
+                showErrorCallback(it.code, it.errorMsg)
+            }
         })
 
         initView()
@@ -84,14 +88,14 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : SupportA
      * 默认显示errorCallback
      * 有的时候，后台会出现
      * {
-        "code": 201,
-        "msg": "暂无上报记录",
-        "data": {}
-        }
+    "code": 201,
+    "msg": "暂无上报记录",
+    "data": {}
+    }
      * 这个就可能就是显示数据为空的界面了
      * 所以加入这个方法让子类对应可以重写来判断
      */
-    open fun showErrorCallback(code: Int, errorMsg: String) {
+    open fun showErrorCallback(code: Int?, errorMsg: String?) {
         if (code == 201) {
             loadService.showCallback(EmptyCallback::class.java)
         } else {

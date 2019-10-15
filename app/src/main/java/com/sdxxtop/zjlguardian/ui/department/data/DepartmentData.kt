@@ -18,6 +18,6 @@ data class DepartmentDataItem(
     val duty_name: String,
     val end_day: String,
     val event_id: Int,
-    val status: Int,
+    val status: String,
     val title: String
 )

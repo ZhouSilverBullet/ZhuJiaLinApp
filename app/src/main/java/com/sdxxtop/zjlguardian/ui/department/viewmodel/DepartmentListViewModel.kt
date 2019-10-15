@@ -16,9 +16,21 @@ import com.sdxxtop.zjlguardian.ui.department.data.DepartmentDataItem
 class DepartmentListViewModel : BaseViewModel() {
     val mDepartmentList = MutableLiveData<List<DepartmentDataItem>>()
 
-    fun loadData() {
+    fun loadData(statusType: Int, classificationType: Int, sortType: Int) {
         loadOnUI({
             val params = HttpParams()
+
+            if (statusType != 0) {
+                params.put("ss", statusType)
+            }
+            if (classificationType != 0) {
+                params.put("ct", classificationType)
+            }
+
+            if (sortType != 0) {
+                params.put("or", sortType)
+            }
+
             RetrofitClient.apiService.postEventPartLists(params.data)
         }, {
             showLoadingDialog(false)

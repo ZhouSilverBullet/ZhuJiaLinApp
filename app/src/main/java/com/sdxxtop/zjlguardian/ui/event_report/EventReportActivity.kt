@@ -36,6 +36,7 @@ class EventReportActivity : BaseActivity<ActivityEventReportBinding, EventReport
             intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
             intent.putExtra("eventId", it.toInt())
             startActivity(intent)
+            finish()
         })
     }
 

@@ -38,10 +38,23 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : SupportF
                               savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate<DB>(inflater, layoutId(), container, false)
         mBinding.lifecycleOwner = this
-        mLoadService = LoadSir.getDefault().register(mBinding.root) {
-            preLoad()
+        val loadSirBindView = loadSirBindView()
+        if (loadSirBindView == null) {
+            mLoadService = LoadSir.getDefault().register(mBinding.root) {
+                preLoad()
+            }
+            return mLoadService.loadLayout
+        } else {
+            //自定义的一个加载界面
+            mLoadService = LoadSir.getDefault().register(loadSirBindView) {
+                preLoad()
+            }
+            return mBinding.root
         }
-        return mLoadService.loadLayout
+    }
+
+    open fun loadSirBindView(): View? {
+        return null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

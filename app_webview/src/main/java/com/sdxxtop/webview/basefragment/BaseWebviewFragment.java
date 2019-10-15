@@ -1,6 +1,7 @@
 package com.sdxxtop.webview.basefragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
@@ -36,7 +37,7 @@ public abstract class BaseWebviewFragment extends BaseWebFragment implements Web
         Bundle bundle = getArguments();
         if (bundle != null) {
             webUrl = bundle.getString(WebConstants.INTENT_TAG_URL);
-            if(bundle.containsKey(ACCOUNT_INFO_HEADERS)){
+            if (bundle.containsKey(ACCOUNT_INFO_HEADERS)) {
                 accountInfoHeaders = (HashMap<String, String>) bundle.getSerializable(ACCOUNT_INFO_HEADERS);
             }
         }
@@ -47,7 +48,7 @@ public abstract class BaseWebviewFragment extends BaseWebFragment implements Web
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutRes(), container, false);
         webView = view.findViewById(R.id.web_view);
-        if(accountInfoHeaders != null) {
+        if (accountInfoHeaders != null) {
             webView.setHeaders(accountInfoHeaders);
         }
         return view;
@@ -166,5 +167,18 @@ public abstract class BaseWebviewFragment extends BaseWebFragment implements Web
         m.clearHistory();
         m.destroy();
         m = null;
+    }
+
+    /**
+     * 用于网页选择图片
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    public void onActivityResult2(int requestCode, int resultCode, Intent data) {
+        if (webView != null) {
+            webView.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

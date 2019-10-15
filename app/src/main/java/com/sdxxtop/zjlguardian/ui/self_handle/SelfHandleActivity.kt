@@ -36,6 +36,7 @@ class SelfHandleActivity : BaseActivity<ActivitySelfHandleBinding, SelfHandleVie
             intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, TYPE_SELF)
             intent.putExtra("eventId", it.toInt())
             startActivity(intent)
+            finish()
         })
     }
 

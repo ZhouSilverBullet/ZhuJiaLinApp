@@ -4,6 +4,7 @@
     package="com.sdxxtop.zjlguardian">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 安装的时候需要权限问题 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
@@ -18,7 +19,8 @@
         android:theme="@style/NoTitleTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
-        <activity android:name=".ui.department.DepartmentListActivity"></activity>
+        <activity android:name=".ui.web.WebActivity"></activity>
+        <activity android:name=".ui.department.DepartmentListActivity" />
         <activity android:name=".ui.commission.CommissionDoneActivity" />
         <activity android:name=".ui.message.MessageDetailActivity" />
         <activity android:name=".ui.message.MessageActivity" />

@@ -19,7 +19,8 @@ import com.sdxxtop.zjlguardian.ui.department.viewmodel.DepartmentListViewModel
 import com.sdxxtop.zjlguardian.ui.department.widget.SelectorPopupWindow
 import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity
 
-class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, DepartmentListViewModel>(), SelectorPopupWindow.DisplayStatusListener {
+class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, DepartmentListViewModel>(), SelectorPopupWindow.DisplayStatusListener, SelectorPopupWindow.SelectedListener {
+
     val mAdapter by lazy {
         DepartmentListAdapter()
     }
@@ -28,6 +29,7 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
 
         val p = SelectorPopupWindow(this)
         p.setDisplayStatusListener(this)
+        p.setSelectedListenerListener(this)
         p
     }
 
@@ -89,8 +91,12 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
 //                .start()
     }
 
+    override fun onSelected(statusType: Int, classificationType: Int, sortType: Int) {
+        mViewModel.loadData(statusType, classificationType, classificationType)
+    }
+
 
     override fun loadData() {
-        mViewModel.loadData()
+        mViewModel.loadData(0, 0, 0)
     }
 }

@@ -120,7 +120,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         mBinding.tvContentText.text = it.content
 
         //判断图片rv
-        if (it.img.isNotEmpty()) {
+        if (it.img != null && it.img.isNotEmpty()) {
             mBinding.vLine.visibility = View.VISIBLE
             mBinding.rv.visibility = View.VISIBLE
             mBinding.llPhotoTitle.visibility = View.VISIBLE

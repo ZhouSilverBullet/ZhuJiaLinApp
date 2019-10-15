@@ -77,6 +77,11 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                               successBlock: (T) -> Unit,
                               failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                               throwable: MutableLiveData<ApiException>) {
+        if (response == null) {
+            val t = Throwable("正常数据，业务code非200")
+            failBlock(-100, "系统发生错误", t)
+            return
+        }
         if (response.code == 200) {
             successBlock(response.data)
         } else {
@@ -118,6 +123,11 @@ class LoadDataImpl(override val context: Context, override val viewModelScope: C
                                   successBlock: (BaseResponse<T>) -> Unit,
                                   failBlock: (code: Int, msg: String, t: Throwable) -> Unit,
                                   throwable: MutableLiveData<ApiException>) {
+        if (response == null) {
+            val t = Throwable("正常数据，业务code非200")
+            failBlock(-100, "系统发生错误", t)
+            return
+        }
         if (response.code == 200) {
             successBlock(response)
         } else {

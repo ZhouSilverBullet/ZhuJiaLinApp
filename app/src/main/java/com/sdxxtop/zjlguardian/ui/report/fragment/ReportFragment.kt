@@ -11,10 +11,12 @@ import com.sdxxtop.common.utils.ItemDivider
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.ui.loadsir.EmptyCallback
 import com.sdxxtop.ui.loadsir.ErrorCallback
+import com.sdxxtop.webview.CommonWebFragment
 import com.sdxxtop.zjlguardian.R
 import com.sdxxtop.zjlguardian.databinding.FragmentReportBinding
 import com.sdxxtop.zjlguardian.ui.report.adapter.ReportAdapter
 import com.sdxxtop.zjlguardian.ui.report.viewmodel.ReportViewModel
+import com.sdxxtop.zjlguardian.ui.web.WebActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -81,5 +83,7 @@ class ReportFragment : BaseTitleFragment<FragmentReportBinding, ReportViewModel>
 
     override fun preLoad() {
         loadData()
+//        WebActivity.skipWebActivity(activity!!)
     }
+
 }

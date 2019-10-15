@@ -90,6 +90,40 @@ public class SelectorPopupWindow extends PopupWindow {
         llComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (selectedListener != null) {
+
+                    int statusType = 0;
+                    if (rbShouli.isChecked()) {
+                        statusType = 1;
+                    }
+                    if (rbChulizhong.isChecked()) {
+                        statusType = 2;
+                    }
+                    if (rbComplete.isChecked()) {
+                        statusType = 3;
+                    }
+
+                    int classificationType = 0;
+                    if (rbEvent.isChecked()) {
+                        classificationType = 1;
+                    }
+                    if (rbCommission.isChecked()) {
+                        classificationType = 2;
+                    }
+                    if (rbTousu.isChecked()) {
+                        classificationType = 3;
+                    }
+
+                    int sortType = 0;
+                    if (rbSubmit.isChecked()) {
+                        sortType = 1;
+                    }
+                    if (rbTimelost.isChecked()) {
+                        sortType = 2;
+                    }
+
+                    selectedListener.onSelected(statusType, classificationType, sortType);
+                }
                 dismiss();
             }
         });
@@ -123,6 +157,17 @@ public class SelectorPopupWindow extends PopupWindow {
 
     public interface DisplayStatusListener {
         void onShow();
+
         void onDismiss();
+    }
+
+    private SelectedListener selectedListener;
+
+    public void setSelectedListenerListener(SelectedListener listener) {
+        this.selectedListener = listener;
+    }
+
+    public interface SelectedListener {
+        void onSelected(int statusType, int classificationType, int sortType);
     }
 }

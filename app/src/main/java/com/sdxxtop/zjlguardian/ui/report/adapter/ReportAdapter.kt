@@ -6,9 +6,9 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.sdxxtop.zjlguardian.R
-import com.sdxxtop.zjlguardian.ui.report.ReportAddActivity
 import com.sdxxtop.zjlguardian.ui.report.ReportMessageActivity
 import com.sdxxtop.zjlguardian.ui.report.data.ReportItemData
+import com.sdxxtop.zjlguardian.ui.web.WebActivity
 
 /**
  * Email: zhousaito@163.com
@@ -24,11 +24,14 @@ class ReportAdapter(val layoutId: Int = R.layout.report_recycler_item) : BaseQui
         tvTitle.setText(item.name)
         tvNumber.setText("数据量：" + item.count)
         btnAdd.setOnClickListener {
-            mContext.startActivity(Intent(mContext, ReportAddActivity::class.java))
+//            mContext.startActivity(Intent(mContext, ReportAddActivity::class.java))
+            WebActivity.skipWebActivity(mContext, item.url)
         }
 
         helper.convertView.setOnClickListener {
-            mContext.startActivity(Intent(mContext, ReportMessageActivity::class.java))
+            val intent = Intent(mContext, ReportMessageActivity::class.java)
+            intent.putExtra("formId", item.form_id)
+            mContext.startActivity(intent)
         }
     }
 }

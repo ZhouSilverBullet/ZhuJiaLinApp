@@ -6,6 +6,9 @@
     <external-path
         name="xuxing_images"
         path="." />
+    <external-path
+        name="WebViewUploadImage/"
+        path="." />
     <cache-path
         name="zhidian"
         path="." />

@@ -10,7 +10,8 @@ import com.sdxxtop.webview.remotewebview.progressbar.IndicatorHandler;
 import com.sdxxtop.webview.remotewebview.progressbar.WebProgressBar;
 import com.sdxxtop.webview.remotewebview.webchromeclient.ProgressWebChromeClient;
 
-public class ProgressWebView extends BaseWebView {
+public class ProgressWebView extends BaseWebView  {
+
 
     public ProgressWebView(Context context) {
         super(context);
@@ -54,6 +55,8 @@ public class ProgressWebView extends BaseWebView {
         progressBar.setVisibility(GONE);
         addView(progressBar);
         indicatorHandler = IndicatorHandler.getInstance().inJectProgressView(progressBar);
-        setWebChromeClient(new ProgressWebChromeClient(handler));
+        ProgressWebChromeClient webChromeClient = new ProgressWebChromeClient(handler);
+        webChromeClient.setOpenFileChooserCallBack(this);
+        setWebChromeClient(webChromeClient);
     }
 }
