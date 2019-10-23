@@ -1,15 +1,19 @@
 package com.sdxxtop.zjlguardian.ui.report.data
 
+import androidx.annotation.Keep
+
 /**
  * Email: zhousaito@163.com
  * Created by zhousaito 2019-10-09 00:13
  * Version: 1.0
  * Description:
  */
+@Keep
 data class ReportReportListData(
         val list: List<ReportItemData>
 )
 
+@Keep
 data class ReportItemData(
         val form_id: Int,
         val name: String,
@@ -18,10 +22,12 @@ data class ReportItemData(
 )
 
 //details
+@Keep
 data class ReportDetailListData(
         val list: ReportDetailData
 )
 
+@Keep
 data class ReportDetailData(
         val count: Int,
         val desc: String,
@@ -46,6 +52,7 @@ data class ReportDetailData(
 //    val username: String,
 //    var childData: ChildData? = null
 //)
+@Keep
 data class ReportFromData(
         var dataId: Int? = 0,
         var value0: Any? = null,

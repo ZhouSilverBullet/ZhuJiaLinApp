@@ -1,5 +1,7 @@
 package com.sdxxtop.zjlguardian.widget.people_picker.data;
 
+import androidx.annotation.Keep;
+
 import java.util.List;
 
 /**
@@ -8,6 +10,7 @@ import java.util.List;
  * Version: 1.0
  * Description:
  */
+@Keep
 public class DepartmentData implements IPickerData {
     private int departmentId;
     private String label;

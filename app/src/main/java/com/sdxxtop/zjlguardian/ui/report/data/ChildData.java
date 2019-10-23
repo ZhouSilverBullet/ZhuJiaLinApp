@@ -1,6 +1,8 @@
 package com.sdxxtop.zjlguardian.ui.report.data;
 
 
+import androidx.annotation.Keep;
+
 import com.bin.david.form.annotation.SmartColumn;
 import com.sdxxtop.common.utils.UIUtils;
 
@@ -8,6 +10,7 @@ import com.sdxxtop.common.utils.UIUtils;
  * Created by huang on 2017/11/1.
  */
 
+@Keep
 public class ChildData {
 
     @SmartColumn(id = 5, name = "子类", autoCount = true, minHeight = 100)

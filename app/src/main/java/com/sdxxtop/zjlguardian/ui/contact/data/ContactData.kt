@@ -1,5 +1,6 @@
 package com.sdxxtop.zjlguardian.ui.contact.data
 
+import androidx.annotation.Keep
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
@@ -9,10 +10,12 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
  * Description:
  */
 
+@Keep
 data class ContactData(
         val list: List<ContactPart>
 )
 
+@Keep
 data class ContactPart(
         val part_id: Int,
         val part_name: String,
@@ -22,6 +25,7 @@ data class ContactPart(
 const val TYPE_USER_DATA = 1
 const val TYPE_PART_DATA = 2
 
+@Keep
 data class UserData(
         val id: Int,
         val mobile: String,

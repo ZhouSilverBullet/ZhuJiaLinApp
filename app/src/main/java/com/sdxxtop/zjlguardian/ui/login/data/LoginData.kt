@@ -2,6 +2,7 @@ package com.sdxxtop.zjlguardian.ui.login.data
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
+import androidx.annotation.Keep
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
@@ -12,18 +13,21 @@ import java.io.Serializable
  * Description:
  */
 
+@Keep
 data class NormalLogin(
     val auto_info: AutoInfo,
     val modpw: Boolean,
     val user_info: UserInfo
 )
 
+@Keep
 data class AutoInfo(
     val auto_token: String,
     val expire_time: Int,
     val is_app_debug: Int
 )
 
+@Keep
 data class UserInfo(
     val id: Int,
     val is_action: Int,
@@ -34,6 +38,7 @@ data class UserInfo(
     val username: String
 )
 
+@Keep
 @SuppressLint("ParcelCreator")
 @Parcelize
 class ForgetInfo(var phone:String,

@@ -1,5 +1,7 @@
 package com.sdxxtop.zjlguardian.ui.event_report.data
 
+import androidx.annotation.Keep
+
 /**
  * Email: zhousaito@163.com
  * Created by zhousaito 2019-09-20 15:29
@@ -7,20 +9,23 @@ package com.sdxxtop.zjlguardian.ui.event_report.data
  * Description:
  */
 
+@Keep
 data class CatDataList(
         val list: List<CatData>
 )
 
+@Keep
 data class CatData(
         val cat_id: Int,
         val name: String
 )
 
-
+@Keep
 data class ReportListData(
         val list: List<EventReportItem>
 )
 
+@Keep
 data class EventReportItem(
         val add_date: String,
         val cat_id: Int,

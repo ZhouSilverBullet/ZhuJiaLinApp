@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.sdxxtop.zjlguardian.R;
 
@@ -57,6 +58,9 @@ public class SelectorPopupWindow extends PopupWindow {
     }
 
     private void initView(View view) {
+        RadioGroup rg1 = view.findViewById(R.id.rg_1);
+        RadioGroup rg2 = view.findViewById(R.id.rg_2);
+        RadioGroup rg3 = view.findViewById(R.id.rg_3);
         RadioButton rbShouli = view.findViewById(R.id.rb_shouli);
         RadioButton rbChulizhong = view.findViewById(R.id.rb_chulizhong);
         RadioButton rbComplete = view.findViewById(R.id.rb_complete);
@@ -74,16 +78,20 @@ public class SelectorPopupWindow extends PopupWindow {
         llReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rbShouli.setChecked(false);
-                rbChulizhong.setChecked(false);
-                rbComplete.setChecked(false);
+//                rbShouli.setChecked(false);
+//                rbChulizhong.setChecked(false);
+//                rbComplete.setChecked(false);
 
-                rbEvent.setChecked(false);
-                rbCommission.setChecked(false);
-                rbTousu.setChecked(false);
+                rg1.clearCheck();
+                rg2.clearCheck();
+                rg3.clearCheck();
 
-                rbSubmit.setChecked(false);
-                rbTimelost.setChecked(false);
+//                rbEvent.setChecked(false);
+//                rbCommission.setChecked(false);
+//                rbTousu.setChecked(false);
+//
+//                rbSubmit.setChecked(false);
+//                rbTimelost.setChecked(false);
             }
         });
 

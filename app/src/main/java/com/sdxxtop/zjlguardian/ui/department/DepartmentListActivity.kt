@@ -92,7 +92,7 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
     }
 
     override fun onSelected(statusType: Int, classificationType: Int, sortType: Int) {
-        mViewModel.loadData(statusType, classificationType, classificationType)
+        mViewModel.loadData(statusType, classificationType, sortType)
     }
 
 

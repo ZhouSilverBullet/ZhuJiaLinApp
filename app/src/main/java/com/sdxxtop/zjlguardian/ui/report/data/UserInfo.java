@@ -1,8 +1,11 @@
 package com.sdxxtop.zjlguardian.ui.report.data;
 
+import androidx.annotation.Keep;
+
 /**
  * Created by huang on 2017/11/1.
  */
+@Keep
 public class UserInfo {
     private String name;
     private int age;

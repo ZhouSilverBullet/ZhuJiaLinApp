@@ -1,11 +1,14 @@
 package com.sdxxtop.zjlguardian.widget.people_picker.data;
 
+import androidx.annotation.Keep;
+
 /**
  * Email: zhousaito@163.com
  * Created by zhousaito 2019-09-24 10:42
  * Version: 1.0
  * Description:
  */
+@Keep
 public interface IPickerData {
     /**
      * 部门ID / 用户ID

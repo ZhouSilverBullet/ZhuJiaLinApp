@@ -1,5 +1,6 @@
 package com.sdxxtop.zjlguardian.ui.gridmanagement.data
 
+import androidx.annotation.Keep
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
@@ -36,6 +37,7 @@ const val EVENT_MINE = 2
 const val EVENT_REPORT = 3
 
 
+@Keep
 class GridManagerData(var gridType: Int = ITEM_MORE,
         //1.事件部门 2.我的代办 3.我的上报
                       var eventItemType: Int = EVENT_DEPARTMENT,
@@ -61,6 +63,7 @@ class GridManagerData(var gridType: Int = ITEM_MORE,
 }
 
 
+@Keep
 data class GruadeEntry(
         val broadcast: List<String>,
         val message: String,
@@ -69,6 +72,7 @@ data class GruadeEntry(
         val up_event: List<GridManagerData>
 )
 
+@Keep
 data class PartEvent(
         val add_date: String,
         val cat_id: Int,
@@ -81,6 +85,7 @@ data class PartEvent(
         val title: String
 )
 
+@Keep
 data class TodoEvent(
         val add_date: String,
         val cat_id: Int,
@@ -93,6 +98,7 @@ data class TodoEvent(
         val type_name: String
 )
 
+@Keep
 data class UpEvent(
         val add_date: String,
         val cat_id: Int,

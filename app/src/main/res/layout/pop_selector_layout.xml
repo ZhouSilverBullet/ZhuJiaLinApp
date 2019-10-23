@@ -16,6 +16,7 @@
         android:textSize="@dimen/sp_14" />
 
     <RadioGroup
+        android:id="@+id/rg_1"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16"
         android:paddingRight="@dimen/dp_16"
@@ -75,6 +76,7 @@
         android:textSize="@dimen/sp_14" />
 
     <RadioGroup
+        android:id="@+id/rg_2"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16"
         android:paddingRight="@dimen/dp_16"
@@ -134,6 +136,7 @@
         android:textSize="@dimen/sp_14" />
 
     <RadioGroup
+        android:id="@+id/rg_3"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16"
         android:paddingRight="@dimen/dp_16"
