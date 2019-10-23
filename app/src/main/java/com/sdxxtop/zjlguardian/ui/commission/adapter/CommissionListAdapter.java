@@ -22,6 +22,7 @@ public class CommissionListAdapter extends BaseQuickAdapter<EventReportItem, Bas
     @Override
     protected void convert(BaseViewHolder helper, EventReportItem item) {
         LinearLayout llRoot = helper.getView(R.id.ll_root);
+        TextView tvStatus = helper.getView(R.id.tv_status);
         TextView tvTitle = helper.getView(R.id.tv_title);
         TextView tvEventType = helper.getView(R.id.tv_event_type);
         TextView tvCategory = helper.getView(R.id.tv_category);
@@ -30,7 +31,7 @@ public class CommissionListAdapter extends BaseQuickAdapter<EventReportItem, Bas
         TextView tvEndTime = helper.getView(R.id.tv_end_time);
         TextView tvStartTime = helper.getView(R.id.tv_start_time);
 
-
+        tvStatus.setText(item.getStatus());
         tvEventType.setText("事件类型：");
         tvCategory.setText(item.getType_name());
         tvDepartPeople.setText("所属分类：");

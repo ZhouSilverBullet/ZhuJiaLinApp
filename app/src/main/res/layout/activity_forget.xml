@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="请输入4位验证码"
+                    android:hint="请输入6位验证码"
                     android:text="@={vm.code}"
                     android:maxLength="6"
                     android:drawableStart="@drawable/messge_code"

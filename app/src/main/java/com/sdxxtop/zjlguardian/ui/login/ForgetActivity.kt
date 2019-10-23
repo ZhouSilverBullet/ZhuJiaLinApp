@@ -42,6 +42,7 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>(), S
                 val intent = Intent()
                 intent.putExtra("forgetInfo", it)
                 setResult(100, intent)
+                finish()
             }
         })
     }

@@ -39,7 +39,7 @@ class ForgetViewModel : BaseViewModel() {
         }
 
         val codeStr = code.get()
-        if (TextUtils.isEmpty(codeStr) || codeStr?.length != 4) {
+        if (TextUtils.isEmpty(codeStr) || codeStr?.length != 6) {
             showLoadingDialog(false)
             UIUtils.showToast("请输入正确的验证码")
             return

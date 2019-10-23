@@ -23,12 +23,14 @@ public class EventReportListAdapter extends BaseQuickAdapter<EventReportItem, Ba
     @Override
     protected void convert(BaseViewHolder helper, EventReportItem item) {
         LinearLayout llRoot = helper.getView(R.id.ll_root);
+        TextView tvStatus = helper.getView(R.id.tv_status);
         TextView tvTitle = helper.getView(R.id.tv_title);
         TextView tvCategory = helper.getView(R.id.tv_category);
         TextView tvName = helper.getView(R.id.tv_name);
         TextView tvEndTime = helper.getView(R.id.tv_end_time);
         TextView tvStartTime = helper.getView(R.id.tv_start_time);
 
+        tvStatus.setText(item.getStatus());
         tvTitle.setText(item.getTitle());
         tvCategory.setText(item.getCat_name());
         tvName.setText(item.getDuty_name());
