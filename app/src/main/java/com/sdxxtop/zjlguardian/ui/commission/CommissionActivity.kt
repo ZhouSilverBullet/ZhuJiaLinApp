@@ -36,6 +36,9 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
             mAdapter.replaceData(it)
 
             showLoadSir(it.isEmpty())
+            if (mBinding.srlLayout != null) {
+                mBinding.srlLayout.finishRefresh()
+            }
         })
     }
 
@@ -64,6 +67,12 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
 
         mBinding.stvTitle.tvRight.setOnClickListener {
             startActivity(Intent(this, CommissionDoneActivity::class.java))
+        }
+
+        mBinding.srlLayout.setEnableLoadMore(false)
+        mBinding.srlLayout.setOnRefreshListener {
+            //刷新
+            mViewModel.loadData()
         }
     }
 
