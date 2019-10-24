@@ -8,7 +8,7 @@
     <item
         android:id="@+id/item_small_video"
         android:icon="@drawable/tab_home_selector"
-        android:title="事件上报" />
+        android:title="数据上报" />
 
     <item
         android:id="@+id/item_video"

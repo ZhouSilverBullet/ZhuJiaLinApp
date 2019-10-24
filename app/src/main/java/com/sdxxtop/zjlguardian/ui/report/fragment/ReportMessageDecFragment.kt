@@ -1,6 +1,7 @@
 package com.sdxxtop.zjlguardian.ui.report.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import com.sdxxtop.base.BaseFragment
 import com.sdxxtop.ui.loadsir.EmptyCallback
@@ -31,6 +32,7 @@ class ReportMessageDecFragment : BaseFragment<FragmentReportMessageDecBinding, R
 
     override fun bindVM() {
         mBinding.vm = mViewModel
+        mBinding.click = this
     }
 
     override fun initObserve() {
@@ -59,5 +61,20 @@ class ReportMessageDecFragment : BaseFragment<FragmentReportMessageDecBinding, R
 
     override fun loadData() {
         mViewModel.loadData()
+    }
+
+    override fun onClick(v: View) {
+        when(v) {
+            mBinding.tvSkipData -> {
+                activityChangeDataFragment()
+            }
+            mBinding.llSkipData -> {
+                activityChangeDataFragment()
+            }
+        }
+    }
+
+    fun activityChangeDataFragment() {
+        (activity as ReportMessageActivity).activityChangeDataFragment()
     }
 }

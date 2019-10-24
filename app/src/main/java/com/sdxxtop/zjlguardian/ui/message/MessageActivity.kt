@@ -53,26 +53,26 @@ class MessageActivity : BaseActivity<ActivityMessageBinding, MessageViewModel>()
                     val intent = Intent(view.context, EventReportDetailActivity::class.java)
                     intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
                     intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, eventReportItem.type)
-                    intent.putExtra("eventId", eventReportItem.message_id)
+                    intent.putExtra("eventId", eventReportItem.main_id)
                     startActivity(intent)
                 }
                 2 -> {
                     val intent = Intent(view.context, EventReportDetailActivity::class.java)
                     intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
                     intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, eventReportItem.type)
-                    intent.putExtra("eventId", eventReportItem.message_id)
+                    intent.putExtra("eventId", eventReportItem.main_id)
                     startActivity(intent)
                 }
                 3 -> {
                     val intent = Intent(view.context, EventReportDetailActivity::class.java)
                     intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
-                    intent.putExtra("eventId", eventReportItem.message_id)
+                    intent.putExtra("eventId", eventReportItem.main_id)
                     startActivity(intent)
                 }
                 4 -> {
                     val intent = Intent(view.context, EventReportDetailActivity::class.java)
                     intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_SELF)
-                    intent.putExtra("eventId", eventReportItem.message_id)
+                    intent.putExtra("eventId", eventReportItem.main_id)
                     startActivity(intent)
                 }
                 else -> {

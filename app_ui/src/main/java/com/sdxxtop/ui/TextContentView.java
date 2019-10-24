@@ -113,6 +113,10 @@ public class TextContentView extends LinearLayout {
         return tvContentText;
     }
 
+    public void setEditNameText(String value) {
+        editNameText.setText(value);
+    }
+
     public TextView getTvContent() {
         return tvContent;
     }

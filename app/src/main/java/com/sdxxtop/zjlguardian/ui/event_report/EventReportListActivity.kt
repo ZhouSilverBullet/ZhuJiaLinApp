@@ -48,6 +48,9 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
             }
 
             showLoadSir(it.isEmpty())
+            if (mBinding.srlLayout != null) {
+                mBinding.srlLayout.finishRefresh()
+            }
         })
     }
 
@@ -57,7 +60,7 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
     }
 
     override fun loadSirBindView(): View {
-        return mBinding.rv
+        return mBinding.srlLayout
     }
 
     override fun initEvent() {
@@ -76,6 +79,10 @@ class EventReportListActivity : BaseActivity<ActivityEventReportListBinding, Eve
             startActivity(intent)
         }
 
+        mBinding.srlLayout.setEnableLoadMore(false)
+        mBinding.srlLayout.setOnRefreshListener {
+            initData()
+        }
     }
 
     override fun initData() {

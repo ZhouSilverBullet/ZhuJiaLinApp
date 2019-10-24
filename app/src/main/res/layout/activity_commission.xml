@@ -18,7 +18,7 @@
 
         <com.sdxxtop.ui.TitleView
             android:id="@+id/stv_title"
-            app:titleValue="我的代办"
+            app:titleValue="我的待办"
             app:titleColor="@color/white"
             app:bgColor="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,9 +30,15 @@
 
         <ImageView style="@style/TopImageView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/srl_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

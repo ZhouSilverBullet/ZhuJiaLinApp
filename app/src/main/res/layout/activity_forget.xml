@@ -162,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_999999"
-                android:text="密码位数为6-16位，最少包括字母、数字" />
+                android:text="密码位数为6-16位，至少包括字母、数字" />
         </FrameLayout>
 
 

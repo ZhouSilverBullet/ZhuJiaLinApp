@@ -48,7 +48,7 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
     }
 
     override fun loadSirBindView(): View {
-        return mBinding.rv
+        return mBinding.srlLayout
     }
 
     override fun initEvent() {
@@ -57,6 +57,7 @@ class CommissionActivity : BaseActivity<ActivityCommissionBinding, CommissionVie
             val intent = Intent(view.context, EventReportDetailActivity::class.java)
             intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
             intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, eventReportItem.type)
+            intent.putExtra(EventReportDetailActivity.IS_COMMISSION, true)
             intent.putExtra("eventId", eventReportItem.event_id)
             startActivity(intent)
         }

@@ -24,5 +24,6 @@ data class DepartmentDataItem(
     val end_day: String,
     val event_id: Int,
     val status: String,
-    val title: String
+    val title: String,
+    val type: Int
 )

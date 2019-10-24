@@ -30,7 +30,7 @@
 
         <com.sdxxtop.ui.TitleView
             android:id="@+id/stv_title"
-            app:titleValue="数字岸堤"
+            app:titleValue="数字沂南"
             app:bgColor="@color/translate"
             app:rightImgSrc="@drawable/home_message"
             app:layout_constraintTop_toTopOf="parent"
@@ -94,26 +94,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
+            <LinearLayout
+                android:orientation="horizontal"
                 android:id="@+id/btn_report"
-                android:text="事件上报"
                 android:onClick="@{click::onClick}"
-                android:textSize="@dimen/sp_16"
                 android:background="@drawable/btn_report_gradient_6"
                 android:layout_weight="1"
                 android:layout_marginRight="20dp"
                 android:layout_width="0dp"
-                android:layout_height="64dp" />
+                android:gravity="center"
+                android:layout_height="64dp">
 
-            <Button
+                <TextView
+                    android:drawableLeft="@drawable/btn_report_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:text="事件上报"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:id="@+id/btn_self_handle"
-                android:text="自行处理"
                 android:onClick="@{click::onClick}"
                 android:textSize="@dimen/sp_16"
                 android:background="@drawable/btn_selfhandle_gradient_6"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="64dp" />
+                android:gravity="center"
+                android:layout_height="64dp" >
+                <TextView
+                    android:drawableLeft="@drawable/btn_handle_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:text="自行处理"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

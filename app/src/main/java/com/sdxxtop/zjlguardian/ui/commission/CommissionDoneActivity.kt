@@ -36,6 +36,10 @@ class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, Commissio
         mViewModel.mReportList.observe(this, Observer {
             mAdapter.replaceData(it)
             showLoadSir(it.isEmpty())
+
+            if (mBinding.srlLayout != null) {
+                mBinding.srlLayout.finishRefresh()
+            }
         })
     }
 
@@ -46,7 +50,7 @@ class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, Commissio
     }
 
     override fun loadSirBindView(): View {
-        return mBinding.rv
+        return mBinding.srlLayout
     }
 
     override fun initEvent() {
@@ -61,6 +65,12 @@ class CommissionDoneActivity : BaseActivity<ActivityCommissionBinding, Commissio
 
         mBinding.stvTitle.tvRight.visibility = View.GONE
         mBinding.stvTitle.setTitleValue("已完成事项")
+
+        mBinding.srlLayout.setEnableLoadMore(false)
+        mBinding.srlLayout.setOnRefreshListener {
+            //刷新
+            loadData()
+        }
     }
 
     override fun loadData() {

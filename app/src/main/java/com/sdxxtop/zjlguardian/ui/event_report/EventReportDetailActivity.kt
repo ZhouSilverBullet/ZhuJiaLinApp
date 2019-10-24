@@ -2,9 +2,9 @@ package com.sdxxtop.zjlguardian.ui.event_report
 
 import android.text.TextUtils
 import android.view.View
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.amap.api.mapcore.util.it
 import com.sdxxtop.base.BaseActivity
 import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.R
@@ -14,7 +14,6 @@ import com.sdxxtop.zjlguardian.ui.event_report.data.DetailData
 import com.sdxxtop.zjlguardian.ui.event_report.viewmodel.EventReportDetailViewModel
 import com.sdxxtop.zjlguardian.widget.people_picker.PeoplePickerView
 import com.sdxxtop.zjlguardian.widget.people_picker.data.DepartmentData
-import com.sdxxtop.zjlguardian.widget.people_picker.data.IPickerData
 import com.sdxxtop.zjlguardian.widget.people_picker.data.PeopleData
 import kotlinx.android.synthetic.main.activity_event_report_detail.view.*
 
@@ -25,10 +24,14 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
         val KEY_EVENT_TYPE = "type"
         val TYPE_EVENT = 0 //事件处理详情
         val TYPE_SELF = 1 //自行处理
-        val TYPE_COMMISSION = 2 //代办
+        val TYPE_COMMISSION = 2 //待办
         val TYPE_DEPARTMENT = 3 //部门事件
 
         val EMPTY_TIME = "1000-01-01"
+
+        //是个boolean值的参数
+        //如果是真正的commission过来的，就按钮和回复
+        val IS_COMMISSION = "is_commission"
     }
 
     var path: String = ""
@@ -43,6 +46,10 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
 
     val eventId by lazy {
         intent.getIntExtra("eventId", 0)
+    }
+
+    val isCommission by lazy {
+        intent.getBooleanExtra(IS_COMMISSION, false)
     }
 
     val mAdapter by lazy {
@@ -193,14 +200,105 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
                 handleTypeSelf()
             }
 
-            //处理我的代办
+            //处理我的待办
             TYPE_COMMISSION -> {
-                handleTypeCommission(it.status)
+                handleRequestType(it)
+
+                if (isCommission) {
+                    handleTypeCommission(it.status)
+                }
             }
 
         }
 
 
+    }
+
+    private fun handleRequestType(it: DetailData) {
+        when (requestType) {
+            1 -> {
+//                mBinding.stvTitle.setTitleValue("咨询详情")
+                mBinding.tcvTitle.setEditNameText("标题：")
+                mBinding.tcvTitle.tvContentText = it.title
+                mBinding.tcvClassify.setEditNameText("姓名：")
+                mBinding.tcvClassify.tvContentText = it.name
+
+                mBinding.tcvClassify.setEditNameText("手机号码：")
+                mBinding.tcvPlace.tvContentText = it.mobile
+
+                mBinding.tcvDate.visibility = View.GONE
+                mBinding.tvContentTitle.text = "咨询内容："
+                mBinding.tvContentText.text = it.desc
+
+                mBinding.llReport.visibility = View.GONE
+
+                mBinding.tvDutyPeopleDec.text = "咨询受理"
+
+                mBinding.tcvPeople.setEditNameText("提交日期：")
+                mBinding.tcvPeople.tvContentText = it.add_time
+
+                mBinding.tcvShouliDate.setEditNameText("受理日期：")
+                mBinding.tcvShouliDate.tvContentText = it.settle_time
+
+                mBinding.tcvCompeteDate.setEditNameText("回复日期：")
+                mBinding.tcvCompeteDate.tvContentText = it.finish_time
+
+            }
+            2 -> {
+//                mBinding.stvTitle.setTitleValue("投诉详情")
+
+                mBinding.tcvTitle.setEditNameText("被举报人：")
+                mBinding.tcvTitle.tvContentText = it.title
+                mBinding.tcvClassify.setEditNameText("单位：")
+                mBinding.tcvClassify.tvContentText = it.part
+
+                mBinding.tcvClassify.setEditNameText("职务：")
+                mBinding.tcvPlace.tvContentText = it.job
+
+                if (it.prove_img != null && it.prove_img.isNotEmpty()) {
+                    mBinding.vLine.visibility = View.VISIBLE
+                    mBinding.rv.visibility = View.VISIBLE
+                    mBinding.llPhotoTitle.visibility = View.VISIBLE
+                    mAdapter.replaceData(it.prove_img)
+                } else {
+                    mBinding.vLine.visibility = View.GONE
+                    mBinding.rv.visibility = View.GONE
+                    mBinding.llPhotoTitle.visibility = View.GONE
+                }
+
+                val lp = mBinding.tcvDate.layoutParams as LinearLayout.LayoutParams
+                lp.topMargin = UIUtils.dip2px(16)
+                mBinding.tcvDate.layoutParams = lp
+
+                mBinding.tcvDate.setEditNameText("标题：")
+                mBinding.tcvDate.tvContentText = it.title
+
+                mBinding.tvContentTitle.text = "问题描述："
+                mBinding.tvContentText.text = it.desc
+
+                mBinding.llReport.visibility = View.GONE
+
+
+                mBinding.tvDutyPeopleDec.text = "投诉受理"
+
+                mBinding.tcvPeople.setEditNameText("提交日期：")
+                mBinding.tcvPeople.tvContentText = it.add_time
+
+                mBinding.tcvShouliDate.setEditNameText("受理日期：")
+                mBinding.tcvShouliDate.tvContentText = it.settle_time
+
+                mBinding.tcvCompeteDate.setEditNameText("回复日期：")
+                mBinding.tcvCompeteDate.tvContentText = it.finish_time
+            }
+            3 -> {
+                mBinding.llReport.visibility = View.VISIBLE
+//                mBinding.stvTitle.setTitleValue("事件详情")
+            }
+            4 -> {
+                mBinding.llReport.visibility = View.VISIBLE
+//                mBinding.stvTitle.setTitleValue("自行处理详情")
+            }
+        }
     }
 
     private fun handleTypeSelf() {
@@ -218,10 +316,9 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
     }
 
     /**
-     * 我的代办
+     * 我的待办
      */
     private fun handleTypeCommission(status: Int) {
-        mBinding.llReport.visibility = View.VISIBLE
         when (status) {
             1 -> {
                 mBinding.btnShouli.visibility = View.VISIBLE
@@ -268,7 +365,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
      * 处理
      *   事件详情
      *   自行处理详情
-     *   我的代办详情
+     *   我的待办详情
      */
     private fun handleEventType() {
 

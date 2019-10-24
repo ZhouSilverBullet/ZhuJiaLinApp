@@ -52,7 +52,15 @@ android {
         }
     }
 
-
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            String name1 = defaultConfig.applicationId + "-" + buildType.name + "-v" +
+                    defaultConfig.versionName + "-" + defaultConfig.versionCode + ".apk"
+            String value = "bug修改版"
+            String name2 = "数字沂南-${value}-${defaultConfig.versionCode}-${getDate()}.apk";
+            outputFileName = name2
+        }
+    }
     //--------------资源配置----------------
     sourceSets {
         main {
@@ -87,6 +95,11 @@ android {
         generateStubs = true
     }
 
+}
+
+static def getDate() {
+//    return new SimpleDateFormat("yyyyMMdd").format(new Date())
+    return new Date().format("yyyyMMdd-HH点mm分ss秒")
 }
 
 dependencies {

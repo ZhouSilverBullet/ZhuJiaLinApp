@@ -61,7 +61,15 @@ data class DetailData(
         val title: String,
         val status: Int,
         val add_time: String,
-        val user_name: String
+        val user_name: String,
+
+        val name: String,
+        val mobile: String,
+        val desc: String,
+
+        val part: String,
+        val job: String,
+        val prove_img: List<String>
 )
 
 data class Reply(

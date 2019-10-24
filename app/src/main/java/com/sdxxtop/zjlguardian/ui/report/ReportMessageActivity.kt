@@ -61,5 +61,9 @@ class ReportMessageActivity : BaseActivity<ActivityReportMessageBinding, ReportM
         mBinding.stvTitle.setTitleValue(title)
     }
 
+    fun activityChangeDataFragment() {
+        mBinding.vp.currentItem = 1
+    }
+
 }
 

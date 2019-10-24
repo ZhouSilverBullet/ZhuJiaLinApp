@@ -46,6 +46,10 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
             mAdapter.replaceData(it)
 
             showLoadSir(it.isEmpty())
+
+            if (mBinding.srlLayout != null) {
+                mBinding.srlLayout.finishRefresh()
+            }
         })
     }
 
@@ -56,16 +60,23 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
     }
 
     override fun loadSirBindView(): View {
-        return mBinding.rv
+        return mBinding.srlLayout
     }
 
     override fun initEvent() {
         mAdapter.setOnItemClickListener { adapter, view, position ->
             val eventReportItem = mAdapter.data[position]
             val intent = Intent(view.context, EventReportDetailActivity::class.java)
-            intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
-            intent.putExtra("eventId", eventReportItem.event_id)
-            startActivity(intent)
+            if(eventReportItem.type == 3) {
+                intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+                intent.putExtra("eventId", eventReportItem.event_id)
+                startActivity(intent)
+            } else {
+                intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
+                intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, eventReportItem.type)
+                intent.putExtra("eventId", eventReportItem.event_id)
+                startActivity(intent)
+            }
         }
 
         mBinding.stvTitle.tvRight.setOnClickListener {
@@ -74,6 +85,12 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
 
         mBinding.rlSelector.setOnClickListener {
             pop.showPop(it)
+        }
+
+        mBinding.srlLayout.setEnableLoadMore(false)
+        mBinding.srlLayout.setOnRefreshListener {
+            //刷新
+            mViewModel.loadData(statusType, classificationType, sortType)
         }
     }
 
@@ -91,7 +108,15 @@ class DepartmentListActivity : BaseActivity<ActivityDepartmentListBinding, Depar
 //                .start()
     }
 
+    var statusType = 0
+    var classificationType = 0
+    var sortType = 0
+
     override fun onSelected(statusType: Int, classificationType: Int, sortType: Int) {
+        this.statusType = statusType;
+        this.classificationType = classificationType;
+        this.sortType = sortType;
+
         mViewModel.loadData(statusType, classificationType, sortType)
     }
 

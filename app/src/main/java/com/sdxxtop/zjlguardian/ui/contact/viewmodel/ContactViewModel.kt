@@ -43,7 +43,7 @@ class ContactViewModel : BaseViewModel() {
     }
 
     fun searchData(searchValue: String) {
-        showLoadingDialog(true)
+//        showLoadingDialog(true)
         loadOnUI({
             val params = HttpParams()
             val empty = TextUtils.isEmpty(searchValue)

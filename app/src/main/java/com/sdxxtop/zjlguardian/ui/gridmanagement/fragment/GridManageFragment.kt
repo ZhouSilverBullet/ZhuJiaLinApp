@@ -25,6 +25,7 @@ import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_EMPTY_LINE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.data.ITEM_MORE
 import com.sdxxtop.zjlguardian.ui.gridmanagement.viewmodel.GridManageViewModel
 import com.sdxxtop.zjlguardian.ui.message.MessageActivity
+import com.sdxxtop.zjlguardian.ui.message.MessageDetailActivity
 import com.sdxxtop.zjlguardian.ui.self_handle.SelfHandleActivity
 import com.youth.banner.loader.ImageLoader
 
@@ -54,9 +55,15 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
             mBinding.bView.setImages(it.broadcast)
             mBinding.bView.start()
 
-            mBinding.tvMessage.text = it.message
+            mBinding.tvMessage.text = it.message.title
+            val messageId = it.message.message_id
+            mBinding.llNotice.setOnClickListener { view
+                val intent = Intent(view?.context, MessageDetailActivity::class.java)
+                intent.putExtra("messageId", messageId)
+                startActivity(intent)
+            }
 
-            mBinding.llNotice.visibility = if (TextUtils.isEmpty(it.message)) View.GONE else View.VISIBLE
+//            mBinding.llNotice.visibility = if (TextUtils.isEmpty(it.message.title)) View.GONE else View.VISIBLE
 
             mLoadService.showSuccess()
 //            val autoTextViewManager = AutoTextViewManager(mBinding.atvView)

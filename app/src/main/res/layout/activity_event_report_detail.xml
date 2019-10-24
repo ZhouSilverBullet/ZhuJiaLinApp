@@ -72,6 +72,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_content_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -168,7 +169,7 @@
 
                     <com.sdxxtop.ui.TextContentView
                         android:id="@+id/tcv_jiejue_date"
-                        app:tcv_text_view="期待解决日期："
+                        app:tcv_text_view="期望解决日期："
                         tools:tcv_content_text="2019-22-22"
                         app:tcv_line_is_show="false"
                         android:layout_width="match_parent"

@@ -82,9 +82,12 @@ class GridManageViewModel : BaseViewModel() {
 
     private fun addMoreItem(itList: List<GridManagerData>, list: ArrayList<GridManagerData>, eventType: Int) {
         //不为空的时候前面加一个更多
-        if (itList.isNotEmpty()) {
-            val moreItem = GridManagerData(ITEM_MORE, eventType)
-            list.add(moreItem)
+        val moreItem = GridManagerData(ITEM_MORE, eventType)
+        list.add(moreItem)
+        //如果是空的，就加上空的界面
+        if (itList.isEmpty()) {
+            val emptyItem = GridManagerData(ITEM_EMPTY_VIEW, eventType)
+            list.add(emptyItem)
         }
     }
 

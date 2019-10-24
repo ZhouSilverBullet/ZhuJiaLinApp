@@ -15,6 +15,10 @@ import com.sdxxtop.trackerlibrary.TrackerConfiguration
 import java.util.ArrayList
 import kotlin.properties.Delegates
 import com.kingja.loadsir.core.LoadSir
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.*
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.sdxxtop.ui.loadsir.*
 
 
@@ -31,6 +35,26 @@ class App : BaseApplication() {
         @JvmStatic
         var INSTANCE: Context by Delegates.notNull()
     }
+
+    init {
+        //设置全局的Header构建器
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(object : DefaultRefreshHeaderCreator {
+            override fun createRefreshHeader(context: Context, layout: RefreshLayout): RefreshHeader {
+                layout.setPrimaryColorsId(R.color.color_F0F0F0, R.color.black_333333)//全局设置主题颜色
+                return ClassicsHeader(context)//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
+            }
+        })
+        //设置全局的Footer构建器
+        SmartRefreshLayout.setDefaultRefreshFooterCreator(object : DefaultRefreshFooterCreator {
+            override fun createRefreshFooter(context: Context, layout: RefreshLayout): RefreshFooter {
+                //指定为经典Footer，默认是 BallPulseFooter
+                val classicsFooter = ClassicsFooter(context)
+                classicsFooter.setBackgroundColor(INSTANCE.getResources().getColor(R.color.color_F0F0F0))
+                return classicsFooter.setDrawableSize(20f)
+            }
+        })
+    }
+
 
 
     val TAG = "CCApp"
@@ -55,7 +79,7 @@ class App : BaseApplication() {
         Log.i(TAG, "--------------调取-------------->")
 
         if (isAppProcess(getCurProcessName())) {
-            initTracker()
+//            initTracker()
 
             LoadSir.beginBuilder()
                     .addCallback(ErrorCallback())
@@ -68,6 +92,8 @@ class App : BaseApplication() {
         }
     }
 
+
+
     override fun isDebug(): Boolean {
         return BuildConfig.DEBUG
     }
@@ -78,7 +104,7 @@ class App : BaseApplication() {
 
     private fun initTracker() {
         Tracker.getInstance().init(this, TrackerConfiguration()
-                .setUploadBaseUrl("http://app.sdxxtop.com/parent/")
+                .setUploadBaseUrl("http://www.baidu.com/")
                 .setUploadUrl("pointlog/burypoint")
                 .setAppKey("aaaaaaaaaaaaaaaaaa")
                 .setDebug(BuildConfig.DEBUG)

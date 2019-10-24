@@ -31,6 +31,7 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
         addItemType(ITEM_MORE, R.layout.grid_manage_more_recycler_item)
         addItemType(ITEM_CELL, R.layout.grid_manage_cell_recycler_item)
         addItemType(ITEM_EMPTY_LINE, R.layout.grid_manager_empty_line_recycler_item)
+        addItemType(ITEM_EMPTY_VIEW, R.layout.grid_manager_empty_view_recycler_item)
     }
 
     override fun convert(helper: BaseViewHolder?, item: GridManagerData?) {
@@ -40,6 +41,9 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
             }
             ITEM_CELL -> {
                 handleCell(helper, item)
+            }
+            ITEM_EMPTY_VIEW -> {
+
             }
             else -> {
             }
@@ -110,10 +114,21 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
 
                 helper?.getView<RelativeLayout>(R.id.rl_root)?.setOnClickListener {
                     val intent = Intent(mContext, EventReportDetailActivity::class.java)
-                    intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
-                    intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
-                    intent.putExtra("eventId", item.event_id)
-                    mContext.startActivity(intent)
+//                    intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+//                    intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+//                    intent.putExtra("eventId", item.event_id)
+//                    mContext.startActivity(intent)
+
+                    if(item.type == 3) {
+                        intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_EVENT)
+                        intent.putExtra("eventId", item.event_id)
+                        mContext.startActivity(intent)
+                    } else {
+                        intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
+                        intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+                        intent.putExtra("eventId", item.event_id)
+                        mContext.startActivity(intent)
+                    }
                 }
             }
             EVENT_MINE -> {
@@ -127,6 +142,7 @@ class GridManageAdapter : BaseMultiItemQuickAdapter<GridManagerData, BaseViewHol
                     val intent = Intent(mContext, EventReportDetailActivity::class.java)
                     intent.putExtra(EventReportDetailActivity.KEY_EVENT_TYPE, EventReportDetailActivity.TYPE_COMMISSION)
                     intent.putExtra(EventReportDetailActivity.REQUEST_TYPE, item.type)
+                    intent.putExtra(EventReportDetailActivity.IS_COMMISSION, true)
                     intent.putExtra("eventId", item.event_id)
                     mContext.startActivity(intent)
                 }
