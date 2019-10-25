@@ -49,7 +49,7 @@ class ForgetActivity : BaseActivity<ActivityForgetBinding, ForgetViewModel>(), S
 
     override fun initView() {
         if (isMineFragmentSkip) {
-            mViewModel.phone.set(UserSession.getInstance().userName)
+            mViewModel.phone.set(UserSession.getInstance().mobile)
         }
     }
 

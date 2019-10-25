@@ -2,6 +2,7 @@ package com.sdxxtop.zjlguardian.model.db;
 
 import android.text.TextUtils;
 
+import com.sdxxtop.alipushsdk.AnalyticsHome;
 import com.sdxxtop.network.helper.HttpConstantValue;
 import com.sdxxtop.network.utils.SpUtil;
 
@@ -38,6 +39,8 @@ public class UserSession implements IUserData {
         userInfo.partId = partId;
         userInfo.userId = userid;
         userInfo.mobile = mobile;
+
+        AnalyticsHome.bindAccount(mobile);
     }
 
     @Override
@@ -62,6 +65,8 @@ public class UserSession implements IUserData {
 
         SpUtil.putString(HttpConstantValue.AUTO_TOKEN, "");
         SpUtil.putInt(HttpConstantValue.EXPIRE_TIME, 0);
+
+        AnalyticsHome.unbindAccount();
     }
 
     public void logout() {

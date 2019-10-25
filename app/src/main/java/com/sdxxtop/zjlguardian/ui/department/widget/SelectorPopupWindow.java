@@ -112,13 +112,16 @@ public class SelectorPopupWindow extends PopupWindow {
                     }
 
                     int classificationType = 0;
-                    if (rbEvent.isChecked()) {
+
+                    if (rbCommission.isChecked()) {
                         classificationType = 1;
                     }
-                    if (rbCommission.isChecked()) {
+
+                    if (rbTousu.isChecked()) {
                         classificationType = 2;
                     }
-                    if (rbTousu.isChecked()) {
+
+                    if (rbEvent.isChecked()) {
                         classificationType = 3;
                     }
 

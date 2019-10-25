@@ -252,7 +252,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
                 mBinding.tcvClassify.setEditNameText("单位：")
                 mBinding.tcvClassify.tvContentText = it.part
 
-                mBinding.tcvClassify.setEditNameText("职务：")
+                mBinding.tcvPlace.setEditNameText("职务：")
                 mBinding.tcvPlace.tvContentText = it.job
 
                 if (it.prove_img != null && it.prove_img.isNotEmpty()) {

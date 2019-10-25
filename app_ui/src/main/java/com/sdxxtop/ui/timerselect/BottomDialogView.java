@@ -34,6 +34,7 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
 
     private boolean isYearMouthDay;
     private LinearLayout timepickerLayout;
+    private boolean isStartToday;
 
     //这里的view其实可以替换直接传layout过来的 因为各种原因没传(lan)
     public BottomDialogView(Context context, onConfirmClick listener) {
@@ -42,9 +43,14 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
         this.mListener = listener;
     }
 
-    public BottomDialogView(Context context) {
+    public BottomDialogView(Context context, boolean isStartToday) {
         super(context, R.style.MyDialogStyleBottom);
         this.context = context;
+        this.isStartToday = isStartToday;
+    }
+
+    public BottomDialogView(Context context) {
+        this(context, false);
     }
 
     /**
@@ -83,7 +89,7 @@ public class BottomDialogView extends Dialog implements View.OnClickListener {
 
     private void initView() {
 
-        selectTimeAdapter = new SelectTimeAdapter();  // 日期
+        selectTimeAdapter = new SelectTimeAdapter(isStartToday);  // 日期
         hourAdapter = new HourAdapter();  // 小时  24进制
         minuteAdapter = new MinuteAdapter();  // 分
 //        inflate = LayoutInflater.from(context).inflate(R.layout.dialog_custontime_select, null);

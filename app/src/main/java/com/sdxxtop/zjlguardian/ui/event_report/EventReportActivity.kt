@@ -117,7 +117,7 @@ class EventReportActivity : BaseActivity<ActivityEventReportBinding, EventReport
     }
 
     val bottomDialogView by lazy {
-        val dialogView = BottomDialogView(this)
+        val dialogView = BottomDialogView(this, true)
         dialogView.setYearMouthDay(true)
         dialogView.setConfirmClickListener {
             mViewModel.mEventDate.set(it)

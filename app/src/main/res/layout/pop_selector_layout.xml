@@ -84,21 +84,6 @@
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/rb_event"
-            android:layout_width="60dp"
-            android:layout_height="24dp"
-            android:gravity="center"
-            android:button="@null"
-            android:background="@drawable/selector_btn_checkbox"
-            android:textColor="@color/tv_black_color"
-            android:textSize="@dimen/sp_12"
-            android:text="事件" />
-
-        <View
-            android:layout_width="20dp"
-            android:layout_height="1dp" />
-
-        <RadioButton
             android:id="@+id/rb_commission"
             android:layout_width="60dp"
             android:layout_height="24dp"
@@ -123,6 +108,21 @@
             android:textColor="@color/tv_black_color"
             android:textSize="@dimen/sp_12"
             android:text="投诉" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <RadioButton
+            android:id="@+id/rb_event"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/selector_btn_checkbox"
+            android:textColor="@color/tv_black_color"
+            android:textSize="@dimen/sp_12"
+            android:text="事件" />
     </RadioGroup>
 
     <TextView

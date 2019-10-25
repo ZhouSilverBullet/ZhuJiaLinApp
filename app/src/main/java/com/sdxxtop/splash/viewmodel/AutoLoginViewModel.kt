@@ -3,11 +3,10 @@ package com.sdxxtop.splash.viewmodel
 import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import com.sdxxtop.base.BaseViewModel
-import com.sdxxtop.zjlguardian.App
+import com.sdxxtop.common.utils.UIUtils
 import com.sdxxtop.zjlguardian.model.api.RetrofitClient
 import com.sdxxtop.zjlguardian.model.db.UserSession
 import com.sdxxtop.zjlguardian.model.helper.HttpParams
-import es.dmoral.toasty.Toasty
 
 /**
  * Email: zhousaito@163.com
@@ -48,7 +47,8 @@ class AutoLoginViewModel : BaseViewModel() {
 
             mAutoLoginSucc.value = true
         }, { code, msg, t ->
-            Toasty.error(App.INSTANCE, msg).show()
+            UIUtils.showToast(msg)
+
             //自动登录失效
             mAutoLoginSucc.value = false
         })

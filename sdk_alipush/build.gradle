@@ -32,6 +32,9 @@ dependencies {
     implementation "androidx.core:core-ktx:$rootProject.corektx"
     api 'com.aliyun.ams:alicloud-android-push:3.1.4'
     api 'com.aliyun.ams:alicloud-android-third-push:3.0.6@aar'
+
+    compileOnly project(path: ':app_common')
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

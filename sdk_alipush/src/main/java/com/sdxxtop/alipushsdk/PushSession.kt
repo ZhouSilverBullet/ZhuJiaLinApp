@@ -6,6 +6,7 @@ import com.alibaba.sdk.android.push.CommonCallback
 import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory
 import com.alibaba.sdk.android.push.register.HuaWeiRegister
 import com.alibaba.sdk.android.push.register.MiPushRegister
+import com.sdxxtop.common.utils.LogUtil
 
 /**
  * Email: zhousaito@163.com
@@ -15,6 +16,7 @@ import com.alibaba.sdk.android.push.register.MiPushRegister
  */
 
 object PushSession {
+    val TAG = "PushSession"
 
     /**
      * 初始化推送
@@ -41,14 +43,14 @@ object PushSession {
                 //              //GCM/FCM辅助通道注册
                 //               GcmRegister.register(this, sendId, applicationId); //sendId/applicationId为步骤获得的参数
                 val deviceId = pushService.deviceId
-                Log.e("deviceId", "==$deviceId")
+                LogUtil.e("PushSession ", " deviceId ==$deviceId")
             }
 
             override fun onFailed(errorCode: String, errorMessage: String) {
-//                LogUtils.e(TAG, "init cloudchannel failed -- errorcode:$errorCode -- errorMessage:$errorMessage")
+                Log.e(TAG, "init cloudchannel failed -- errorcode:$errorCode -- errorMessage:$errorMessage")
             }
         })
-//        LogUtils.e(TAG, "init cloudchannel " + Thread.currentThread())
+        LogUtil.e(TAG, "init cloudchannel " + Thread.currentThread())
 
     }
 }

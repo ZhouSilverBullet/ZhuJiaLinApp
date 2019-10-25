@@ -61,6 +61,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.map.AmapPoiActivity" />
+        <activity android:name=".push.PushCenterActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -71,12 +72,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider> <!-- 阿里云推送 start -->
+
+        <activity
+            android:name=".push.PopupPushActivity"
+            android:exported="true"
+            android:theme="@style/NormalSplash" />
         <meta-data
             android:name="com.alibaba.app.appkey"
-            android:value="27639098" />
+            android:value="27769950" />
         <meta-data
             android:name="com.alibaba.app.appsecret"
-            android:value="6559a257486cf820da80d94854657544" />
+            android:value="e73ea4870dc9cc151119d83140645b35" />
 
         <receiver
             android:name=".push.AliMessageReceiver"

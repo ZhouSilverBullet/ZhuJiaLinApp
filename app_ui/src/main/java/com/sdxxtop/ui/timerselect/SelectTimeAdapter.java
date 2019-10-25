@@ -21,9 +21,18 @@ import cn.addapp.pickers.adapter.WheelAdapter;
 public class SelectTimeAdapter implements WheelAdapter<String> {
 
     private final List<DayBean> list = new ArrayList<>();
+    private final boolean isStartToday;
     private DataHandler mHandler;
 
-    public SelectTimeAdapter() {
+    private int keyValue;
+
+    public SelectTimeAdapter(boolean isStartToday) {
+        this.isStartToday = isStartToday;
+        if(isStartToday) {
+            keyValue = 0;
+        } else {
+            keyValue = -1;
+        }
         mHandler = new DataHandler(this);
 
         if (list.size() == 0) {
@@ -58,11 +67,21 @@ public class SelectTimeAdapter implements WheelAdapter<String> {
         String dayBeanDay = "";
         String dayBeanFormat = "";
         ArrayList<DayBean> dayBeanArrayList = new ArrayList<>();
-        for (int k = -1; k <= 1; k++) {
+        for (int k = keyValue; k <= 2 + keyValue; k++) {
             int tempYy = yy + k;
-            for (int i = 1; i <= 12; i++) {
-                int monthLastDay = getMonthLastDay(tempYy, i);
-                for (int j = 1; j <= monthLastDay; j++) {
+            //如果是从今天开始，就是第一个今天
+            for (int i = isStartToday ? mm : 1; i <= 12; i++) {
+                int monthLastDay;
+                //如果是当月，就冲当月的天数开始
+                //如果不是，则从第一天开始
+                int indexJ = 1;
+                if(i == mm && isStartToday) {
+                    indexJ = dd;
+                }
+
+
+                monthLastDay = getMonthLastDay(tempYy, i);
+                for (int j = indexJ; j <= monthLastDay; j++) {
                     if (j < 10) {
                         day = "0" + j;
                     } else {

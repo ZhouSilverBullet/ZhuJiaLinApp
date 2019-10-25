@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.*
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.sdxxtop.alipushsdk.PushSession
 import com.sdxxtop.ui.loadsir.*
 
 
@@ -90,6 +91,8 @@ class App : BaseApplication() {
                     .setDefaultCallback(LoadingCallback::class.java)
                     .commit()
         }
+
+        PushSession.initPush(this, "2882303761518119728","5381811972728")
     }
 
 

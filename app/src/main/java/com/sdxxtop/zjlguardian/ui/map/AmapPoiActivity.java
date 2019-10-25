@@ -851,9 +851,9 @@ public class AmapPoiActivity extends AppCompatActivity implements PoiSearch.OnPo
                     double latitude = item.latitude;
                     double longitude = item.longitude;
 
-                    if (latitude == searchLatlonPoint.getLatitude() && longitude == searchLatlonPoint.getLongitude()) {
-                        return;
-                    }
+//                    if (latitude == searchLatlonPoint.getLatitude() && longitude == searchLatlonPoint.getLongitude()) {
+//                        return;
+//                    }
 
                     if (helper.getLayoutPosition() != 0) {
                         showLoadingDialog();

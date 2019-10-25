@@ -29,7 +29,8 @@ class MessageDetailActivity : BaseActivity<ActivityMessageDetailBinding, Message
     override fun initObserve() {
         mViewModel.mMessageDetail.observe(this, Observer {
             mBinding.tvTitle.setText(it.title)
-            mBinding.tvContent.setText(it.content)
+//            mBinding.tvContent.setText(it.content)
+            mBinding.webView.loadDataWithBaseURL(null, it.content, "text/html",  "utf-8", null)
             mBinding.tvTime.setText(it.add_time)
 
             loadDetailService.showSuccess()

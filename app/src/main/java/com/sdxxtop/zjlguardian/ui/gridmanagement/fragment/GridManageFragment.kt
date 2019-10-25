@@ -34,6 +34,8 @@ import com.youth.banner.loader.ImageLoader
  * A simple [Fragment] subclass.
  */
 class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageViewModel>() {
+    var isBannerLoad = false
+
     val mAdapter = GridManageAdapter()
 
     override fun bindVM() {
@@ -52,8 +54,11 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
 
         mViewModel.mGruadeEntryData.observe(this, Observer {
             //轮播图
-            mBinding.bView.setImages(it.broadcast)
-            mBinding.bView.start()
+            if (!isBannerLoad) {
+                mBinding.bView.setImages(it.broadcast)
+                mBinding.bView.start()
+                isBannerLoad = true
+            }
 
             mBinding.tvMessage.text = it.message.title
             val messageId = it.message.message_id
