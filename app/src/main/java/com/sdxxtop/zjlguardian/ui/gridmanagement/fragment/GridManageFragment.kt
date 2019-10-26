@@ -63,6 +63,10 @@ class GridManageFragment : BaseFragment<FragmentGridManageBinding, GridManageVie
             mBinding.tvMessage.text = it.message.title
             val messageId = it.message.message_id
             mBinding.llNotice.setOnClickListener { view
+                if(messageId == 0) {
+                    return@setOnClickListener
+                }
+
                 val intent = Intent(view?.context, MessageDetailActivity::class.java)
                 intent.putExtra("messageId", messageId)
                 startActivity(intent)
