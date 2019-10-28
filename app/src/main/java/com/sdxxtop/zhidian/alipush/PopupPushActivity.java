@@ -1,4 +1,4 @@
-package com.sdxxtop.zjlguardian.push;
+package com.sdxxtop.zhidian.alipush;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.util.Log;
 import com.alibaba.sdk.android.push.AndroidPopupActivity;
 import com.google.gson.Gson;
 import com.sdxxtop.zjlguardian.R;
+import com.sdxxtop.zjlguardian.push.PushCenterActivity;
 
 import java.util.Map;
 

@@ -5,8 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.sdxxtop.zjlguardian.ui.event_report.EventReportDetailActivity;
+import com.sdxxtop.zjlguardian.ui.message.MessageDetailActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Administrator on 2018/6/15.
@@ -14,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 
 public class PushCenterActivity extends AppCompatActivity {
+    private static final String TAG = "PushCenterActivity";
 
     private String extraMap;
 
@@ -51,59 +59,59 @@ public class PushCenterActivity extends AppCompatActivity {
     }
 
     private void startToAc(String extraMap) {
-//        try {
-//            JSONObject jsonObject = new JSONObject(extraMap);
-//            int company_id = jsonObject.optInt("company_id");
-//            if (!jsonObject.has("type")) {
-//                return;
-//            }
-//            int type = jsonObject.optInt("type");
-//            if (company_id == 0) {
-//                company_id = -1;
-//            }
-//            if (jsonObject.has("notice_id") && type == 1) { //公告的
-//                final int notice_id = jsonObject.optInt("notice_id");
-//                Intent intent = new Intent(this, NoticeDetail2Activity.class);
-//                intent.putExtra("ni", notice_id);
-//                intent.putExtra("company_id", company_id);
-//                startActivity(intent);
-//            } else if (jsonObject.has("apply_id") && type == 2) { //申请
-//                final int apply_id = jsonObject.optInt("apply_id");
-//                final int at = jsonObject.optInt("apply_type");
-//                Intent intent = new Intent(this, SubmissionActivity.class);
-//                intent.putExtra("at", at);
-//                intent.putExtra("apply_id", apply_id + "");
-//                intent.putExtra("company_id", company_id);
-//                startActivity(intent);
-//            } else if (jsonObject.has("report_id") && type == 3) {
-//                String report_id = jsonObject.optString("report_id");
-//                if (!TextUtils.isEmpty(report_id)) {
-//                    int reportId = Integer.parseInt(report_id);
-//                    MineWorkDetailActivity.startWorkDetailActivity(this, 0, reportId, company_id);
-//                }
-//            } else if (jsonObject.has("apply_id") && type == 4) { // 困难申请
-//                final int apply_id = jsonObject.optInt("apply_id");
-//                Intent intent = new Intent(this, DifficultApplyDetailActivity.class);
-//                intent.putExtra("apply_id", apply_id + "");
-//                intent.putExtra("status", 0 + "");
-//                intent.putExtra("company_id", company_id);
-//                startActivity(intent);
-//            } else if (jsonObject.has("push_id") &&type == 11) {
-//                Intent intent = new Intent(this, ExamineActivity.class);
-//                final int push_id = jsonObject.optInt("push_id");
-//                intent.putExtra("push_id", push_id+"");
-//                intent.putExtra("company_id", company_id);
-//                intent.putExtra("send_time", jsonObject.optString("send_time"));
-//                startActivity(intent);
-//                finish();
-//            } else {
-//                finish();
-//            }
-//        } catch (JSONException e) {
-//            Log.e("MyMessageReceiver", e.getMessage());
-//            e.printStackTrace();
-//            finish();
-//        }
+        try {
+            JSONObject jsonObject = new JSONObject(extraMap);
+
+            if (!jsonObject.has("main_id")) {
+                Log.e(TAG, "main_Id 不存在！！！！！");
+                finish();
+                return;
+            }
+
+            if (!jsonObject.has("type")) {
+                return;
+            }
+
+            int type = jsonObject.optInt("type");
+            int mainId = jsonObject.optInt("main_id");
+            Intent intent = null;
+            // 0：普通消息 1咨询 2投诉 3上报事件 4自行处理
+            switch (type) {
+
+                // 0 普通消息
+                case 0:
+                    intent = new Intent(this, MessageDetailActivity.class);
+                    intent.putExtra("messageId", mainId);
+                    startActivity(intent);
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    intent = new Intent(this, EventReportDetailActivity.class);
+                    if(type == 3) {
+                        intent.putExtra(EventReportDetailActivity.Companion.getKEY_EVENT_TYPE(), EventReportDetailActivity.Companion.getTYPE_EVENT());
+                        intent.putExtra("eventId", mainId);
+                        startActivity(intent);
+                    } else {
+                        intent.putExtra(EventReportDetailActivity.Companion.getKEY_EVENT_TYPE(), EventReportDetailActivity.Companion.getTYPE_COMMISSION());
+                        intent.putExtra(EventReportDetailActivity.Companion.getREQUEST_TYPE(), type);
+                        intent.putExtra(EventReportDetailActivity.Companion.getIS_COMMISSION(), true);
+                        intent.putExtra("eventId", mainId);
+                        startActivity(intent);
+                    }
+                    break;
+
+                default:
+                    break;
+
+            }
+            finish();
+        } catch (JSONException e) {
+            Log.e(TAG, e.getMessage());
+            e.printStackTrace();
+            finish();
+        }
     }
 
 //    @Subscribe

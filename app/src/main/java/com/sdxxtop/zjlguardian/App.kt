@@ -92,7 +92,7 @@ class App : BaseApplication() {
                     .commit()
         }
 
-        PushSession.initPush(this, "2882303761518119728","5381811972728")
+        PushSession.initPush(this, "2882303761518221656", "5491822154656")
     }
 
 
