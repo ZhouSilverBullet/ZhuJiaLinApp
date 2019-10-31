@@ -7,9 +7,9 @@
               android:orientation="vertical">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/empty"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/load_no_people2"/>
 
     <TextView
         android:id="@+id/tv_empty"

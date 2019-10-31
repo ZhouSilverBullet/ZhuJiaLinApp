@@ -27,7 +27,8 @@ import retrofit2.http.*
 
 interface ApiService {
     companion object {
-        const val BASE_URL = "http://yinanapi.sdxxtop.com/api/"
+//        const val BASE_URL = "http://yinanapi.sdxxtop.com/api/"
+        const val BASE_URL = "https://yinan-api.sdxxtop.com/api/"
     }
 
     @FormUrlEncoded

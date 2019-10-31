@@ -37,8 +37,8 @@ class GridManageViewModel : BaseViewModel() {
                     }
                     list.add(gridManagerData)
                 }
-                addLineItem(it.part_event, list)
             }
+            addLineItem(it.part_event, list)
 
             if (it.todo_event != null) {
                 addMoreItem(it.todo_event, list, EVENT_MINE)
@@ -50,8 +50,8 @@ class GridManageViewModel : BaseViewModel() {
                     }
                     list.add(gridManagerData)
                 }
-                addLineItem(it.todo_event, list)
             }
+            addLineItem(it.todo_event, list)
 
             if (it.up_event != null) {
                 addMoreItem(it.up_event, list, EVENT_REPORT)
@@ -65,9 +65,9 @@ class GridManageViewModel : BaseViewModel() {
                     list.add(gridManagerData)
                 }
 
-                //不为空的时候最后面加一个空白数据
-                addLineItem(it.up_event, list)
             }
+            //不为空的时候最后面加一个空白数据
+            addLineItem(it.up_event, list)
 
             mGridManagerData.value = list
 
@@ -93,9 +93,9 @@ class GridManageViewModel : BaseViewModel() {
 
     private fun addLineItem(itList: List<GridManagerData>, list: ArrayList<GridManagerData>) {
         //不为空的时候最后面加一个空白数据
-        if (itList.isNotEmpty()) {
+//        if (itList.isNotEmpty()) {
             val moreItem = GridManagerData(ITEM_EMPTY_LINE)
             list.add(moreItem)
-        }
+//        }
     }
 }

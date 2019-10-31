@@ -56,7 +56,7 @@ android {
         variant.outputs.all {
             String name1 = defaultConfig.applicationId + "-" + buildType.name + "-v" +
                     defaultConfig.versionName + "-" + defaultConfig.versionCode + ".apk"
-            String value = "bug修改版"
+            String value = "预发布"
             String name2 = "数字沂南-${value}-${defaultConfig.versionCode}-${getDate()}.apk";
             outputFileName = name2
         }

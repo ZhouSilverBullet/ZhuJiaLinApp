@@ -223,7 +223,7 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
                 mBinding.tcvClassify.setEditNameText("姓名：")
                 mBinding.tcvClassify.tvContentText = it.name
 
-                mBinding.tcvClassify.setEditNameText("手机号码：")
+                mBinding.tcvPlace.setEditNameText("手机号码：")
                 mBinding.tcvPlace.tvContentText = it.mobile
 
                 mBinding.tcvDate.visibility = View.GONE
@@ -243,12 +243,13 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
                 mBinding.tcvCompeteDate.setEditNameText("回复日期：")
                 mBinding.tcvCompeteDate.tvContentText = it.finish_time
 
+                mBinding.tvContentTitle.text = "咨询内容："
             }
             2 -> {
 //                mBinding.stvTitle.setTitleValue("投诉详情")
 
                 mBinding.tcvTitle.setEditNameText("被举报人：")
-                mBinding.tcvTitle.tvContentText = it.title
+                mBinding.tcvTitle.tvContentText = it.name
                 mBinding.tcvClassify.setEditNameText("单位：")
                 mBinding.tcvClassify.tvContentText = it.part
 
@@ -289,6 +290,8 @@ class EventReportDetailActivity : BaseActivity<ActivityEventReportDetailBinding,
 
                 mBinding.tcvCompeteDate.setEditNameText("回复日期：")
                 mBinding.tcvCompeteDate.tvContentText = it.finish_time
+
+                mBinding.tvContentTitle.text = "问题描述："
             }
             3 -> {
                 mBinding.llReport.visibility = View.VISIBLE
